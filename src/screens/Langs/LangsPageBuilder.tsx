@@ -33,7 +33,7 @@ export const LangsPageBuilder = () => {
 						<h3 className={s.section__title}><SiMoleculer fill="#1F477D" size={25} /> Технологии</h3>
 						<div className={s.langs}>
 							<SquareButtonBlock imageUrl='/assets/Langs/nextjs.png' navigationUrl='/techs/nextjs' title='NextJS' />
-							<SquareButtonBlock imageUrl='/assets/Langs/django.png' navigationUrl='/techs/django' title='Django' labelTitle='Дополняется' />
+							<SquareButtonBlock imageUrl='/assets/Langs/django.png' navigationUrl='/techs/django' title='Django' labelTitle='Обновлено' labelColor='#FFF' labelBgColor="#26AA78" />
 							<SquareButtonBlock imageUrl='/assets/Langs/expressjs.png' navigationUrl='/techs/expressjs' title='ExpressJS' />
 						</div>
 					</section>
