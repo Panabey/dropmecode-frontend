@@ -23,7 +23,12 @@
 	flex-direction: column;
 }
 .section__title{
+	display: flex;
+	align-items: center;
 	font-size: 1.5rem;
 	font-weight: 500;
 	margin-bottom: 15px;
+}
+.section__title svg{
+	margin-right: 10px;
 }

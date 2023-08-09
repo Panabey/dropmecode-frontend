@@ -3,6 +3,8 @@ import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { SquareButtonBlock } from '@/components/SquareButtonBlock/SquareButtonBlock'
+import { HiCode } from 'react-icons/hi'
+import { SiMoleculer } from 'react-icons/si'
 import { SearchBar } from '../../components/SearchBar/SearchBar'
 import s from './LangsPageBuilder.module.css'
 
@@ -19,7 +21,7 @@ export const LangsPageBuilder = () => {
 						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Языки программирования", navigationUrl: "/langs" }]}
 					/>
 					<section className={s.section}>
-						<h3 className={s.section__title}>Языки программирования</h3>
+						<h3 className={s.section__title}><HiCode size={25} fill="#1F477D" /> Языки программирования</h3>
 						<div className={s.langs}>
 							<SquareButtonBlock imageUrl='/assets/Langs/js.png' navigationUrl='/langs/javascript' title='JavaScript' />
 							<SquareButtonBlock imageUrl='/assets/Langs/python.png' navigationUrl='/langs/python' title='Python' />
@@ -28,12 +30,11 @@ export const LangsPageBuilder = () => {
 						</div>
 					</section>
 					<section className={s.section}>
-						<h3 className={s.section__title}>Технологии</h3>
+						<h3 className={s.section__title}><SiMoleculer fill="#1F477D" size={25} /> Технологии</h3>
 						<div className={s.langs}>
-							<SquareButtonBlock imageUrl='/assets/Langs/js.png' navigationUrl='/langs/javascript' title='JavaScript' />
-							<SquareButtonBlock imageUrl='/assets/Langs/python.png' navigationUrl='/langs/python' title='Python' />
-							<SquareButtonBlock imageUrl='/assets/Langs/rust.png' navigationUrl='/langs/rust' title='Rust' labelTitle='Дополняется' />
-							<SquareButtonBlock imageUrl='/assets/Langs/golang.png' navigationUrl='/langs/golang' title='Golang' />
+							<SquareButtonBlock imageUrl='/assets/Langs/nextjs.png' navigationUrl='/techs/nextjs' title='NextJS' />
+							<SquareButtonBlock imageUrl='/assets/Langs/django.png' navigationUrl='/techs/django' title='Django' labelTitle='Дополняется' />
+							<SquareButtonBlock imageUrl='/assets/Langs/expressjs.png' navigationUrl='/techs/expressjs' title='ExpressJS' />
 						</div>
 					</section>
 				</Container>
