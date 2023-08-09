@@ -1,0 +1,24 @@
+.search{
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 0px 15px;
+	padding: 3px 15px;
+	background-color: #fff;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.1);
+	width: 100%;
+}
+.search svg{
+	opacity: 0.3;
+}
+.search__input{
+	outline: none;
+	padding: 10px 0px;
+	font-size: 1rem;
+	border: none;
+	width: 100%;
+}
+.search__input::placeholder{
+	color: rgba(0,0,0,0.3);
+}
