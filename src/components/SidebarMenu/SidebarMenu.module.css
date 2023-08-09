@@ -33,6 +33,9 @@
 	flex-direction: column;
 	gap: 12px 0;
 }
+.menu a{
+	text-decoration: none;
+}
 .menu__item{
 	cursor: pointer;
 	list-style-type: none;

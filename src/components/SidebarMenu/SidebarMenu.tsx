@@ -4,6 +4,7 @@ import { HiCode, HiMenuAlt1 } from 'react-icons/hi'
 import { ImDropbox, ImNewspaper } from 'react-icons/im'
 import { IoMdHelp } from 'react-icons/io'
 import s from './SidebarMenu.module.css'
+import Link from 'next/link'
 
 export const SidebarMenu = () => {
 	return (
@@ -15,12 +16,12 @@ export const SidebarMenu = () => {
 				</div>
 				<nav className={s.nav}>
 					<ul className={s.menu}>
-						<li className={classNames(s.menu__item, s.menu__item_active)}><AiOutlineHome size={24} fill="#1DC989" /> Главная</li>
-						<li className={s.menu__item}><HiCode size={24} fill="#1DC989" /> Языки программирования</li>
-						<li className={s.menu__item}><ImNewspaper size={24} fill="#1DC989" /> Новости</li>
-						<li className={s.menu__item}><HiMenuAlt1 size={24} fill="#1DC989" /> Блог</li>
+						<Link href='/'><li className={classNames(s.menu__item, s.menu__item_active)}><AiOutlineHome size={24} fill="#1DC989" /> Главная</li></Link>
+						<Link href='/langs'><li className={s.menu__item}><HiCode size={24} fill="#1DC989" /> Языки программирования</li></Link>
+						<Link href='/news'><li className={s.menu__item}><ImNewspaper size={24} fill="#1DC989" /> Новости</li></Link>
+						<Link href='/blog'><li className={s.menu__item}><HiMenuAlt1 size={24} fill="#1DC989" /> Блог</li></Link>
 						<hr className={s.menu__underline} />
-						<li className={s.menu__item}><IoMdHelp size={24} fill="#1DC989" /> Помощь</li>
+						<Link href='/help'><li className={s.menu__item}><IoMdHelp size={24} fill="#1DC989" /> Помощь</li></Link>
 						<div className={s.menu__buttons}>
 							<button className={s.menu__button}>Связь с авторами</button>
 							<button className={s.menu__button}>Правила пользования</button>

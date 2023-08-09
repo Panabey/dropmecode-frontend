@@ -1,7 +1,7 @@
 import { IoSearch } from 'react-icons/io5'
-import s from './HomeSearch.module.css'
+import s from './SearchBar.module.css'
 
-export const HomeSearch = () => {
+export const SearchBar = () => {
 	return (
 		<div className={s.search}>
 			<IoSearch fill="#000" size={20} />
