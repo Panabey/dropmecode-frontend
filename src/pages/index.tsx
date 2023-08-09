@@ -6,6 +6,7 @@ export default function Home() {
     <>
       <Head>
         <title>DROPMECODE | Главная</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <HomePageBuilder />
     </>

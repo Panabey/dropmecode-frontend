@@ -6,6 +6,7 @@ const LangsPage = () => {
 		<>
 			<Head>
 				<title>DROPMECODE | Языки программирования</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<LangsPageBuilder />
 		</>
