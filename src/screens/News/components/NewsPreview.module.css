@@ -5,6 +5,9 @@
 	border-radius: 7px;
 	border: 1px solid rgba(0,0,0,0.05);
 }
+.area_noimg{
+	grid-template-columns: 1fr;
+}
 .area:hover{
 	transition: 0.2s ease-in-out border;
 	border: 1px solid rgba(0,0,0,0.1);

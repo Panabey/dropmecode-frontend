@@ -28,12 +28,26 @@ export const NewsPageBuilder = () => {
 							tags={["Кибербезопасность", "Софт", "Утечки данных"]}
 						/>
 						<NewsPreview
+							slug='sarmat-mobil-otpravilsa-v-turne'
+							title='"Сармат-мобиль" с ядерной боеголовкой отправился в турне по России'
+							dateTime='11.05.2023 12:25'
+							description='Самый современный автомобиль с установленной на крыше ядерной боеголовкой, отправился покорять отечественные города в качестве арт-объекта'
+							tags={["Автомобили", "Технологии"]}
+						/>
+						<NewsPreview
 							slug='mikhail-kuligin-napisal-assembler-na-assemblere'
 							title='Михаил Кулигин написал ассемблер на ассемблере'
 							dateTime='05.07.2023 14:14'
 							description='Известный в узких кругах дедос под кодовым именем - "dedosAtaka", написал новый язык программирования на старом, впрочем как и он сам.'
 							imageUrl='https://sun9-37.userapi.com/impg/QRPqfuhW_pKdq9yEhpxlVTQgdAnHUXyACfcgMA/V-cmNLao1Mc.jpg?size=992x992&quality=95&sign=efc80efca27da7ca3fcf3307a977e25e&type=album'
 							tags={["Программирование", "Софт"]}
+						/>
+						<NewsPreview
+							slug='v-rossii-postupil-v-prodazhu-elbrus-shestnadcath-s'
+							title='В России поступил в продажу Эльбрус 16С'
+							dateTime='04.06.2023 18:19'
+							description='Самый мощный процессор из линейки "Эльбрус" теперь доступен к прямой продаже. 16 высокопроизводительных ядер способны обработать любые серверные задачи'
+							tags={["Технологии", "Железо"]}
 						/>
 						<NewsPreview
 							slug='znamenitie-programmisty-iz-muroma-stali-deputatami'
