@@ -1,10 +1,25 @@
-import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder"
+import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder";
+import { FC } from "react";
 
-const LangDocsPageInfo = () => {
+interface iProps {
+  mdData: any
+}
+
+const LangDocsPageInfo: FC<iProps> = ({ mdData }) => {
 
   return (
-    <LangDocsThemePageBuilder />
+    <LangDocsThemePageBuilder mdData={mdData} />
   )
+}
+
+export async function getServerSideProps({ params }: any) {
+  const mdData = '';
+
+  return {
+    props: {
+      mdData,
+    },
+  };
 }
 
 export default LangDocsPageInfo
