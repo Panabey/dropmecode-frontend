@@ -1,0 +1,48 @@
+ .info{
+	display: flex;
+	flex-direction: column;
+	gap: 15px 0;
+}
+.info__contents{
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0;
+}
+.contents__title{
+	display: flex;
+	align-items: center;
+}
+.partnumber{
+	font-size: 1rem;
+	color: #fff;
+	background-color: #1DC989;
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1px 9px;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+.title{
+	font-size: 1.5rem;
+}
+.description{
+	font-size: 0.9rem;
+	opacity: 0.8;
+}
+.links{
+	margin-top: 15px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 15px;
+}
+.link{
+	display: flex;
+	align-items: baseline;
+	gap: 0 10px;
+}
+.link__partnumber{
+	display: block;
+	text-decoration: none;
+}
