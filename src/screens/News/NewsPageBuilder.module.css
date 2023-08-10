@@ -1,0 +1,20 @@
+.layout{
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.area{
+	margin-top: 25px;
+	width: 50vw;
+	padding: 0 4%;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+}
+.news{
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px 0;
+}
