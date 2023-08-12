@@ -1,0 +1,12 @@
+.cookie{
+	width: 100%;
+	max-width: 40vw;
+	position: fixed;
+	z-index: 3;
+	bottom: 10%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: #FAFBFF;
+	padding: 15px;
+}

@@ -11,6 +11,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="cookie"></div>
+        <div id="modal"></div>
       </body>
     </Html>
   )
