@@ -5,10 +5,11 @@ import s from './Container.module.css'
 interface iProps {
 	children: ReactNode
 	className?: string
+	noMarginLeft?: boolean
 }
 
-export const Container: FC<iProps> = ({ children, className }) => {
+export const Container: FC<iProps> = ({ children, className, noMarginLeft }) => {
 	return (
-		<div className={classNames(s.container, { [className || '']: className })}>{children}</div>
+		<div className={classNames(s.container, { [className || '']: className }, { [s.noMarginLeft]: noMarginLeft })}>{children}</div>
 	)
 }

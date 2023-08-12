@@ -5,6 +5,9 @@
   color: #1F477D;
   font-family: 'Rubik', sans-serif;
 }
+html{
+  scroll-behavior: smooth;
+}
 body{
   background-color: #fff;
 }
