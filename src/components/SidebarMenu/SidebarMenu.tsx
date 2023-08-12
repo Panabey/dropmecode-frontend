@@ -25,9 +25,9 @@ export const SidebarMenu = () => {
 						<Link href='/langs'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/langs') })}><HiCode size={24} fill="#1DC989" /> Языки программирования</li></Link>
 						<Link href='/news'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/news') })}><ImNewspaper size={24} fill="#1DC989" /> Новости</li></Link>
 						<Link href='/blog'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/blog') })}><HiMenuAlt1 size={24} fill="#1DC989" /> Блог</li></Link>
-						<Link href='/quizes'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/blog') })}><RiCheckboxMultipleLine size={24} fill="#1DC989" /> Квизы</li></Link>
+						<Link href='/quizes'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/quizes') })}><RiCheckboxMultipleLine size={24} fill="#1DC989" /> Квизы</li></Link>
 						<hr className={s.menu__underline} />
-						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/quizes') })}><IoMdHelp size={24} fill="#1DC989" /> Помощь</li></Link>
+						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/help') })}><IoMdHelp size={24} fill="#1DC989" /> Помощь</li></Link>
 						<div className={s.menu__buttons}>
 							<button className={s.menu__button}>Связь с авторами</button>
 							<button className={s.menu__button}>Правила пользования</button>

@@ -24,6 +24,7 @@ This section is replaced by an actual table of contents.
 
 Here is an example of a plugin to highlight code:
 [\`rehype-highlight\`](https://github.com/rehypejs/rehype-highlight).
+![Тест картинки](https://cdn.dribbble.com/users/947224/screenshots/7434980/media/1fc4418689b3e592924b89d9c3c68e04.png)
 
 \`\`\`js
 import React from 'react'
