@@ -15,3 +15,38 @@
 .partition__info{
 	margin-top: 50px;
 }
+.quizes{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 15px;
+}
+.section{
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+}
+.section__row{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.section__title{
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+.section__title svg{
+	margin-right: 10px;
+}
+.section__details{
+	cursor: pointer;
+	font-size: 0.9rem;
+	font-weight: 500;
+	opacity: 0.6;
+}
+.section__details:hover{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 0.8;
+}
