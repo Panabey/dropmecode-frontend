@@ -1,0 +1,69 @@
+.layout{
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.area{
+	margin-top: 25px;
+	width: 53vw;
+	padding: 0 4%;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+}
+.partition__info{
+	margin-top: 50px;
+}
+.section{
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+}
+.preivew{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.preview__img{
+	margin-top: 20px;
+	max-width: 100%;
+	height: auto;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 7px;
+}
+.preview__counter{
+	margin-top: 15px;
+	font-size: 1rem;
+	color: #000;
+	opacity: 0.6;
+	text-align: center;
+}
+.preview__button{
+	cursor: pointer;
+	width: fit-content;
+	display: block;
+	margin-top: 10px;
+	text-decoration: none;
+	font-size: 1.2rem;
+	padding: 8px 20px;
+	border-radius: 7px;
+	background-color: #1F477D;
+	border: 1px solid transparent;
+	color: #fff;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
+}
+.preview__button:hover{
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
+	background-color: #FFF;
+    color: #1F477D;
+    border: 1px solid;
+}
+.quiz{
+	margin-top: 40px;
+}

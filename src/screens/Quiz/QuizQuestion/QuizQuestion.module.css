@@ -1,0 +1,124 @@
+.markdown{
+	margin-top: 20px;
+}
+.answers{
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.answers__title{
+	margin-top: 15px;
+	font-size: 0.9rem;
+	opacity: 0.7;
+}
+.answer{
+	cursor: pointer;
+	width: 100%;
+	border: 1px solid rgba(31, 71, 125, 0.3);
+	border-radius: 7px;
+	margin-top: 15px;
+	font-size: 1rem;
+	padding: 15px;
+	transition: 0.2s ease-in-out border;
+}
+.answer:hover{
+	transition: 0.2s ease-in-out border;
+	border: 1px solid rgba(31, 71, 125, 0.5);
+}
+.answer__title{
+	display: flex;
+	align-items: center;
+	opacity: 0.8;
+}
+.answer_noevents{
+	pointer-events: none;
+}
+.answer__title svg{
+	margin-right: 12px;
+}
+.answer:hover .answer__title{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 1;
+}
+.answer_selected{
+	transition: 0.2s ease-in-out border;
+	border: 1px solid rgba(31, 71, 125, 0.7);
+}
+.answer_selected .answer__title{
+	opacity: 1;
+}
+.answer_correct{
+	border: 1px solid #1DC989;
+}
+.answer_correct svg{
+	fill: #1DC989;
+}
+.answer_loss{
+	border: 1px solid rgb(240, 98, 98);
+}
+.answer_loss svg{
+	fill: rgb(240, 98, 98);
+}
+.answer__explanation{
+	color: #000;
+	margin-top: 10px;
+	font-size: 0.9rem;
+	opacity: 0.5;
+}
+.buttons{
+	margin-top: 25px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.button_hint{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	opacity: 0.4;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: #000;
+	transition: 0.2s ease-in-out opacity;
+}
+.button_hint:hover{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 0.6;
+}
+.button_hint svg{
+	margin-right: 7px;
+}
+.answers__button{
+	cursor: pointer;
+	width: fit-content;
+	display: block;
+	margin-top: 10px;
+	text-decoration: none;
+	font-size: 1rem;
+	padding: 8px 20px;
+	border-radius: 7px;
+	color: #fff;
+	text-align: center;
+	border: none;
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out opacity;
+}
+.answers__button_next{
+	background-color: #1F477D;
+}
+.answers__button_next:hover{
+	transition: 0.3s ease-in-out background-color;
+	background-color: #2b5fa3;
+}
+.answers__button_confirm{
+	background-color: #1DC989;
+}
+.answers__button_confirm:hover{
+	transition: 0.3s ease-in-out background-color;
+	background-color: #29db9a;
+}
+.answers__button:disabled{
+	pointer-events: none;
+	cursor: not-allowed;
+	opacity: 0.7;
+}

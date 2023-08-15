@@ -34,8 +34,8 @@ export const PageCommonInfo: FC<iProps> = ({ title, breadcrumbs, description, cl
 					)
 				})}
 			</div>
-			<h2 className={s.title}>{title}</h2>
-			{description && <aside className={s.description}>{description}</aside>}
+			{title.length ? <h2 className={s.title}>{title}</h2> : <></>}
+			{description && description.length ? <aside className={s.description}>{description}</aside> : <></>}
 		</div>
 	)
 }

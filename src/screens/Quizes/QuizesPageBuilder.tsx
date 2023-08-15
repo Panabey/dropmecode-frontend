@@ -3,12 +3,13 @@ import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import Link from 'next/link'
 import { BiLogoJavascript } from 'react-icons/bi'
 import { HiFire } from 'react-icons/hi'
 import s from './QuizesPageBuilder.module.css'
 import { QuizPreview, iQuizPreview } from './components/QuizPreview/QuizPreview'
 
-const quizes: iQuizPreview[] = [{
+export const quizes: iQuizPreview[] = [{
 	id: 1,
 	slug: "kakoy-ti-smesharik",
 	description: "Пройдите простой тест и узнайте, кем бы вы были во вселенной смешариков",
@@ -46,7 +47,7 @@ export const QuizesPageBuilder = () => {
 					<section className={s.section}>
 						<div className={s.section__row}>
 							<h3 className={s.section__title}><HiFire size={25} fill="#1F477D" /> Квизы дня</h3>
-							<span className={s.section__details}>Показать все</span>
+							<Link className={s.section__details} href="/quizes/hot">Показать все</Link>
 						</div>
 						<div className={s.quizes}>
 							{quizes.map((quiz) => {
@@ -59,7 +60,7 @@ export const QuizesPageBuilder = () => {
 					<section className={s.section}>
 						<div className={s.section__row}>
 							<h3 className={s.section__title}><BiLogoJavascript fill="#1F477D" size={25} /> Квизы по Javascript</h3>
-							<span className={s.section__details}>Показать все</span>
+							<Link className={s.section__details} href="/quizes/hot">Показать все</Link>
 						</div>
 						<div className={s.quizes}>
 							{quizes.map((quiz) => {
