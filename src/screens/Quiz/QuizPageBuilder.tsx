@@ -16,6 +16,58 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 	const [quizStatus, setQuizStatus] = useState<'preview' | 'running' | 'ended'>('preview');
 	const [correctQuestionCounter, setCorrectQuestionCounter] = useState<number>(0);
 
+	function onClickNextQuestion(isCorrect: boolean) {
+		setSelectedQuestionIdx((prev) => prev + 1)
+		if (isCorrect) {
+			setCorrectQuestionCounter((prev) => prev + 1)
+		}
+		if (selectedQuestionIdx < questions.length - 1) {
+		} else {
+			setQuizStatus('ended')
+		}
+	}
+
+	function getResultInfo() {
+		let result = {
+			title: "",
+			description: "",
+			imageUrl: ""
+		}
+		const resultPercent = Math.round((selectedQuestionIdx) / questions.length * 100)
+		if (resultPercent <= 10) {
+			result = {
+				title: "Очень грустно",
+				description: `Вы дали ${resultPercent}% правильных ответов. Изучите материал подробнее и вернитесь к тесту позже`,
+				imageUrl: "/assets/Quizes/Results/0.svg"
+			}
+		} else if (resultPercent > 10 && resultPercent <= 25) {
+			result = {
+				title: "Грустно",
+				description: `Вы дали ${resultPercent}% правильных ответов. Изучите материал подробнее и вернитесь к тесту позже`,
+				imageUrl: "/assets/Quizes/Results/1.svg"
+			}
+		} else if (resultPercent > 25 && resultPercent <= 50) {
+			result = {
+				title: "Старайтесь лучше",
+				description: `Вы дали ${resultPercent}% правильных ответов. Это не плохой, но и не лучший результат. Вы можете лучше`,
+				imageUrl: "/assets/Quizes/Results/2.svg"
+			}
+		} else if (resultPercent > 50 && resultPercent <= 75) {
+			result = {
+				title: "Хорошо",
+				description: `Вы дали ${resultPercent}% правильных ответов. Результат достаточно успешный, он показывает, что вы в целом знаете материал, но есть некоторые пробелы`,
+				imageUrl: "/assets/Quizes/Results/3.svg"
+			}
+		} else if (resultPercent > 75) {
+			result = {
+				title: "Отлично",
+				description: `Вы дали ${resultPercent}% правильных ответов. Это отличный результат. Он означает, что вы усвоили изученный материал`,
+				imageUrl: "/assets/Quizes/Results/3.svg"
+			}
+		}
+		return result
+	}
+
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />
@@ -33,6 +85,18 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 						]}
 					/>
 					<section className={s.quiz}>
+						{quizStatus !== 'preview'
+							&& <div className={s.quiz__info}>
+								<span className={s.questions__counter}>Вопрос: {(selectedQuestionIdx + 1) < questions.length ? selectedQuestionIdx + 1 : questions.length} из {questions.length}</span>
+								<div className={s.quiz__progress}>
+									<span className={s.questions__counter}>Тест на {Math.round((selectedQuestionIdx) / questions.length * 100)}% пройден</span>
+									<div className={s.progressbar}>
+										<div className={s.progressbar__bg}></div>
+										<div className={s.progressbar__active} style={{ width: `${Math.round((selectedQuestionIdx) / questions.length * 100)}%` }}></div>
+									</div>
+								</div>
+							</div>
+						}
 						{
 							quizStatus === 'preview'
 								? <div className={s.preivew}>
@@ -43,9 +107,13 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 								: quizStatus === 'running'
 									? <QuizQuestion
 										{...questions[selectedQuestionIdx]}
-										onClickNextQuestion={() => selectedQuestionIdx < questions.length - 1 ? setSelectedQuestionIdx((prev) => prev + 1) : () => { }}
+										onClickNextQuestion={onClickNextQuestion}
 									/>
-									: <></>
+									: <div className={s.result}>
+										<img className={s.result__icon} src={getResultInfo().imageUrl} />
+										<h3 className={s.result__title}>{getResultInfo().title}</h3>
+										<p className={s.result__description}>{getResultInfo().description}</p>
+									</div>
 						}
 					</section>
 				</Container>

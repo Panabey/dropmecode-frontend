@@ -72,6 +72,11 @@
 	align-items: center;
 	justify-content: space-between;
 }
+.hint__area{
+	width: 100%;
+	max-width: 30%;
+	position: relative;
+}
 .button_hint{
 	display: flex;
 	align-items: center;
@@ -88,6 +93,24 @@
 }
 .button_hint svg{
 	margin-right: 7px;
+}
+.hint{
+	font-size: 0.9rem;
+	font-weight: 400;
+	padding: 15px;
+	position: absolute;
+	top: calc(100% + 15px);
+	left: 0;
+	right: 0;
+	margin: auto;
+	max-width: 40vw;
+	border: 1px solid rgba(31, 71, 125, 0.3);
+	border-radius: 7px;
+	background-color: #fff;
+	z-index: 3;
+}
+.button_hint_active{
+	opacity: 0.6;
 }
 .answers__button{
 	cursor: pointer;
