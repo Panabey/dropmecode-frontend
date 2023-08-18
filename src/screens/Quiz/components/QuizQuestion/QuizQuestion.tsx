@@ -64,6 +64,19 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 		}
 		return false
 	}
+	function isCorrectSkippedAnswer(answer: iQuizQuestionAnswer) {
+		const findedAnswer = selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)
+		if (findedAnswer) {
+			return false
+		}
+		if (!(typeof answer === 'object' && answer.hasOwnProperty('is_correct'))) {
+			return false
+		}
+		if (answer.is_correct) {
+			return true
+		}
+		return false
+	}
 
 	const hintRef = useRef<HTMLDivElement | null>(null)
 
@@ -102,7 +115,7 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 							{ [s.answer_selected]: selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id) },
 							{ [s.answer_correct]: answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)?.is_correct },
 							{ [s.answer_loss]: answerStatus === 'answered' && isLossAnswer(answer) },
-
+							{ [s.answer_correct_skip]: answerStatus === 'answered' && isCorrectSkippedAnswer(answer) },
 						)}>
 							<span className={s.answer__title}>
 								{
@@ -112,7 +125,8 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 								} {answer.title}
 							</span>
 							{
-								answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)
+								((answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)) 
+								|| (answerStatus === 'answered' && isCorrectSkippedAnswer(answer)))
 								&& <aside className={s.answer__explanation}>
 									{answer.explanation}
 								</aside>

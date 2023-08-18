@@ -3,15 +3,20 @@ import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import s from './QuizPageBuilder.module.css'
-import { QuizQuestion, iQuizQuestion } from './QuizQuestion/QuizQuestion'
+import { QuizQuestion, iQuizQuestion } from './components/QuizQuestion/QuizQuestion'
+import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 
 interface iProps {
 	questions: iQuizQuestion[]
 }
 
 export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
+
+	const router = useRouter()
+
 	const [selectedQuestionIdx, setSelectedQuestionIdx] = useState<number>(0);
 	const [quizStatus, setQuizStatus] = useState<'preview' | 'running' | 'ended'>('preview');
 	const [correctQuestionCounter, setCorrectQuestionCounter] = useState<number>(0);
@@ -33,7 +38,7 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 			description: "",
 			imageUrl: ""
 		}
-		const resultPercent = Math.round((selectedQuestionIdx) / questions.length * 100)
+		const resultPercent = Math.round((correctQuestionCounter) / questions.length * 100)
 		if (resultPercent <= 10) {
 			result = {
 				title: "Очень грустно",
@@ -85,7 +90,7 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 						]}
 					/>
 					<section className={s.quiz}>
-						{quizStatus !== 'preview'
+						{quizStatus === 'running'
 							&& <div className={s.quiz__info}>
 								<span className={s.questions__counter}>Вопрос: {(selectedQuestionIdx + 1) < questions.length ? selectedQuestionIdx + 1 : questions.length} из {questions.length}</span>
 								<div className={s.quiz__progress}>
@@ -113,11 +118,13 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 										<img className={s.result__icon} src={getResultInfo().imageUrl} />
 										<h3 className={s.result__title}>{getResultInfo().title}</h3>
 										<p className={s.result__description}>{getResultInfo().description}</p>
+										<button className={s.result__button} onClick={() => router.push('/quizes/hot')}>Другие квизы</button>
 									</div>
 						}
 					</section>
 				</Container>
 			</div>
+			<QuizRightSidebar quizStatus={quizStatus} quizTags={[{ title: "Квизы дня", navigationUrl: "/quizes/hot" }, { title: "Javascript", navigationUrl: "/quizes/js" }, { title: "Python", navigationUrl: "/quizes/python" }]} />
 		</Layout>
 	)
 }

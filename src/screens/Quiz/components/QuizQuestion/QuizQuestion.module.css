@@ -59,6 +59,12 @@
 .answer_loss svg{
 	fill: rgb(240, 98, 98);
 }
+.answer_correct_skip{
+	border: 1px solid #fac34e;
+}
+.answer_correct_skip svg{
+	fill: #fac34e;
+}
 .answer__explanation{
 	color: #000;
 	margin-top: 10px;

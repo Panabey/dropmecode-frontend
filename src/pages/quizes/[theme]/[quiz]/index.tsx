@@ -1,6 +1,6 @@
 import { q1md, q2md, q3md } from "@/lib/mdquiz"
 import { QuizPageBuilder } from "@/screens/Quiz/QuizPageBuilder"
-import { iQuizQuestion } from "@/screens/Quiz/QuizQuestion/QuizQuestion"
+import { iQuizQuestion } from "@/screens/Quiz/components/QuizQuestion/QuizQuestion"
 
 const questions: iQuizQuestion[] = [
 	{
