@@ -1,17 +1,47 @@
+import { API_URL } from '@/lib/constants'
 import { LangsPageBuilder } from '@/screens/Langs/LangsPageBuilder'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 
-const LangsPage = () => {
+const LangsPage = ({ handbooks }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
 		<>
 			<Head>
 				<title>DROPMECODE | Языки программирования</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<LangsPageBuilder />
+			<LangsPageBuilder handbooks={handbooks} />
 		</>
 
 	)
+}
+
+export interface iHandbook {
+	id: number;
+	title: string;
+	description: string;
+	logo_url: string;
+	status: string;
+}
+
+export const getServerSideProps: GetServerSideProps<{
+	handbooks: iHandbook[]
+}> = async () => {
+	try {
+		const response = await fetch(API_URL + '/handbook/all')
+		const handbooks = await response.json()
+		return { props: { handbooks } }
+	} catch (error) {
+		return {
+			props: {
+				handbooks: []
+			},
+			redirect: {
+				destination: '/error',
+				permanent: true,
+			},
+		}
+	}
 }
 
 export default LangsPage

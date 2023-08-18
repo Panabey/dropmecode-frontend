@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env RUN_MODE=development next dev",
+    "build": "cross-env RUN_MODE=production next build",
+    "start": "cross-env RUN_MODE=production next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
     "classnames": "^2.3.2",
+    "cross-env": "^7.0.3",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "next": "13.4.13",
@@ -20,6 +21,10 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
+    "speakingurl": "^14.0.1",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/speakingurl": "^13.0.3"
   }
 }
