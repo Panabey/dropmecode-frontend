@@ -26,12 +26,12 @@ export interface iHandbook {
 
 export const getServerSideProps: GetServerSideProps<{
 	handbooks: iHandbook[]
-}> = async () => {
-	try {
-		const response = await fetch(API_URL + '/handbook/all')
-		const handbooks = await response.json()
-		return { props: { handbooks } }
-	} catch (error) {
+}> = async ({ req, res }) => {
+	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
+	const response = await fetch(API_URL + '/handbook/all')
+	const errorCode = response.ok ? false : response.status;
+	if (errorCode) {
+		res.statusCode = errorCode;
 		return {
 			props: {
 				handbooks: []
@@ -42,6 +42,8 @@ export const getServerSideProps: GetServerSideProps<{
 			},
 		}
 	}
+	const handbooks = await response.json()
+	return { props: { handbooks } }
 }
 
 export default LangsPage
