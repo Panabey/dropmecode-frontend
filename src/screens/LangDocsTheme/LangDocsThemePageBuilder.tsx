@@ -1,17 +1,19 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
+import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { mdtest } from '@/lib/mdtest'
-import classNames from 'classnames'
+import { capitalizeString } from '@/lib/utils'
+import { iLangDocs } from '@/pages/langs/[id]/[theme]'
+import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import getSlug from 'speakingurl'
 import s from './LangDocsThemePageBuilder.module.css'
 import { LangDocsRightSidebar } from './components/LangDocsRightSidebar/LangDocsRightSidebar'
 
 interface iProps {
-	mdData: any
+	langDocs: iLangDocs
 }
 
 export interface iPageLink {
@@ -20,7 +22,8 @@ export interface iPageLink {
 	active: boolean
 }
 
-export const LangDocsThemePageBuilder: FC<iProps> = ({ mdData }) => {
+export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
+	const router = useRouter()
 
 	const [pageNavigationLinks, setPageNavigationLinks] = useState<iPageLink[]>([]);
 
@@ -98,22 +101,22 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ mdData }) => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
+					<div dangerouslySetInnerHTML={{ __html: langDocs.meta }}></div>
 					<SearchBar />
 					<PageCommonInfo
-						title={'Моя первая программа'}
+						title={langDocs.title}
 						description='Сегодня мы продолжим изучать язык - Javascript и вы напишете свою первую программу, которая выведет текст в консоль'
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Языки программирования", navigationUrl: "/langs" },
-							{ title: "Javascript", navigationUrl: "/langs/javascript" },
-							{ title: "Моя первая программа", navigationUrl: "/langs/javascript/start" },
+							{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
+							{
+								title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
+								navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`
+							},
 						]}
 					/>
-					<ReactMarkdown
-						className={classNames(s.markdown, 'markdown-body')}
-					>
-						{mdtest}
-					</ReactMarkdown>
+					<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
 				</Container>
 			</div>
 			{pageNavigationLinks.length ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}

@@ -1,25 +1,60 @@
+import { API_URL } from "@/lib/constants";
 import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { FC } from "react";
 
 interface iProps {
-  mdData: any
+  langDocs: iLangDocs
 }
 
-const LangDocsPageInfo: FC<iProps> = ({ mdData }) => {
-
+const LangDocsPageInfo: FC<iProps> = ({ langDocs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <LangDocsThemePageBuilder mdData={mdData} />
+    <LangDocsThemePageBuilder langDocs={langDocs} />
   )
 }
 
-export async function getServerSideProps({ params }: any) {
-  const mdData = '';
+export interface iLangDocs {
+  id: number;
+  meta: string;
+  title: string;
+  text: string;
+  reading_time: number;
+  create_date: string;
+  update_date: string;
+}
 
-  return {
-    props: {
-      mdData,
-    },
-  };
+export const getServerSideProps: GetServerSideProps<{
+  langDocs: iLangDocs
+}> = async ({ res, resolvedUrl }) => {
+  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
+  const url = resolvedUrl.split('/')
+  if (url.length < 4) {
+    return {
+      props: {
+        langDocs: null
+      },
+      redirect: {
+        destination: '/error',
+        permanent: true,
+      },
+    }
+  }
+  const response = await fetch(API_URL + '/handbook/?' + new URLSearchParams({ page_id: url[3].split('-')[0] }))
+  const errorCode = response.ok ? false : response.status;
+  if (errorCode) {
+    res.statusCode = errorCode;
+    return {
+      props: {
+        langDocs: null
+      },
+      redirect: {
+        destination: '/error',
+        permanent: true,
+      },
+    }
+  }
+  const langDocs = await response.json()
+  return { props: { langDocs } }
 }
 
 export default LangDocsPageInfo
