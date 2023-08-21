@@ -26,7 +26,7 @@ export interface iHandbook {
 
 export const getServerSideProps: GetServerSideProps<{
 	handbooks: iHandbook[]
-}> = async ({ req, res }) => {
+}> = async ({ res }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const response = await fetch(API_URL + '/handbook/all')
 	const errorCode = response.ok ? false : response.status;

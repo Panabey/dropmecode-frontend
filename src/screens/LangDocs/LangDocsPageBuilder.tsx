@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { PartitionInfo, iLink } from '@/components/PartitionInfo/PartitionInfo'
+import { PartitionInfo } from '@/components/PartitionInfo/PartitionInfo'
 import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { iLangInfo } from '@/pages/langs/[id]'
@@ -28,7 +28,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Языки программирования", navigationUrl: "/langs" },
-							{ title: langInfo.title, navigationUrl: "/langs/" + langInfo.title }
+							{ title: langInfo.title, navigationUrl: "/langs/" + router.query.id }
 						]}
 					/>
 					{langInfo.content.map((content) => {
@@ -40,9 +40,9 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 								description={content.description}
 								links={content.page.map((link) => {
 									return {
-										navigationUrl: '/langs/' + router.query.id + `/${link.id}-${getSlug(link.title.split(' ')[1].toLowerCase(), { lang: 'ru' })}`,
+										navigationUrl: '/langs/' + router.query.id + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join().toLowerCase(), { lang: 'ru' })}`,
 										partnumber: link.title.split(' ')[0],
-										title: link.title.split(' ')[1]
+										title: link.title.split(' ').filter((_, idx) => idx !== 0).join(' ')
 									}
 								})}
 								className={s.partition__info}

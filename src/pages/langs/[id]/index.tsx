@@ -3,7 +3,6 @@ import { LangDocsPageBuilder } from "@/screens/LangDocs/LangDocsPageBuilder"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 
 const LangDocsPage = ({ langInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	console.log(langInfo)
 	return (
 		<LangDocsPageBuilder langInfo={langInfo} />
 	)
@@ -29,7 +28,8 @@ export interface iLangPage {
 
 export const getServerSideProps: GetServerSideProps<{
 	langInfo: iLangInfo
-}> = async ({ req, res, resolvedUrl }) => {
+}> = async ({ res, resolvedUrl }) => {
+	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const url = resolvedUrl.split('/')
 	if (url.length < 3) {
 		return {
@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps<{
 			},
 		}
 	}
-	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const response = await fetch(API_URL + '/handbook/content?' + new URLSearchParams({ handbook: url[2] }))
 	const errorCode = response.ok ? false : response.status;
 	if (errorCode) {
