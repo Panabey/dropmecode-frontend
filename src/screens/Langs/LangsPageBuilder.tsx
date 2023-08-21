@@ -33,7 +33,7 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 						<div className={s.langs}>
 							{handbooks.map((handbook) => {
 								return (
-									<SquareButtonBlock key={handbook.id} imageUrl={UPLOADS_URL + handbook.logo_url} navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`} title='JavaScript' />
+									<SquareButtonBlock labelTitle={handbook.status && handbook.status.length ? handbook.status : ''} key={handbook.id} imageUrl={UPLOADS_URL + handbook.logo_url} navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`} title='JavaScript' />
 								)
 							})}
 						</div>
