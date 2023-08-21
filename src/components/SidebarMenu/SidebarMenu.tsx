@@ -15,10 +15,12 @@ export const SidebarMenu = () => {
 	return (
 		<div className={s.sidebar}>
 			<div className={s.content}>
-				<div className={s.logo}>
-					<ImDropbox size={42} fill="#1F477D" />
-					DROPMECODE
-				</div>
+				<Link href='/' className={s.link_logo}>
+					<div className={s.logo}>
+						<ImDropbox size={42} fill="#1F477D" />
+						DROPMECODE
+					</div>
+				</Link>
 				<nav className={s.nav}>
 					<ul className={s.menu}>
 						<Link href='/'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname === '/' })}><AiOutlineHome size={24} fill="#1DC989" /> Главная</li></Link>

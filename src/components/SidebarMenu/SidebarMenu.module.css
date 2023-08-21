@@ -20,6 +20,9 @@
 	align-items: center;
 	justify-content: center;
 }
+.link_logo{
+	text-decoration: none;
+}
 .logo{
 	display: flex;
 	align-items: center;
