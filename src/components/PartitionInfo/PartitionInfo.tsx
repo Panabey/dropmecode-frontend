@@ -27,8 +27,8 @@ export const PartitionInfo: FC<iProps> = ({ partNumber, title, description, link
 				</div>
 				<p className={s.description}>{description}</p>
 			</div>
-			{links && links.length &&
-				<div className={s.links}>
+			{links && links.length
+				? <div className={s.links}>
 					{links.map((link, idx) => {
 						return (
 							<div className={s.link} key={idx}>
@@ -38,6 +38,7 @@ export const PartitionInfo: FC<iProps> = ({ partNumber, title, description, link
 						)
 					})}
 				</div>
+				: <></>
 			}
 		</div>
 	)

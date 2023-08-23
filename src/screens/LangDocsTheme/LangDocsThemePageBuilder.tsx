@@ -102,7 +102,9 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 			<div className={s.area}>
 				<Container className={s.container}>
 					<div dangerouslySetInnerHTML={{ __html: langDocs.meta }}></div>
-					<SearchBar />
+					<div className={s.searchbar}>
+						<SearchBar />
+					</div>
 					<PageCommonInfo
 						title={langDocs.title}
 						description='Сегодня мы продолжим изучать язык - Javascript и вы напишете свою первую программу, которая выведет текст в консоль'

@@ -4,7 +4,7 @@
 	justify-content: flex-start;
 }
 .area{
-	margin-top: 25px;
+	margin-top: 75px;
 	width: 53vw;
 	padding: 0 4%;
 }
@@ -14,4 +14,18 @@
 }
 .markdown{
 	margin-top: 40px;
+}
+.searchbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin-left: calc(13vw + 4%);
+	padding-top: 25px;
+	background-color: #fff;
+	padding-bottom: 25px;
+	padding-left: 4vw;
+	border-bottom: 1px solid rgba(0,0,0,0.02);
+	z-index: 2;
+	width: 100%;
+	max-width: calc(49vw + 1px);
 }

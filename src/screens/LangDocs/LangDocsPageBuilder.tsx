@@ -31,7 +31,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 							{ title: langInfo.title, navigationUrl: "/langs/" + router.query.id }
 						]}
 					/>
-					{langInfo.content.map((content) => {
+					{langInfo.content.length && langInfo.content.map((content) => {
 						return (
 							<PartitionInfo
 								key={content.title}
