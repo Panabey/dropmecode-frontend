@@ -2,7 +2,6 @@ import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PartitionInfo } from '@/components/PartitionInfo/PartitionInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { iLangInfo } from '@/pages/langs/[id]'
 import { useRouter } from 'next/router'
@@ -21,7 +20,6 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title={langInfo.title}
 						description={langInfo.description}

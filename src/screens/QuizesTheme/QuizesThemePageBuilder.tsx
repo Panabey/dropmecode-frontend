@@ -13,7 +13,6 @@ export const QuizesThemePageBuilder = () => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title='Квизы дня'
 						description='Горячие и интересные квизы, доступные только сегодня, специально для вас. Пройдите их и оцените свои интеллектуальные способности в мире IT'

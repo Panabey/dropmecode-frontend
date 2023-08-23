@@ -3,11 +3,10 @@
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	gap: 0px 15px;
-	padding: 3px 15px;
-	background-color: #fff;
-	border-radius: 5px;
-	border: 1px solid rgba(0,0,0,0.1);
+	gap: 0px 10px;
+	background-color: rgba(0,0,0,0.01);
+	padding: 3px 20px;
+	border-radius: 7px;
 	width: 100%;
 }
 .icon_clear{
@@ -22,11 +21,42 @@
 }
 .search__input{
 	outline: none;
-	padding: 10px 0px;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	border: none;
 	width: 100%;
+	color: rgba(0,0,0,0.5);
 }
-.search__input::placeholder{
-	color: rgba(0,0,0,0.3);
+.search:hover .search__input{
+	transition: 0.2s ease-in-out color;
+	color: rgba(0,0,0,0.7);
+}
+.search:hover svg{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 0.5;
+}
+.search__hotkey{
+	letter-spacing: -0.5px;
+	display: flex;
+	align-items: center;
+	gap: 3px;
+	font-size: 0.6rem;
+	color: rgba(0,0,0,0.2);
+	border: 1px solid rgba(0,0,0,0.2);
+	padding: 3px 5px;
+	border-radius: 7px;
+	white-space: nowrap;
+}
+.search__hotkey:hover{
+	transition: 0.2s ease-in-out color, 0.2s ease-in-out border;
+	border: 1px solid #1DC989;
+	color: #1DC989;
+}
+.search__hotkey aside{
+	font-size: 0.7rem;
+	opacity: 0.3;
+}
+.search__hotkey:hover aside{
+	transition: 0.2s ease-in-out opacity;
+	color: #1DC989;
+	opacity: 1;
 }

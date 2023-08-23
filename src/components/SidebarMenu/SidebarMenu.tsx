@@ -1,12 +1,11 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { AiOutlineHome } from 'react-icons/ai'
-import { HiCode, HiMenuAlt1 } from 'react-icons/hi'
-import { ImDropbox, ImNewspaper } from 'react-icons/im'
-import { IoMdHelp } from 'react-icons/io'
-import { RiCheckboxMultipleLine } from 'react-icons/ri'
+import { BiLogoInstagram } from 'react-icons/bi'
+import { FaGithub } from 'react-icons/fa'
+import { ImDropbox } from 'react-icons/im'
 import s from './SidebarMenu.module.css'
+import { SearchBar } from '../SearchBar/SearchBar'
 
 export const SidebarMenu = () => {
 
@@ -15,30 +14,32 @@ export const SidebarMenu = () => {
 	return (
 		<div className={s.sidebar}>
 			<div className={s.content}>
-				<Link href='/' className={s.link_logo}>
-					<div className={s.logo}>
-						<ImDropbox size={42} fill="#1F477D" />
-						DROPMECODE
+				<div className={s.content__row}>
+					<Link href='/' className={s.link_logo}>
+						<div className={s.logo}>
+							<ImDropbox size={25} fill="#1F477D" />
+							DROPMECODE
+						</div>
+					</Link>
+					<div className={s.searchbar}>
+						<SearchBar />
 					</div>
-				</Link>
+				</div>
 				<nav className={s.nav}>
 					<ul className={s.menu}>
-						<Link href='/'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname === '/' })}><AiOutlineHome size={24} fill="#1DC989" /> Главная</li></Link>
-						<Link href='/langs'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/langs') })}><HiCode size={24} fill="#1DC989" /> Языки программирования</li></Link>
-						<Link href='/news'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/news') })}><ImNewspaper size={24} fill="#1DC989" /> Новости</li></Link>
-						<Link href='/blog'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/blog') })}><HiMenuAlt1 size={24} fill="#1DC989" /> Блог</li></Link>
-						<Link href='/quizes'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/quizes') })}><RiCheckboxMultipleLine size={24} fill="#1DC989" /> Квизы</li></Link>
-						<hr className={s.menu__underline} />
-						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/help') })}><IoMdHelp size={24} fill="#1DC989" /> Помощь</li></Link>
-						<div className={s.menu__buttons}>
-							<button className={s.menu__button}>Связь с авторами</button>
-							<button className={s.menu__button}>Правила пользования</button>
-							<button className={s.menu__button}>Оферта</button>
+						<Link href='/langs'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/langs') })}>Справочники</li></Link>
+						<Link href='/news'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/news') })}>Новости</li></Link>
+						<Link href='/blog'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/blog') })}>Блог</li></Link>
+						<Link href='/quizes'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/quizes') })}> Квизы</li></Link>
+						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/help') })}>Помощь</li></Link>
+						<div className={s.menu__row}>
+							<div className={s.menu__upperline}></div>
+							<FaGithub fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
+							<BiLogoInstagram fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
 						</div>
 					</ul>
 				</nav>
 			</div>
-			<footer className={s.footer}>&copy; DropMeCode 2023. Все права защищены</footer>
 		</div>
 	)
 }

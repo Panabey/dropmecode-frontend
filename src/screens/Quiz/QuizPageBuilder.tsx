@@ -78,7 +78,6 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title={quizStatus === 'preview' ? 'Какой ты смешарик?' : ''}
 						description={quizStatus === 'preview' ? 'Пройдите простой тест и узнайте, кем бы вы были во вселенной смешариков' : ''}

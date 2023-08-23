@@ -12,7 +12,6 @@ export const NewsPageBuilder = () => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title='Новости'
 						description='В этом разделе вы всегда можете прочитать интересные новости из мира IT и технологий. Мы тщательно отбираем материал и компилируем только интересные новости :)'

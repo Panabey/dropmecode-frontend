@@ -38,7 +38,6 @@ export const QuizesPageBuilder = () => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title='Квизы'
 						description='Занимательные и развлекательные квиз-тесты для закрепления полученных знаний в области IT и не только!'

@@ -15,7 +15,6 @@ export const NewsArticlePageBuilder = () => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title={'Известные программисты из Мурома стали депутатами'}
 						description='Как сообщают последние события, знаменитые программисты из МиВЛГУ в г.Муром, переквалифицировались в депутатов государственной думы'

@@ -2,7 +2,6 @@ import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { useHeadingsNavigation } from '@/hooks/useHeadingsNavigation'
 import { capitalizeString } from '@/lib/utils'
@@ -28,9 +27,6 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 			<div className={s.area}>
 				<Container className={s.container}>
 					<div dangerouslySetInnerHTML={{ __html: langDocs.meta }}></div>
-					<div className={s.searchbar}>
-						<SearchBar />
-					</div>
 					<PageCommonInfo
 						title={langDocs.title}
 						description='Сегодня мы продолжим изучать язык - Javascript и вы напишете свою первую программу, которая выведет текст в консоль'

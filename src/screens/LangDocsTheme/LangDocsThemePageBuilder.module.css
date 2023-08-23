@@ -4,9 +4,8 @@
 	justify-content: flex-start;
 }
 .area{
-	margin-top: 75px;
-	width: 53vw;
-	padding: 0 4%;
+	margin-top: 15px;
+	width: 65%;
 }
 .container{
 	display: flex;

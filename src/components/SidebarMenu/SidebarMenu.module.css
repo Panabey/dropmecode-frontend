@@ -2,11 +2,11 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	right: 0;
 	z-index: 2;
-	width: 17vw;
-	min-height: 100vh;
-	background-color: #FAFBFF;
-	border-right: 1px solid rgba(0,0,0,0.02);
+	width: 100%;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
 	padding: 20px 15px;
 	display: flex;
 	flex-direction: column;
@@ -15,10 +15,20 @@
 }
 .content{
 	display: flex;
-	flex-direction: column;
-	width: 100%;
+	width: 70%;
+	margin: 0 auto;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+}
+.content__row{
+	display: flex;
+	align-items: center;
+}
+.content__area{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0 40px;
 }
 .link_logo{
 	text-decoration: none;
@@ -26,19 +36,24 @@
 .logo{
 	display: flex;
 	align-items: center;
-	font-size: 1.4rem;
-	font-weight: 500;
+	font-size: 1rem;
+	font-weight: 400;
 }
 .logo svg{
 	margin-right: 10px;
 }
-.nav{
-	margin-top: 35px;
+.searchbar{
+	margin-left: 35px;
 }
 .menu{
 	display: flex;
-	flex-direction: column;
-	gap: 12px 0;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0 20px;
+}
+.menu__row{
+	display: flex;
+	align-items: center;
 }
 .menu a{
 	text-decoration: none;
@@ -48,14 +63,13 @@
 	list-style-type: none;
 	display: flex;
 	align-items: center;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 0.9rem;
 }
 .menu__item_active{
 	color: #1DC989;
 }
 .menu__item svg{
-	margin-right: 10px;
 	filter: grayscale(1);
 }
 .menu__item_active svg{
@@ -70,38 +84,15 @@
 	fill: #1DC989;
 	filter: none;
 }
-.menu__underline{
-	display: block;
-	margin: 12px 0;
-	width: 100%;
-	height: 1px;
-	border: none;
+.menu__upperline{
+	height: 1.2rem;
+	width: 1px;
 	background-color: #000;
+	border-radius: 1px;
+	margin-right: 20px;
+	opacity: 0.1;
+}
+.menu__icon{
 	opacity: 0.2;
-	border-radius: 3px;
-}
-.menu__button{
-	cursor: pointer;
-	background-color: transparent;
-	border: none;
-	font-size: 0.9rem;
-	font-weight: 500;
-	color: #000;
-	opacity: 0.3;
-	text-align-last: left;
-	width: fit-content;
-}
-.menu__buttons{
-	margin-top: 20px;
-	max-width: 10vw;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 7px;
-}
-.footer{
-	max-width: 80%;
-	margin: 0 auto;
-	font-size: 0.9rem;
-	opacity: 0.3;
-	text-align: center;
+	margin-right: 10px;
 }

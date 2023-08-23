@@ -3,12 +3,8 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
-.area{
-	margin-top: 25px;
-	width: 53vw;
-	padding: 0 4%;
-}
 .container{
 	display: flex;
 	flex-direction: column;
+	max-width: 65%;
 }

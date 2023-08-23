@@ -1,9 +1,5 @@
 .container{
 	position: relative;
 	width: 100%;
-	margin: 0 auto;
-	margin-left: 17vw;
-}
-.noMarginLeft{
-	margin-left: auto !important;
+	margin-top: 60px;
 }

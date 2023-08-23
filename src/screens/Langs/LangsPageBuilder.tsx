@@ -22,7 +22,6 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
-					<SearchBar />
 					<PageCommonInfo
 						title='Языки программирования'
 						description='Этот раздел посвящен справочникам по популярным языкам программирования на сегоднящний день. У нас вы всегда сможете найти актуальную и полезную информацию'
