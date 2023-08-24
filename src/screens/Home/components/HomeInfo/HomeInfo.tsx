@@ -10,7 +10,7 @@ export const HomeInfo = () => {
 			<h2 className={s.main__title}>Путеводитель по DropMeCode</h2>
 			<h4 className={s.main__subtitle}>Приветствуем в мире DropMeCode! Перейдите в необходимый раздел и изучите что-то новое для себя уже сейчас!</h4>
 			<div className={s.partitions}>
-				<HomePartition navigationUrl='/langs' title="Языки программирования" description='У нас имеется качественная, увлекательная и бесплатная программа обучения популярным языкам программирования'>
+				<HomePartition navigationUrl='/langs' title="Справочники" description='У нас имеется качественная, увлекательная и бесплатная программа обучения популярным языкам программирования'>
 					<HiCode size={40} />
 				</HomePartition>
 				<HomePartition navigationUrl='/news' title="Новости" description='Горячие новости из мира IT доступным языком. Наша команда тщательно отбирает материал, чтобы он был Вам интересен'>

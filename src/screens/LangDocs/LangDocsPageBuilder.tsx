@@ -25,7 +25,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 						description={langInfo.description}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
-							{ title: "Языки программирования", navigationUrl: "/langs" },
+							{ title: "Справочники", navigationUrl: "/langs" },
 							{ title: langInfo.title, navigationUrl: "/langs/" + router.query.id }
 						]}
 					/>

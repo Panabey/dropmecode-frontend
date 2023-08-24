@@ -9,7 +9,6 @@ import { HiCode } from 'react-icons/hi'
 //import { SiMoleculer } from 'react-icons/si'
 import { UPLOADS_URL } from '@/lib/constants'
 import getSlug from 'speakingurl'
-import { SearchBar } from '../../components/SearchBar/SearchBar'
 import s from './LangsPageBuilder.module.css'
 
 interface iProps {
@@ -23,9 +22,9 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title='Языки программирования'
+						title='Справочники по языкам'
 						description='Этот раздел посвящен справочникам по популярным языкам программирования на сегоднящний день. У нас вы всегда сможете найти актуальную и полезную информацию'
-						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Языки программирования", navigationUrl: "/langs" }]}
+						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Справочники", navigationUrl: "/langs" }]}
 					/>
 					<section className={s.section}>
 						<h3 className={s.section__title}><HiCode size={25} fill="#1F477D" /> Языки программирования</h3>

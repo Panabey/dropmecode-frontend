@@ -32,7 +32,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 						description='Сегодня мы продолжим изучать язык - Javascript и вы напишете свою первую программу, которая выведет текст в консоль'
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
-							{ title: "Языки программирования", navigationUrl: "/langs" },
+							{ title: "Справочники", navigationUrl: "/langs" },
 							{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
 							{
 								title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
