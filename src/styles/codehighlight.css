@@ -1,0 +1,95 @@
+pre > div{
+	background: transparent !important;
+}
+pre code{
+	font-size: 1rem !important;
+}
+code .comment {
+    color: #969896;
+}
+code .comment {
+    color: #969896;
+}
+code .meta {
+    color: #969896;
+}
+code .variable {
+    color: #df5000;
+}
+code .template-variable {
+    color: #df5000;
+}
+code .strong {
+    color: #df5000;
+}
+code .emphasis {
+    color: #df5000;
+}
+code .quote {
+    color: #df5000;
+}
+code .keyword {
+    color: #d73a49;
+}
+code .selector-tag {
+    color: #d73a49;
+}
+code .type {
+    color: #d73a49;
+}
+code .literal {
+    color: #0086b3;
+}
+code .symbol {
+    color: #0086b3;
+}
+code .bullet {
+    color: #0086b3;
+}
+code .attribute {
+    color: #0086b3;
+}
+code .section {
+    color: #63a35c;
+}
+code .name {
+    color: #63a35c;
+}
+code .tag {
+    color: #333333;
+}
+code .title {
+    color: #6f42c1;
+}
+code .attr {
+    color: #6f42c1;
+}
+code .selector-id {
+    color: #6f42c1;
+}
+code .selector-class {
+    color: #6f42c1;
+}
+code .selector-attr {
+    color: #6f42c1;
+}
+code .selector-pseudo {
+    color: #6f42c1;
+}
+code .addition {
+    color: #55a532;
+    background-color: #eaffea;
+}
+code .deletion {
+    color: #bd2c00;
+    background-color: #ffecec;
+}
+code .link {
+    text-decoration: underline;
+}
+code .number {
+    color: #005cc5;
+}
+code .string {
+    color: #032f62;
+}

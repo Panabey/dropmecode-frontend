@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface iPageLink {
 	title: string
@@ -32,7 +32,12 @@ export const useHeadingsNavigation = (markdownClassName: string) => {
 					break;
 				}
 			}
-			if (pageNavigationLinks[activeIdx].active) {
+			if (
+				Array.isArray(pageNavigationLinks)
+				&& typeof pageNavigationLinks[activeIdx] === 'object'
+				&& pageNavigationLinks[activeIdx].hasOwnProperty('active')
+				&& pageNavigationLinks[activeIdx].active
+			) {
 				return
 			}
 			setPageNavigationLinks((prev) => prev.map((link, idx) => (idx !== activeIdx) ? { ...link, active: false } : { ...link, active: true }))
