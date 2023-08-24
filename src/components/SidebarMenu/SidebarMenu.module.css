@@ -96,3 +96,7 @@
 	opacity: 0.2;
 	margin-right: 10px;
 }
+.menu__icon:hover{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 0.8;
+}

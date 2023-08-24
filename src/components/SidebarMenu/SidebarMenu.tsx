@@ -1,11 +1,11 @@
 import classNames from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { BiLogoInstagram } from 'react-icons/bi'
 import { FaGithub } from 'react-icons/fa'
 import { ImDropbox } from 'react-icons/im'
-import s from './SidebarMenu.module.css'
 import { SearchBar } from '../SearchBar/SearchBar'
+import s from './SidebarMenu.module.css'
 
 export const SidebarMenu = () => {
 
@@ -35,7 +35,7 @@ export const SidebarMenu = () => {
 						<div className={s.menu__row}>
 							<div className={s.menu__upperline}></div>
 							<FaGithub fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
-							<BiLogoInstagram fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
+							<Image width={20} height={20} alt='SVG VK' src='/assets/Header/vk1.svg' className={classNames(s.menu__item, s.menu__icon)} />
 						</div>
 					</ul>
 				</nav>

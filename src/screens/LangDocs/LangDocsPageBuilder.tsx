@@ -3,7 +3,7 @@ import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PartitionInfo } from '@/components/PartitionInfo/PartitionInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { iLangInfo } from '@/pages/langs/[id]'
+import { iLangInfo, iLangPage } from '@/pages/langs/[id]'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
@@ -15,6 +15,23 @@ interface iProps {
 
 export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 	const router = useRouter()
+
+	function resortLinks(links: iLangPage[], step = 2) {
+		let temp = null
+		if (!links.length) {
+			return []
+		}
+		// for (let i = 1; i < links.length; i = i + step) {
+		// 	if (i + step < links.length) {
+		// 		temp = { ...links[i + step] }
+		// 		links[i + step] = links[i]
+		// 		links[i] = temp
+		// 	}
+
+		// }
+		return links;
+	}
+
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />
@@ -36,7 +53,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 								partNumber={Number(content.title.split(' ')[0])}
 								title={content.title.split(' ').filter((_, idx) => idx !== 0).join(' ')}
 								description={content.description}
-								links={content.page.map((link) => {
+								links={resortLinks(content.page).map((link) => {
 									return {
 										navigationUrl: '/langs/' + router.query.id + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`,
 										partnumber: link.title.split(' ')[0],
