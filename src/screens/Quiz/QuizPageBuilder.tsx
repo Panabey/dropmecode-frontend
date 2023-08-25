@@ -1,8 +1,9 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { UPLOADS_URL } from '@/lib/constants'
+import { iQuizPagePreview } from '@/pages/quizes/[theme]/[quiz]'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import s from './QuizPageBuilder.module.css'
@@ -11,9 +12,10 @@ import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar
 
 interface iProps {
 	questions: iQuizQuestion[]
+	pageInfo: iQuizPagePreview
 }
 
-export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
+export const QuizPageBuilder: FC<iProps> = ({ questions, pageInfo }) => {
 
 	const router = useRouter()
 
@@ -79,13 +81,13 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title={quizStatus === 'preview' ? 'Какой ты смешарик?' : ''}
+						title={quizStatus === 'preview' ? pageInfo.title : ''}
 						description={quizStatus === 'preview' ? 'Пройдите простой тест и узнайте, кем бы вы были во вселенной смешариков' : ''}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Квизы", navigationUrl: "/quizes" },
-							{ title: "Квизы дня", navigationUrl: "/quizes/hot" },
-							{ title: "Какой ты смешарик?", navigationUrl: "/quizes/hot/kakoi-ti-smesharik" },
+							{ title: "Квизы дня", navigationUrl: "/quizes/" + router.query.theme },
+							{ title: "Какой ты смешарик?", navigationUrl: "/quizes/" + router.query.theme + "/" + router.query.quiz },
 						]}
 					/>
 					<section className={s.quiz}>
@@ -104,8 +106,8 @@ export const QuizPageBuilder: FC<iProps> = ({ questions }) => {
 						{
 							quizStatus === 'preview'
 								? <div className={s.preivew}>
-									<img className={s.preview__img} src={'https://n1s1.hsmedia.ru/10/8a/1c/108a1c3812c316911cede1b1ce9bcf6b/620x349_1_0de024195c2581172fade446a35cafa4@1280x720_0xac120003_19249940001591209586.jpg'} alt="Превью картинка квиза" />
-									<span className={s.preview__counter}>Вопросов: {questions.length}</span>
+									<img className={s.preview__img} src={UPLOADS_URL + pageInfo.logo_url} alt="Превью картинка квиза" />
+									<span className={s.preview__counter}>Вопросов: {pageInfo.questions.length}</span>
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>
 								: quizStatus === 'running'

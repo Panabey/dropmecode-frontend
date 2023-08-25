@@ -22,6 +22,7 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 					const match = /language-(\w+)/.exec(className || '')
 					return !inline && match ? (
 						<SyntaxHighlighter
+							showLineNumbers={true}
 							{...props}
 							children={String(children).replace(/\n$/, '')}
 							language={match[1]}
