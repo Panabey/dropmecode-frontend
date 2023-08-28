@@ -3,9 +3,8 @@ import { QuizPageBuilder } from "@/screens/Quiz/QuizPageBuilder"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 
 const QuizPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	console.log(pageInfo)
 	return (
-		<QuizPageBuilder questions={[]} pageInfo={pageInfo} />
+		<QuizPageBuilder pageInfo={pageInfo} />
 	)
 }
 
@@ -15,11 +14,12 @@ export interface iQuizPagePreview {
 	logo_url: string;
 	title: string;
 	meta: string;
-	questions: iQuizQuestionPreview[];
-}
-
-export interface iQuizQuestionPreview {
-	id: number;
+	questions: number[];
+	short_description: string;
+	topic: {
+		id: number;
+		title: string;
+	}
 }
 
 export const getServerSideProps: GetServerSideProps<{

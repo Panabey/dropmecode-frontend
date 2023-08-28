@@ -5,74 +5,70 @@ import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { UPLOADS_URL } from '@/lib/constants'
 import { iQuizPagePreview } from '@/pages/quizes/[theme]/[quiz]'
 import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import s from './QuizPageBuilder.module.css'
-import { QuizQuestion, iQuizQuestion } from './components/QuizQuestion/QuizQuestion'
+import { iAPIQuizQuestion, useGetQuestionAnswerMutation, useGetQuestionMutation } from './api/quiz.api'
+import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
+import { getQuizResultInfo } from './utils/quizUtils'
 
 interface iProps {
-	questions: iQuizQuestion[]
 	pageInfo: iQuizPagePreview
 }
 
-export const QuizPageBuilder: FC<iProps> = ({ questions, pageInfo }) => {
+
+export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 	const router = useRouter()
 
 	const [selectedQuestionIdx, setSelectedQuestionIdx] = useState<number>(0);
 	const [quizStatus, setQuizStatus] = useState<'preview' | 'running' | 'ended'>('preview');
 	const [correctQuestionCounter, setCorrectQuestionCounter] = useState<number>(0);
+	const [loadedQuestion, setLoadedQuestion] = useState<iAPIQuizQuestion | null>(null)
+
+	const [fetchQuestion, { isLoading, data, error }] = useGetQuestionMutation()
+
+	useEffect(() => {
+		if (router.isReady && selectedQuestionIdx === 0 && quizStatus === 'running' && !data && !isLoading && !error) {
+			fetchQuestion({ question_id: pageInfo.questions[selectedQuestionIdx], quiz_id: pageInfo.id })
+		}
+	}, [router, selectedQuestionIdx, quizStatus, data, error, isLoading])
+
+	useEffect(() => {
+		if (data && !isLoading && !error) {
+			setLoadedQuestion(data)
+		}
+	}, [data, isLoading, error, setLoadedQuestion])
+
+	const [fetchAnswer, { isLoading: isLoadingAnswer, data: dataAnswer, error: errorAnswer }] = useGetQuestionAnswerMutation()
+
+	function onLoadAnswers() {
+		fetchAnswer({ question_id: pageInfo.questions[selectedQuestionIdx], quiz_id: pageInfo.id })
+	}
+
+	useEffect(() => {
+		if (dataAnswer && !isLoadingAnswer && !errorAnswer) {
+			setLoadedQuestion(prev => {
+				if (prev) {
+					return { ...prev, answers: dataAnswer.answers }
+				} else {
+					return null
+				}
+			})
+		}
+	}, [dataAnswer, isLoadingAnswer, errorAnswer, setLoadedQuestion])
 
 	function onClickNextQuestion(isCorrect: boolean) {
 		setSelectedQuestionIdx((prev) => prev + 1)
+		setLoadedQuestion(null)
 		if (isCorrect) {
 			setCorrectQuestionCounter((prev) => prev + 1)
 		}
-		if (selectedQuestionIdx < questions.length - 1) {
+		if (selectedQuestionIdx < pageInfo.questions.length - 1) {
+			fetchQuestion({ question_id: pageInfo.questions[selectedQuestionIdx + 1], quiz_id: pageInfo.id })
 		} else {
 			setQuizStatus('ended')
 		}
-	}
-
-	function getResultInfo() {
-		let result = {
-			title: "",
-			description: "",
-			imageUrl: ""
-		}
-		const resultPercent = Math.round((correctQuestionCounter) / questions.length * 100)
-		if (resultPercent <= 10) {
-			result = {
-				title: "Очень грустно",
-				description: `Вы дали ${resultPercent}% правильных ответов. Изучите материал подробнее и вернитесь к тесту позже`,
-				imageUrl: "/assets/Quizes/Results/0.svg"
-			}
-		} else if (resultPercent > 10 && resultPercent <= 25) {
-			result = {
-				title: "Грустно",
-				description: `Вы дали ${resultPercent}% правильных ответов. Изучите материал подробнее и вернитесь к тесту позже`,
-				imageUrl: "/assets/Quizes/Results/1.svg"
-			}
-		} else if (resultPercent > 25 && resultPercent <= 50) {
-			result = {
-				title: "Старайтесь лучше",
-				description: `Вы дали ${resultPercent}% правильных ответов. Это не плохой, но и не лучший результат. Вы можете лучше`,
-				imageUrl: "/assets/Quizes/Results/2.svg"
-			}
-		} else if (resultPercent > 50 && resultPercent <= 75) {
-			result = {
-				title: "Хорошо",
-				description: `Вы дали ${resultPercent}% правильных ответов. Результат достаточно успешный, он показывает, что вы в целом знаете материал, но есть некоторые пробелы`,
-				imageUrl: "/assets/Quizes/Results/3.svg"
-			}
-		} else if (resultPercent > 75) {
-			result = {
-				title: "Отлично",
-				description: `Вы дали ${resultPercent}% правильных ответов. Это отличный результат. Он означает, что вы усвоили изученный материал`,
-				imageUrl: "/assets/Quizes/Results/3.svg"
-			}
-		}
-		return result
 	}
 
 	return (
@@ -82,23 +78,23 @@ export const QuizPageBuilder: FC<iProps> = ({ questions, pageInfo }) => {
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={quizStatus === 'preview' ? pageInfo.title : ''}
-						description={quizStatus === 'preview' ? 'Пройдите простой тест и узнайте, кем бы вы были во вселенной смешариков' : ''}
+						description={quizStatus === 'preview' ? pageInfo.short_description : ''}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Квизы", navigationUrl: "/quizes" },
-							{ title: "Квизы дня", navigationUrl: "/quizes/" + router.query.theme },
-							{ title: "Какой ты смешарик?", navigationUrl: "/quizes/" + router.query.theme + "/" + router.query.quiz },
+							{ title: pageInfo.topic.title, navigationUrl: "/quizes/" + router.query.theme },
+							{ title: pageInfo.title, navigationUrl: "/quizes/" + router.query.theme + "/" + router.query.quiz },
 						]}
 					/>
 					<section className={s.quiz}>
 						{quizStatus === 'running'
 							&& <div className={s.quiz__info}>
-								<span className={s.questions__counter}>Вопрос: {(selectedQuestionIdx + 1) < questions.length ? selectedQuestionIdx + 1 : questions.length} из {questions.length}</span>
+								<span className={s.questions__counter}>Вопрос: {(selectedQuestionIdx + 1) < pageInfo.questions.length ? selectedQuestionIdx + 1 : pageInfo.questions.length} из {pageInfo.questions.length}</span>
 								<div className={s.quiz__progress}>
-									<span className={s.questions__counter}>Тест на {Math.round((selectedQuestionIdx) / questions.length * 100)}% пройден</span>
+									<span className={s.questions__counter}>Тест на {Math.round((selectedQuestionIdx) / pageInfo.questions.length * 100)}% пройден</span>
 									<div className={s.progressbar}>
 										<div className={s.progressbar__bg}></div>
-										<div className={s.progressbar__active} style={{ width: `${Math.round((selectedQuestionIdx) / questions.length * 100)}%` }}></div>
+										<div className={s.progressbar__active} style={{ width: `${Math.round((selectedQuestionIdx) / pageInfo.questions.length * 100)}%` }}></div>
 									</div>
 								</div>
 							</div>
@@ -111,15 +107,21 @@ export const QuizPageBuilder: FC<iProps> = ({ questions, pageInfo }) => {
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>
 								: quizStatus === 'running'
-									? <QuizQuestion
-										{...questions[selectedQuestionIdx]}
-										onClickNextQuestion={onClickNextQuestion}
-									/>
+									? (!loadedQuestion
+										? <div>Загрузка...</div>
+										: <QuizQuestion
+											id={loadedQuestion.id}
+											hint={loadedQuestion.hint}
+											markdown={loadedQuestion.text}
+											answers={loadedQuestion.answers}
+											onClickNextQuestion={onClickNextQuestion}
+											onLoadAnswers={onLoadAnswers}
+										/>)
 									: <div className={s.result}>
-										<img className={s.result__icon} src={getResultInfo().imageUrl} />
-										<h3 className={s.result__title}>{getResultInfo().title}</h3>
-										<p className={s.result__description}>{getResultInfo().description}</p>
-										<button className={s.result__button} onClick={() => router.push('/quizes/hot')}>Другие квизы</button>
+										<img className={s.result__icon} src={getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).imageUrl} />
+										<h3 className={s.result__title}>{getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).title}</h3>
+										<p className={s.result__description}>{getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).description}</p>
+										<button className={s.result__button} onClick={() => router.push('/quizes')}>Другие квизы</button>
 									</div>
 						}
 					</section>

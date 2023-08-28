@@ -11,7 +11,7 @@ const QuizesPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSi
 export interface iQuizesPageInfo {
 	id: number;
 	title: string;
-	quizzes_info: Quizesinfo[];
+	quizzes: Quizesinfo[];
 }
 
 export interface Quizesinfo {

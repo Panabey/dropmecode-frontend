@@ -56,7 +56,7 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 									<Link className={s.section__details} href={`/quizes/${info.id}-${getSlug(info.title, { lang: 'ru' })}`}>Показать все</Link>
 								</div>
 								<div className={s.quizes}>
-									{info.quizzes_info.map((quiz, idx) => {
+									{info.quizzes.map((quiz, idx) => {
 										return (
 											<QuizPreview
 												key={quiz.id}

@@ -4,17 +4,11 @@ import { IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline } from 'react-icons/i
 import { PiLightbulbFilament } from 'react-icons/pi'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import s from './QuizQuestion.module.css'
-
-interface iQuizQuestionAnswer {
-	id: number
-	title: string
-	is_correct?: boolean
-	explanation?: string
-}
+import { iQuizQuestionAnswer, isCorrectAnswer, isCorrectSkippedAnswer, isLossAnswer } from '../../utils/quizUtils'
 
 export interface iQuizQuestion {
 	id: number
-	title: string
+	title?: string
 	hint: string
 	markdown?: string
 	answers: iQuizQuestionAnswer[]
@@ -22,9 +16,10 @@ export interface iQuizQuestion {
 
 interface iProps extends iQuizQuestion {
 	onClickNextQuestion: (isCorrect: boolean) => void
+	onLoadAnswers: () => void
 }
 
-export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, onClickNextQuestion }) => {
+export const QuizQuestion: FC<iProps> = ({ hint, answers, markdown, onClickNextQuestion, onLoadAnswers }) => {
 	const [isOpenedHint, setIsOpenedHint] = useState<boolean>(false);
 	const [answerStatus, setAnswerStatus] = useState<'waiting' | 'answered'>('waiting');
 	const [selectedAnswers, setSelectedAnswers] = useState<iQuizQuestionAnswer[]>([]);
@@ -51,31 +46,9 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 		setSelectedAnswers([]);
 	}
 
-	function isLossAnswer(answer: iQuizQuestionAnswer) {
-		const findedAnswer = selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)
-		if (!findedAnswer) {
-			return false
-		}
-		if (!(typeof findedAnswer === 'object' && findedAnswer.hasOwnProperty('is_correct'))) {
-			return false
-		}
-		if (!findedAnswer.is_correct) {
-			return true
-		}
-		return false
-	}
-	function isCorrectSkippedAnswer(answer: iQuizQuestionAnswer) {
-		const findedAnswer = selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)
-		if (findedAnswer) {
-			return false
-		}
-		if (!(typeof answer === 'object' && answer.hasOwnProperty('is_correct'))) {
-			return false
-		}
-		if (answer.is_correct) {
-			return true
-		}
-		return false
+	function onClickConfirmQuestion() {
+		setAnswerStatus('answered')
+		onLoadAnswers()
 	}
 
 	const hintRef = useRef<HTMLDivElement | null>(null)
@@ -97,7 +70,7 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 
 	return (
 		<div className={s.question}>
-			<h2 className={s.title}>{title}</h2>
+			{/* <h2 className={s.title}>{title}</h2> */}
 			{markdown && markdown.length
 				&& <ReactMarkdown
 					className={classNames(s.markdown, 'markdown-body')}
@@ -113,20 +86,21 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 							s.answer,
 							{ [s.answer_noevents]: answerStatus === 'answered' },
 							{ [s.answer_selected]: selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id) },
-							{ [s.answer_correct]: answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)?.is_correct },
-							{ [s.answer_loss]: answerStatus === 'answered' && isLossAnswer(answer) },
-							{ [s.answer_correct_skip]: answerStatus === 'answered' && isCorrectSkippedAnswer(answer) },
+							{ [s.answer_correct]: answerStatus === 'answered' && isCorrectAnswer(selectedAnswers, answer) },
+							{ [s.answer_loss]: answerStatus === 'answered' && isLossAnswer(selectedAnswers, answer) },
+							{ [s.answer_correct_skip]: answerStatus === 'answered' && isCorrectSkippedAnswer(selectedAnswers, answer) },
 						)}>
 							<span className={s.answer__title}>
 								{
 									selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)
 										? <IoIosCheckmarkCircle size={24} fill="#1F477D" />
 										: <IoIosCheckmarkCircleOutline size={24} fill="#1F477D" />
-								} {answer.title}
+								} {answer.text}
 							</span>
 							{
-								((answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id)) 
-								|| (answerStatus === 'answered' && isCorrectSkippedAnswer(answer)))
+								(answerStatus === 'answered' && (answers.length && answers[0].hasOwnProperty('is_correct')))
+								&& ((answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id))
+									|| (answerStatus === 'answered' && isCorrectSkippedAnswer(selectedAnswers, answer)))
 								&& <aside className={s.answer__explanation}>
 									{answer.explanation}
 								</aside>
@@ -144,8 +118,27 @@ export const QuizQuestion: FC<iProps> = ({ id, title, hint, answers, markdown, o
 							{isOpenedHint && <div className={s.hint}>{hint}</div>}
 						</div>
 						: <span> </span>}
-					{answerStatus === 'waiting' ? <button disabled={!Boolean(selectedAnswers.length)} className={classNames(s.answers__button, s.answers__button_confirm)} onClick={() => setAnswerStatus('answered')}>Подтвердить</button> : <></>}
-					{answerStatus === 'answered' ? <button className={classNames(s.answers__button, s.answers__button_next)} onClick={onClickNext}>Дальше</button> : <></>}
+					{
+						answerStatus === 'waiting' || (answers.length && !answers[0].hasOwnProperty('is_correct'))
+							? <button
+								disabled={!Boolean(selectedAnswers.length) || (answerStatus === 'answered' && (answers.length && !answers[0].hasOwnProperty('is_correct')) ? true : false)}
+								className={classNames(s.answers__button, s.answers__button_confirm)}
+								onClick={onClickConfirmQuestion}
+							>
+								{answerStatus === 'waiting' ? 'Подтвердить' : 'Подтверджаем...'}
+							</button>
+							: <></>
+					}
+					{
+						answerStatus === 'answered' && (answers.length && answers[0].hasOwnProperty('is_correct'))
+							? <button
+								className={classNames(s.answers__button, s.answers__button_next)}
+								onClick={onClickNext}
+							>
+								Дальше
+							</button>
+							: <></>
+					}
 				</div>
 			</div>
 		</div>
