@@ -115,7 +115,7 @@ export const QuizQuestion: FC<iProps> = ({ hint, answers, markdown, onClickNextQ
 								<PiLightbulbFilament fill="#000" size={18} />
 								Подсказка
 							</div>
-							{isOpenedHint && <div className={s.hint}>{hint}</div>}
+							{isOpenedHint && <div className={s.hint}>{hint && hint.length ? hint : "Подсказка не предусмотрена"}</div>}
 						</div>
 						: <span> </span>}
 					{

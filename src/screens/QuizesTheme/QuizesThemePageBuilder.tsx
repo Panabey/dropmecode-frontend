@@ -1,10 +1,7 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { quizes } from '../Quizes/QuizesPageBuilder'
-import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
 import s from './QuizesThemePageBuilder.module.css'
 
 export const QuizesThemePageBuilder = () => {
@@ -20,11 +17,11 @@ export const QuizesThemePageBuilder = () => {
 					/>
 					<section className={s.section}>
 						<div className={s.quizes}>
-							{[...quizes, ...quizes, ...quizes].map((quiz) => {
+							{/* {[].map((quiz) => {
 								return (
 									<QuizPreview key={quiz.id} {...quiz} />
 								)
-							})}
+							})} */}
 						</div>
 					</section>
 				</Container>

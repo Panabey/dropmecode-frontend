@@ -8,30 +8,7 @@ import Link from 'next/link'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './QuizesPageBuilder.module.css'
-import { QuizPreview, iQuizPreview } from './components/QuizPreview/QuizPreview'
-
-export const quizes: iQuizPreview[] = [{
-	id: 1,
-	slug: "kakoy-ti-smesharik",
-	description: "Пройдите простой тест и узнайте, кем бы вы были во вселенной смешариков",
-	imageUrl: "/assets/Quizes/1.jpg",
-	title: "Кто ты из смешариков?",
-},
-{
-	id: 2,
-	slug: "chei-crym",
-	description: "Проявите дедуктивные способности и определите, какой же стране принадлежит полуостров - Крым",
-	imageUrl: "/assets/Quizes/2.jpg",
-	title: "Кому принадлежит Крым?",
-},
-{
-	id: 3,
-	slug: "test-na-znanie-yazika-programmirovanya-javascrpit",
-	description: "Вы думаете, что хорошо знаете язык программирования - Javascript? Сейчас мы это проверим :)",
-	imageUrl: "/assets/Quizes/js.png",
-	title: "Как хорошо ты знаешь Javascript?",
-},
-]
+import { QuizPreview } from './components/QuizPreview/QuizPreview'
 
 interface iProps {
 	pageInfo: iQuizesPageInfo[]
@@ -56,13 +33,13 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 									<Link className={s.section__details} href={`/quizes/${info.id}-${getSlug(info.title, { lang: 'ru' })}`}>Показать все</Link>
 								</div>
 								<div className={s.quizes}>
-									{info.quizzes.map((quiz, idx) => {
+									{info.quizzes.map((quiz) => {
 										return (
 											<QuizPreview
 												key={quiz.id}
-												{...quizes[idx]}
 												id={quiz.id}
 												imageUrl={UPLOADS_URL + quiz.logo_url}
+												description={quiz.short_description}
 												title={quiz.title}
 												slug={`/quizes/${info.id}-${getSlug(info.title, { lang: 'ru' })}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
 											/>

@@ -19,6 +19,7 @@ export interface Quizesinfo {
 	logo_url: string;
 	title: string;
 	meta: string;
+	short_description: string;
 }
 
 export const getServerSideProps: GetServerSideProps<{
