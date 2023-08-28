@@ -1,10 +1,10 @@
+import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import classNames from 'classnames'
 import { FC, useEffect, useRef, useState } from 'react'
 import { IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline } from 'react-icons/io'
 import { PiLightbulbFilament } from 'react-icons/pi'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import s from './QuizQuestion.module.css'
 import { iQuizQuestionAnswer, isCorrectAnswer, isCorrectSkippedAnswer, isLossAnswer } from '../../utils/quizUtils'
+import s from './QuizQuestion.module.css'
 
 export interface iQuizQuestion {
 	id: number
@@ -72,11 +72,11 @@ export const QuizQuestion: FC<iProps> = ({ hint, answers, markdown, onClickNextQ
 		<div className={s.question}>
 			{/* <h2 className={s.title}>{title}</h2> */}
 			{markdown && markdown.length
-				&& <ReactMarkdown
+				&& <MarkdownRender
 					className={classNames(s.markdown, 'markdown-body')}
 				>
 					{markdown}
-				</ReactMarkdown>
+				</MarkdownRender>
 			}
 			<div className={s.answers}>
 				<aside className={s.answers__title}>Выберите правильный(е) ответ(ы): </aside>

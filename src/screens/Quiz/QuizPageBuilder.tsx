@@ -9,6 +9,7 @@ import { FC, useEffect, useState } from 'react'
 import s from './QuizPageBuilder.module.css'
 import { iAPIQuizQuestion, useGetQuestionAnswerMutation, useGetQuestionMutation } from './api/quiz.api'
 import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
+import { QuizQuestionLoader } from './components/QuizQuestionLoader/QuizQuestionLoader'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 import { getQuizResultInfo } from './utils/quizUtils'
 
@@ -107,16 +108,18 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>
 								: quizStatus === 'running'
-									? (!loadedQuestion
-										? <div>Загрузка...</div>
-										: <QuizQuestion
-											id={loadedQuestion.id}
-											hint={loadedQuestion.hint}
-											markdown={loadedQuestion.text}
-											answers={loadedQuestion.answers}
-											onClickNextQuestion={onClickNextQuestion}
-											onLoadAnswers={onLoadAnswers}
-										/>)
+									? (
+										!loadedQuestion
+											? <QuizQuestionLoader />
+											: <QuizQuestion
+												id={loadedQuestion.id}
+												hint={loadedQuestion.hint}
+												markdown={loadedQuestion.text}
+												answers={loadedQuestion.answers}
+												onClickNextQuestion={onClickNextQuestion}
+												onLoadAnswers={onLoadAnswers}
+											/>
+									)
 									: <div className={s.result}>
 										<img className={s.result__icon} src={getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).imageUrl} />
 										<h3 className={s.result__title}>{getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).title}</h3>
