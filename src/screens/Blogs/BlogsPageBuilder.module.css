@@ -1,0 +1,13 @@
+.layout{
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.area{
+	margin-top: 25px;
+	width: 53vw;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+}

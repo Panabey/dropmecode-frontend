@@ -1,7 +1,8 @@
+import { BlogsPageBuilder } from "@/screens/Blogs/BlogsPageBuilder"
 
 const BlogPage = () => {
 	return (
-		<div>index</div>
+		<BlogsPageBuilder />
 	)
 }
 
