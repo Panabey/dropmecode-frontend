@@ -1,24 +1,23 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import s from './NewsPageBuilder.module.css'
-import { NewsPreview } from './components/NewsPreview'
+import s from './ArticlesListPageBuilder.module.css'
+import { ArticlesListPreview } from './components/ArticlesListPreview'
 
-export const NewsPageBuilder = () => {
+export const ArticlesListPageBuilder = () => {
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title='Новости'
-						description='В этом разделе вы всегда можете прочитать интересные новости из мира IT и технологий. Мы тщательно отбираем материал и компилируем только интересные новости :)'
-						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Новости", navigationUrl: "/news" }]}
+						title='Статьи'
+						description='В этом разделе вы всегда можете прочитать интересные статьи из мира IT и технологий. Мы тщательно отбираем материал и компилируем только интересные статьи, некоторые пишем сами с нуля :)'
+						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Статьи", navigationUrl: "/articles" }]}
 					/>
 					<div className={s.news}>
-						<NewsPreview
+						<ArticlesListPreview
 							slug='ishodniky-linux-yadra-slili-v-seti'
 							title='Исходники ядра Linux слили в сеть'
 							dateTime='10.08.2023 20:05'
@@ -26,14 +25,14 @@ export const NewsPageBuilder = () => {
 							imageUrl='https://xakep.ru/wp-content/uploads/2018/09/186231/Linus-Torvalds.jpg'
 							tags={["Кибербезопасность", "Софт", "Утечки данных"]}
 						/>
-						<NewsPreview
+						<ArticlesListPreview
 							slug='sarmat-mobil-otpravilsa-v-turne'
 							title='"Сармат-мобиль" с ядерной боеголовкой отправился в турне по России'
 							dateTime='11.05.2023 12:25'
 							description='Самый современный автомобиль с установленной на крыше ядерной боеголовкой, отправился покорять отечественные города в качестве арт-объекта'
 							tags={["Автомобили", "Технологии"]}
 						/>
-						<NewsPreview
+						<ArticlesListPreview
 							slug='mikhail-kuligin-napisal-assembler-na-assemblere'
 							title='Михаил Кулигин написал ассемблер на ассемблере'
 							dateTime='05.07.2023 14:14'
@@ -41,14 +40,14 @@ export const NewsPageBuilder = () => {
 							imageUrl='https://sun9-37.userapi.com/impg/QRPqfuhW_pKdq9yEhpxlVTQgdAnHUXyACfcgMA/V-cmNLao1Mc.jpg?size=992x992&quality=95&sign=efc80efca27da7ca3fcf3307a977e25e&type=album'
 							tags={["Программирование", "Софт"]}
 						/>
-						<NewsPreview
+						<ArticlesListPreview
 							slug='v-rossii-postupil-v-prodazhu-elbrus-shestnadcath-s'
 							title='В России поступил в продажу Эльбрус 16С'
 							dateTime='04.06.2023 18:19'
 							description='Самый мощный процессор из линейки "Эльбрус" теперь доступен к прямой продаже. 16 высокопроизводительных ядер способны обработать любые серверные задачи'
 							tags={["Технологии", "Железо"]}
 						/>
-						<NewsPreview
+						<ArticlesListPreview
 							slug='znamenitie-programmisty-iz-muroma-stali-deputatami'
 							title='Знаменитые программисты из Мурома стали депутатами'
 							dateTime='05.07.2023 14:14'

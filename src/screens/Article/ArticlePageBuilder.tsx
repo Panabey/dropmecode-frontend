@@ -1,15 +1,14 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SearchBar } from '@/components/SearchBar/SearchBar'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { mdtest } from '@/lib/mdtest'
 import classNames from 'classnames'
 import { AiOutlineClockCircle, AiOutlineTag } from 'react-icons/ai'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import s from './NewsArticlePageBuilder.module.css'
+import s from './ArticlePageBuilder.module.css'
 
-export const NewsArticlePageBuilder = () => {
+export const ArticlePageBuilder = () => {
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />

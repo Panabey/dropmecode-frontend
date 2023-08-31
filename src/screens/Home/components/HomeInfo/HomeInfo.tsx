@@ -13,7 +13,7 @@ export const HomeInfo = () => {
 				<HomePartition navigationUrl='/langs' title="Справочники" description='У нас имеется качественная, увлекательная и бесплатная программа обучения популярным языкам программирования'>
 					<HiCode size={40} />
 				</HomePartition>
-				<HomePartition navigationUrl='/news' title="Новости" description='Горячие новости из мира IT доступным языком. Наша команда тщательно отбирает материал, чтобы он был Вам интересен'>
+				<HomePartition navigationUrl='/articles' title="Статьи" description='Познавательные статьи из мира IT доступным языком. Наша команда тщательно отбирает материал, чтобы он был Вам интересен'>
 					<ImNewspaper size={40} />
 				</HomePartition>
 				<HomePartition navigationUrl='/blog' title="Блог" description='В данном разделе мы сообщаем о всех обновлениях сайта, а также время технических работ'>

@@ -28,7 +28,7 @@ export const SidebarMenu = () => {
 				<nav className={s.nav}>
 					<ul className={s.menu}>
 						<Link href='/langs'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/langs') })}>Справочники</li></Link>
-						<Link href='/news'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/news') })}>Новости</li></Link>
+						<Link href='/articles'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/articles') })}>Статьи</li></Link>
 						<Link href='/blog'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/blog') })}>Блог</li></Link>
 						<Link href='/quizes'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/quizes') })}> Квизы</li></Link>
 						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/help') })}>Помощь</li></Link>
