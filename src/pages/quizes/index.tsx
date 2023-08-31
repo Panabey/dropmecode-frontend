@@ -11,15 +11,15 @@ const QuizesPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSi
 export interface iQuizesPageInfo {
 	id: number;
 	title: string;
-	quizzes: Quizesinfo[];
+	quizzes: iQuizesinfo[];
 }
 
-export interface Quizesinfo {
+export interface iQuizesinfo {
 	id: number;
 	logo_url: string;
 	title: string;
-	meta: string;
 	short_description: string;
+	tags?: string[] 
 }
 
 export const getServerSideProps: GetServerSideProps<{

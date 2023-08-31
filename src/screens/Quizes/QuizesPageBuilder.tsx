@@ -2,7 +2,6 @@ import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { UPLOADS_URL } from '@/lib/constants'
 import { iQuizesPageInfo } from '@/pages/quizes'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -38,8 +37,8 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 											<QuizPreview
 												key={quiz.id}
 												id={quiz.id}
-												imageUrl={UPLOADS_URL + quiz.logo_url}
-												description={quiz.short_description}
+												logo_url={quiz.logo_url}
+												short_description={quiz.short_description}
 												title={quiz.title}
 												slug={`/quizes/${info.id}-${getSlug(info.title, { lang: 'ru' })}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
 											/>

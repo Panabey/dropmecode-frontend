@@ -2,9 +2,21 @@ import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { iQuizesinfo } from '@/pages/quizes'
+import { FC } from 'react'
 import s from './QuizesThemePageBuilder.module.css'
+import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
+import { useRouter } from 'next/router'
+import getSlug from 'speakingurl'
 
-export const QuizesThemePageBuilder = () => {
+interface iProps {
+	pageInfo: iQuizesinfo[]
+}
+
+export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
+
+	const router = useRouter()
+
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />
@@ -17,11 +29,15 @@ export const QuizesThemePageBuilder = () => {
 					/>
 					<section className={s.section}>
 						<div className={s.quizes}>
-							{/* {[].map((quiz) => {
+							{pageInfo.map((quiz) => {
 								return (
-									<QuizPreview key={quiz.id} {...quiz} />
+									<QuizPreview 
+										key={quiz.id} 
+										{...quiz}  
+										slug={`/quizes/${router.query.theme}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
+									/>
 								)
-							})} */}
+							})}
 						</div>
 					</section>
 				</Container>
