@@ -1,7 +1,7 @@
 import { API_URL } from '@/lib/constants';
 import { QuizesThemePageBuilder } from '@/screens/QuizesTheme/QuizesThemePageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { iQuizesinfo } from '..';
+import { iQuizesinfo } from '../index';
 
 const QuizesThemePage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
@@ -9,8 +9,14 @@ const QuizesThemePage = ({ pageInfo }: InferGetServerSidePropsType<typeof getSer
 	)
 }
 
+export interface iQuizesThemePage {
+	id: number;
+	title: string;
+	quizzes: iQuizesinfo[];
+}
+
 export const getServerSideProps: GetServerSideProps<{
-	pageInfo: iQuizesinfo[]
+	pageInfo: iQuizesThemePage
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const TOPIC_QUIZES_LIMIT = 20
@@ -34,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<{
 		res.statusCode = errorCode;
 		return {
 			props: {
-				pageInfo: []
+				pageInfo: {}
 			},
 			redirect: {
 				destination: '/error',

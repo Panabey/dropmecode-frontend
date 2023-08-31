@@ -8,9 +8,10 @@ import s from './QuizesThemePageBuilder.module.css'
 import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
 import { useRouter } from 'next/router'
 import getSlug from 'speakingurl'
+import { iQuizesThemePage } from '@/pages/quizes/[theme]'
 
 interface iProps {
-	pageInfo: iQuizesinfo[]
+	pageInfo: iQuizesThemePage
 }
 
 export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
@@ -23,13 +24,13 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title='Квизы дня'
-						description='Горячие и интересные квизы, доступные только сегодня, специально для вас. Пройдите их и оцените свои интеллектуальные способности в мире IT'
-						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Квизы", navigationUrl: "/quizes" }, { title: "Квизы дня", navigationUrl: '/quizes/hot' }]}
+						title={pageInfo.title}
+						description={`Горячие и интересные квизы по теме "${pageInfo.title}", специально для вас. Пройдите их и оцените свои дедуктивные способности.`}
+						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Квизы", navigationUrl: "/quizes" }, { title: pageInfo.title, navigationUrl: '/quizes/hot' }]}
 					/>
 					<section className={s.section}>
 						<div className={s.quizes}>
-							{pageInfo.map((quiz) => {
+							{pageInfo.quizzes.map((quiz) => {
 								return (
 									<QuizPreview 
 										key={quiz.id} 
