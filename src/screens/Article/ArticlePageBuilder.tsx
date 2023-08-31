@@ -1,12 +1,12 @@
 import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
+import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { iArticle } from '@/pages/articles/[slug]'
 import classNames from 'classnames'
 import { FC } from 'react'
 import { AiOutlineClockCircle, AiOutlineTag } from 'react-icons/ai'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import getSlug from 'speakingurl'
 import s from './ArticlePageBuilder.module.css'
 
@@ -44,11 +44,11 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 						</div>
 					</div>
 
-					<ReactMarkdown
+					<MarkdownRender
 						className={classNames(s.markdown, 'markdown-body')}
 					>
 						{article.text}
-					</ReactMarkdown>
+					</MarkdownRender>
 				</Container>
 			</div>
 		</Layout>
