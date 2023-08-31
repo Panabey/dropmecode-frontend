@@ -2,25 +2,31 @@ import { Container } from '@/components/Container/Container'
 import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { mdtest } from '@/lib/mdtest'
+import { iArticle } from '@/pages/articles/[slug]'
 import classNames from 'classnames'
+import { FC } from 'react'
 import { AiOutlineClockCircle, AiOutlineTag } from 'react-icons/ai'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import getSlug from 'speakingurl'
 import s from './ArticlePageBuilder.module.css'
 
-export const ArticlePageBuilder = () => {
+interface iProps {
+	article: iArticle
+}
+
+export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 	return (
 		<Layout className={s.layout}>
 			<SidebarMenu />
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title={'Известные программисты из Мурома стали депутатами'}
+						title={article.title}
 						description='Как сообщают последние события, знаменитые программисты из МиВЛГУ в г.Муром, переквалифицировались в депутатов государственной думы'
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
-							{ title: "Новости", navigationUrl: "/news" },
-							{ title: "Известные программисты из Мурома стали депутатами", navigationUrl: "/news/znamenitie-programmisty-iz-muroma-stali-deputatami" },
+							{ title: "Статьи", navigationUrl: "/articles" },
+							{ title: article.title, navigationUrl: `/articles/${getSlug(article.title, { lang: 'ru' })}` },
 						]}
 					/>
 					<div className={s.metainfo}>
@@ -41,7 +47,7 @@ export const ArticlePageBuilder = () => {
 					<ReactMarkdown
 						className={classNames(s.markdown, 'markdown-body')}
 					>
-						{mdtest}
+						{article.text}
 					</ReactMarkdown>
 				</Container>
 			</div>

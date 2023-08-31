@@ -25,7 +25,7 @@ export interface iArticlePreviewItem {
 }
 
 export const getServerSideProps: GetServerSideProps<{
-	pageInfo: iArticlePageInfo[]
+	pageInfo: iArticlePageInfo
 }> = async ({ res }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const ARTICLE_PAGINATOR_PAGE = 1
