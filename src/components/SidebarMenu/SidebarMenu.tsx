@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaGithub } from 'react-icons/fa'
-import { ImDropbox } from 'react-icons/im'
+import { BsBoxSeam } from 'react-icons/bs'
 import { SearchBar } from '../SearchBar/SearchBar'
 import s from './SidebarMenu.module.css'
 
@@ -17,7 +17,7 @@ export const SidebarMenu = () => {
 				<div className={s.content__row}>
 					<Link href='/' className={s.link_logo}>
 						<div className={s.logo}>
-							<ImDropbox size={25} fill="#1F477D" />
+							<BsBoxSeam size={25} fill="#1F477D" />
 							DROPMECODE
 						</div>
 					</Link>

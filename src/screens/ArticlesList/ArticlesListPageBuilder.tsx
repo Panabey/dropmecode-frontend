@@ -31,10 +31,10 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 									key={article.id}
 									slug={`/articles/${article.id}-${getSlug(article.title, { lang: 'ru' })}`}
 									title={article.title}
-									dateTime='10.08.2023 20:05'
+									dateTime={new Date(article.create_date).toLocaleString().slice(0, -3)}
 									description={article.anons}
 									imageUrl={UPLOADS_URL + article.logo_url}
-									tags={["Кибербезопасность", "Софт", "Утечки данных"]}
+									tags={article.tags}
 								/>
 							)
 						})}

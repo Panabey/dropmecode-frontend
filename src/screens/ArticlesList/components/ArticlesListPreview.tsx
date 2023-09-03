@@ -20,11 +20,14 @@ export const ArticlesListPreview: FC<iProps> = ({ slug, title, description, date
 				<Link href={slug}><h3 className={s.info__title}>{title}</h3></Link>
 				<div className={s.info__meta}>
 					<span className={s.info__date}>{dateTime}</span>
-					{tags && tags.length && <div className={s.info__tags}>{tags.map((tag, idx) => {
-						return (
-							<span className={s.info__tag} key={idx}>{tag}</span>
-						)
-					})}</div>}
+					{tags && tags.length
+						? <div className={s.info__tags}>{tags.map((tag, idx) => {
+							return (
+								<span className={s.info__tag} key={idx}>{tag}</span>
+							)
+						})}</div>
+						: <></>
+					}
 				</div>
 				<p className={s.info__description}>{description}</p>
 			</div>

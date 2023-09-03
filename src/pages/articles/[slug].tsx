@@ -11,6 +11,7 @@ const NewsArticlePage = ({ article }: InferGetServerSidePropsType<typeof getServ
 export interface iArticle {
 	id: number;
 	title: string;
+	anons: string;
 	text: string;
 	tags: iTag[];
 	reading_time: number;

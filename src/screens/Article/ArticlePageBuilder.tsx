@@ -22,7 +22,7 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={article.title}
-						description='Как сообщают последние события, знаменитые программисты из МиВЛГУ в г.Муром, переквалифицировались в депутатов государственной думы'
+						description={article.anons}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Статьи", navigationUrl: "/articles" },
@@ -32,16 +32,22 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 					<div className={s.metainfo}>
 						<div className={s.metainfo__row}>
 							<span className={s.metainfo__label}><AiOutlineClockCircle fill="#1F477D" size={19} /></span>
-							<aside className={s.metainfo__datetime}>10.08.2023 20:38</aside>
+							<aside className={s.metainfo__datetime}>{new Date(article.create_date).toLocaleString().slice(0, -3)}</aside>
 						</div>
-						<div className={s.metainfo__row}>
-							<span className={s.metainfo__label}><AiOutlineTag fill="#1F477D" size={19} /></span>
-							<div className={s.metainfo__tags}>
-								<span className={s.metainfo__tag}>IT</span>
-								<span className={s.metainfo__tag}>Политика</span>
-								<span className={s.metainfo__tag}>Достопримечательности</span>
-							</div>
-						</div>
+						{
+							article.tags.length
+								? <div className={s.metainfo__row}>
+									<span className={s.metainfo__label}><AiOutlineTag fill="#1F477D" size={19} /></span>
+									<div className={s.metainfo__tags}>
+										{article.tags.map((tag) => {
+											return (
+												<span className={s.metainfo__tag} key={tag.id}>{tag.title}</span>
+											)
+										})}
+									</div>
+								</div>
+								: <></>
+						}
 					</div>
 
 					<MarkdownRender

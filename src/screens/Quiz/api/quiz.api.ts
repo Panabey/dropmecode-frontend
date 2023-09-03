@@ -9,7 +9,7 @@ export interface iAPIQuizQuestion {
 }
 export interface iAPIQuizAnswer {
 	id: number;
-  	answers: iAnswer[];
+	answers: iAnswer[];
 }
 interface iAnswer {
 	id: number;
