@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './LangDocsThemePageBuilder.module.css'
+import { LangDocsLeftSidebar } from './components/LangDocsLeftSidebar/LangDocsLeftSidebar'
 import { LangDocsRightSidebar } from './components/LangDocsRightSidebar/LangDocsRightSidebar'
 
 interface iProps {
@@ -22,28 +23,30 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 	const { pageNavigationLinks } = useHeadingsNavigation(s.markdown)
 
 	return (
-		<Layout className={s.layout}>
-			<SidebarMenu />
-			<div className={s.area}>
-				<Container className={s.container}>
-					<div dangerouslySetInnerHTML={{ __html: langDocs.meta }}></div>
-					<PageCommonInfo
-						title={langDocs.title}
-						description='Сегодня мы продолжим изучать язык - Javascript и вы напишете свою первую программу, которая выведет текст в консоль'
-						breadcrumbs={[
-							{ title: "Главная", navigationUrl: "/" },
-							{ title: "Справочники", navigationUrl: "/langs" },
-							{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
-							{
-								title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
-								navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`
-							},
-						]}
-					/>
-					<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
-				</Container>
-			</div>
+		<>
+			<Layout className={s.layout}>
+				<SidebarMenu />
+				<div className={s.area}>
+					<Container className={s.container}>
+						<PageCommonInfo
+							title={langDocs.title}
+							description={langDocs.short_description}
+							breadcrumbs={[
+								{ title: "Главная", navigationUrl: "/" },
+								{ title: "Справочники", navigationUrl: "/langs" },
+								{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
+								{
+									title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
+									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`
+								},
+							]}
+						/>
+						<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
+					</Container>
+				</div>
+			</Layout>
 			{pageNavigationLinks.length ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
-		</Layout>
+			<LangDocsLeftSidebar />
+		</>
 	)
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { FC } from 'react'
-import { iPageLink } from '../../LangDocsThemePageBuilder'
 import s from './LangDocsRightSidebar.module.css'
+import { iPageLink } from '@/hooks/useHeadingsNavigation'
 
 interface iProps {
 	navigationLinks: iPageLink[]

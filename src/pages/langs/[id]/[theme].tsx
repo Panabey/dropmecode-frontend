@@ -15,7 +15,7 @@ const LangDocsPageInfo: FC<iProps> = ({ langDocs }: InferGetServerSidePropsType<
 
 export interface iLangDocs {
   id: number;
-  meta: string;
+  short_description: string;
   title: string;
   text: string;
   reading_time: number;
