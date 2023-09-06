@@ -1,0 +1,130 @@
+.history{
+	flex: 1;
+}
+.history__empty{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	text-align: center;
+}
+.history__empty svg{
+	filter: brightness(0);
+	opacity: 0.4;
+}
+.history__empty h4{
+	color: #000;
+	font-size: 1.3rem;
+	font-weight: 500;
+	margin-top: 15px;
+	opacity: 0.9;
+}
+.history__empty p{
+	max-width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	color: #000;
+	margin-top: 10px;
+	font-size: 0.9rem;
+	opacity: 0.7;
+}
+.items{
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	max-height: 45vh;
+}
+.items::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	background-color: #F5F5F5;
+	margin-left: 5px;
+}
+
+.items::-webkit-scrollbar
+{
+	margin-left: 5px;
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+.items::-webkit-scrollbar-thumb
+{
+	margin-left: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	background-color: #b3b3b3;
+}
+.items__block{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.items__title{
+	position: sticky;
+	top: 0;
+	font-size: 1rem;
+	font-weight: 500;
+	margin-right: 7px;
+	color: #1DC989;
+	padding-top: 15px;
+	padding-bottom: 7px;
+	background-color: #fff;
+	width: 100%;
+	z-index: 2;
+}
+.items__column{
+	display: flex;
+	flex-direction: column;
+	margin-top: 5px;
+	gap: 15px 0;
+}
+.item{
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	padding: 15px;
+	width: 100%;
+	border-radius: 7px;
+	border: 1px solid rgba(0,0,0,0.1);
+	text-decoration: none;
+}
+.item svg{
+	filter: brightness(0);
+	opacity: 0.4;
+}
+.item__icon_time{
+	margin-right: 20px;
+}
+.item__icon_arrow{
+	margin-right: 0;
+}
+.item__icon_delete{
+	margin-left: auto;
+	margin-right: 10px;
+}
+.item__content{
+	display: flex;
+	flex-direction: column;
+	gap: 4px 0;
+}
+.item__content span{
+	font-size: 1rem;
+}
+.item__content aside{
+	color: #000;
+	font-size: 0.8rem;
+	opacity: 0.5;
+}
+.item:hover{
+	background-color: #1DC989;
+}
+.item:hover .item__content span, .item:hover .item__content aside{
+	color: #fff;
+}
+.item:hover svg{
+	filter: brightness(0) invert(1);
+	opacity: 0.8;
+}

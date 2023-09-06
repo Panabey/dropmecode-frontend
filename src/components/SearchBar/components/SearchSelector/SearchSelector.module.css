@@ -1,0 +1,43 @@
+.selector{
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 0 15px;
+}
+.selector__row{
+	display: flex;
+	align-items: flex-end;
+	gap: 0 12px;
+}
+.selector__title{
+	font-size: 1rem;
+	font-weight: 300;
+	color: #1DC989;
+	margin-right: 7px;
+}
+.selector__button{
+	cursor: pointer;
+	color: #000;
+	opacity: 0.6;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid transparent;
+	font-size: 0.9rem;
+	transition: 0.2s ease-in-out opacity;
+}
+.selector__button:hover{
+	opacity: 0.8;
+}
+.selector__button_active{
+	color: #1DC989;
+	opacity: 1;
+	border-bottom: 1px solid #1DC989;
+}
+.selector__underline{
+	margin-top: 15px;
+	height: 1px;
+	background-color: #000;
+	border: none;
+	width: 100%;
+	opacity: 0.1;
+}

@@ -1,9 +1,11 @@
+import { searchSlice } from '@/components/SearchBar/slices/search.slice'
 import { quizAPI } from '@/screens/Quiz/api/quiz.api'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 const rootReducer = combineReducers({
-	[quizAPI.reducerPath]: quizAPI.reducer
+	[quizAPI.reducerPath]: quizAPI.reducer,
+	[searchSlice.name]: searchSlice.reducer
 })
 
 export const setupStore = () => {

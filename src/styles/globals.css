@@ -27,3 +27,8 @@ body{
     background-position-x: -200%;
   }
 }
+
+#search{
+  position: relative;
+  z-index: 2;
+}
