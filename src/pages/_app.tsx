@@ -1,3 +1,4 @@
+import { AcceptCookie } from '@/components/AcceptCookie/AcceptCookie'
 import { setupStore } from '@/redux/store'
 import '@/styles/codehighlight.css'
 import '@/styles/githubmd.css'
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     </Head>
     <Provider store={store}>
       <NextNProgress color="#1DC989" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
+      <AcceptCookie />
       <Component {...pageProps} />
     </Provider>
 
