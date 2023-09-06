@@ -6,7 +6,7 @@ import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { iArticle } from '@/pages/articles/[slug]'
 import classNames from 'classnames'
 import { FC } from 'react'
-import { AiOutlineClockCircle, AiOutlineTag } from 'react-icons/ai'
+import { AiOutlineClockCircle, AiOutlineRead, AiOutlineTag } from 'react-icons/ai'
 import getSlug from 'speakingurl'
 import s from './ArticlePageBuilder.module.css'
 
@@ -41,13 +41,17 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 									<div className={s.metainfo__tags}>
 										{article.tags.map((tag) => {
 											return (
-												<span className={s.metainfo__tag} key={tag.id}>{tag.title}</span>
+												<span className={s.metainfo__tag} key={tag}>{tag}</span>
 											)
 										})}
 									</div>
 								</div>
 								: <></>
 						}
+						<div className={s.metainfo__row}>
+							<span className={s.metainfo__label}><AiOutlineRead fill="#1F477D" size={19} /></span>
+							<aside className={s.metainfo__datetime}> {article.reading_time} мин. на чтение</aside>
+						</div>
 					</div>
 
 					<MarkdownRender

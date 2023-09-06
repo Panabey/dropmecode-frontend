@@ -13,16 +13,12 @@ export interface iArticle {
 	title: string;
 	anons: string;
 	text: string;
-	tags: iTag[];
+	tags: string[];
 	reading_time: number;
 	create_date: string;
 	update_date: string;
-  }
-  
-  export interface iTag {
-	id: number;
-	title: string;
-  }
+}
+
 
 export const getServerSideProps: GetServerSideProps<{
 	article: iArticle
@@ -31,17 +27,18 @@ export const getServerSideProps: GetServerSideProps<{
 	const url = resolvedUrl.split('/')
 	if (url.length < 3) {
 		return {
-		props: {
-			langDocs: null
-		},
-		redirect: {
-			destination: '/error',
-			permanent: true,
-		},
+			props: {
+				langDocs: null
+			},
+			redirect: {
+				destination: '/error',
+				permanent: true,
+			},
 		}
 	}
-  	const ARTICLE_ID = url[2].split('-')[0]
-	const response = await fetch(API_URL + '/article/?' + new URLSearchParams({ post_id: String(ARTICLE_ID) }))
+	const ARTICLE_ID = url[2].split('-')[0]
+	console.log(ARTICLE_ID)
+	const response = await fetch(API_URL + '/article/?' + new URLSearchParams({ article_id: String(ARTICLE_ID) }))
 	const errorCode = response.ok ? false : response.status;
 	if (errorCode) {
 		res.statusCode = errorCode;
