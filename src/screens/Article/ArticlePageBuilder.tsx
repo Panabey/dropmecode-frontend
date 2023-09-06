@@ -59,6 +59,15 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 					>
 						{article.text}
 					</MarkdownRender>
+					<footer className={s.container__footer}>
+						<hr className={s.container__underline} />
+						<div className={s.footer__metainfo}>
+							<div className={s.metainfo__row}>
+								<span className={s.metainfo__label}>Статья изменена:</span>
+								<aside className={s.metainfo__datetime}> {new Date(article.update_date).toLocaleString().slice(0, -3)}</aside>
+							</div>
+						</div>
+					</footer>
 				</Container>
 			</div>
 		</Layout>

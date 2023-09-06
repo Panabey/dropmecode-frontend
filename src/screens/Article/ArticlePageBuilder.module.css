@@ -48,3 +48,18 @@
 .markdown{
 	margin-top: 40px;
 }
+.container__footer{
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+}
+.container__underline{
+	width: 100%;
+	height: 1px; 
+	opacity: 0.3;
+}
+.footer__metainfo{
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+}
