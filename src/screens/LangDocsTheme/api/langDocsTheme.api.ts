@@ -1,30 +1,43 @@
-// import { API_URL } from '@/lib/constants';
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_URL } from '@/lib/constants';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// export const langDocsThemeAPI = createApi({
-// 	reducerPath: 'quizAPI',
-// 	baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
-// 	endpoints: builder => ({
-// 		getQuestion: builder.mutation<iAPIQuizQuestion, iQuizQuestionParams>({
-// 			query: (data) => {
-// 				return {
-// 					url: `/quiz/question`,
-// 					method: 'GET',
-// 					params: data
-// 				}
-// 			},
-// 		}),
-// 		getQuestionAnswer: builder.mutation<iAPIQuizAnswer, iQuizAnswerParams>({
-// 			query: (data) => {
-// 				return {
-// 					url: `/quiz/answer/view`,
-// 					method: 'POST',
-// 					body: data
-// 				}
-// 			},
-// 		}),
-// 	}),
-// })
+export interface iLangDocsThemes {
+	id: number;
+	title: string;
+	description: string;
+	content: iContent[];
+}
 
-// export const { useGetQuestionMutation, useGetQuestionAnswerMutation } = quizAPI
+interface iContent {
+	title: string;
+	description: string;
+	page: iPage[];
+}
+
+interface iPage {
+	id: number;
+	title: string;
+}
+
+interface iGetHandbookThemesParams {
+	handbook: string
+}
+
+export const langDocsThemeAPI = createApi({
+	reducerPath: 'langDocsThemeAPI',
+	baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+	endpoints: builder => ({
+		getHandbookThemes: builder.query<iLangDocsThemes, iGetHandbookThemesParams>({
+			query: (data) => {
+				return {
+					url: `/handbook/content`,
+					method: 'GET',
+					params: data
+				}
+			},
+		}),
+	}),
+})
+
+export const { useGetHandbookThemesQuery } = langDocsThemeAPI
 

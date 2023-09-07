@@ -19,7 +19,7 @@ interface iProps {
 export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 	const router = useRouter()
 
-	const { pageNavigationLinks } = useHeadingsNavigation(s.markdown)
+	const { pageNavigationLinks } = useHeadingsNavigation(s.markdown, String(router.query.theme))
 
 	return (
 		<>
@@ -43,8 +43,8 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 					</Container>
 				</div>
 			</PageLayout>
-			{pageNavigationLinks.length ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
-			<LangDocsLeftSidebar />
+			{pageNavigationLinks.length && router.isReady ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
+			{router.isReady && <LangDocsLeftSidebar handbook={String(router.query.id)} />}
 		</>
 	)
 }

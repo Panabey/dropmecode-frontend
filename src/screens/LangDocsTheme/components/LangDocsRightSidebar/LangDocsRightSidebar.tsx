@@ -8,6 +8,7 @@ interface iProps {
 }
 
 export const LangDocsRightSidebar: FC<iProps> = ({ navigationLinks }) => {
+
 	return (
 		<div className={s.sidebar}>
 			<div className={s.block}>

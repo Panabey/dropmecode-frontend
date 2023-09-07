@@ -6,7 +6,7 @@ export interface iPageLink {
 	active: boolean
 }
 
-export const useHeadingsNavigation = (markdownClassName: string) => {
+export const useHeadingsNavigation = (markdownClassName: string, reloadAction?: any) => {
 	const [pageNavigationLinks, setPageNavigationLinks] = useState<iPageLink[]>([]);
 
 	useEffect(() => {
@@ -68,7 +68,7 @@ export const useHeadingsNavigation = (markdownClassName: string) => {
 				}
 				const links: iPageLink[] = []
 				for (let i = 0; i < headings.length; i++) {
-					headings[i].id = headings[i].id.length > 0 ? 'anchor_' + (i + 1) + ' ' + headings[i].id : 'anchor_' + (i + 1);
+					headings[i].id = 'anchor_' + (i + 1);
 					links.push({ title: headings[i].textContent || '', anchor: '#anchor_' + (i + 1), active: false })
 					if (i === 0) {
 						links[0].active = true
@@ -82,6 +82,10 @@ export const useHeadingsNavigation = (markdownClassName: string) => {
 			clearInterval(timer)
 		}
 	}, [pageNavigationLinks])
+
+	useEffect(() => {
+		setPageNavigationLinks([])
+	}, [reloadAction, setPageNavigationLinks])
 
 	return { pageNavigationLinks }
 
