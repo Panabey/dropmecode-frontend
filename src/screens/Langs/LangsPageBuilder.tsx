@@ -1,12 +1,11 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
 import { SquareButtonBlock } from '@/components/SquareButtonBlock/SquareButtonBlock'
 import { iHandbook } from '@/pages/langs'
 import { FC } from 'react'
 import { HiCode } from 'react-icons/hi'
 //import { SiMoleculer } from 'react-icons/si'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import getSlug from 'speakingurl'
 import s from './LangsPageBuilder.module.css'
@@ -17,8 +16,7 @@ interface iProps {
 
 export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 	return (
-		<Layout className={s.layout}>
-			<SidebarMenu />
+		<PageLayout className={s.layout}>
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
@@ -31,12 +29,12 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 						<div className={s.langs}>
 							{handbooks.map((handbook) => {
 								return (
-									<SquareButtonBlock 
-									key={handbook.id}
-									labelTitle={handbook.status && handbook.status.length ? handbook.status : ''} 
-									imageUrl={UPLOADS_URL + handbook.logo_url} 
-									navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`} 
-									title={handbook.title} />
+									<SquareButtonBlock
+										key={handbook.id}
+										labelTitle={handbook.status && handbook.status.length ? handbook.status : ''}
+										imageUrl={UPLOADS_URL + handbook.logo_url}
+										navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`}
+										title={handbook.title} />
 								)
 							})}
 						</div>
@@ -51,6 +49,6 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 					</section> */}
 				</Container>
 			</div>
-		</Layout>
+		</PageLayout>
 	)
 }

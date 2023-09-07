@@ -1,7 +1,6 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { iQuizesPageInfo } from '@/pages/quizes'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -15,8 +14,7 @@ interface iProps {
 
 export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	return (
-		<Layout className={s.layout}>
-			<SidebarMenu />
+		<PageLayout className={s.layout}>
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
@@ -50,6 +48,6 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 					})}
 				</Container>
 			</div>
-		</Layout>
+		</PageLayout>
 	)
 }

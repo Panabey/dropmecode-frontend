@@ -11,9 +11,11 @@ interface iProps {
 
 export const PageLayout: FC<iProps> = ({ children, className }) => {
 	return (
-		<Layout className={classNames(s.Layout, { [className || '']: className })}>
+		<>
 			<SidebarMenu />
-			{children}
-		</Layout>
+			<Layout className={classNames(s.Layout, { [className || '']: className })}>
+				{children}
+			</Layout>
+		</>
 	)
 }

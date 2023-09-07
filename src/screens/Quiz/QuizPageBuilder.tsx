@@ -1,7 +1,6 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import { iQuizPagePreview } from '@/pages/quizes/[theme]/[quiz]'
 import { useRouter } from 'next/router'
@@ -73,8 +72,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	}
 
 	return (
-		<Layout className={s.layout}>
-			<SidebarMenu />
+		<PageLayout className={s.layout}>
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
@@ -131,6 +129,6 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 				</Container>
 			</div>
 			<QuizRightSidebar quizStatus={quizStatus} quizTags={[{ title: "Квизы дня", navigationUrl: "/quizes/hot" }, { title: "Javascript", navigationUrl: "/quizes/js" }, { title: "Python", navigationUrl: "/quizes/python" }]} />
-		</Layout>
+		</PageLayout>
 	)
 }

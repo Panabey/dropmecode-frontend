@@ -1,8 +1,7 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { iArticle } from '@/pages/articles/[slug]'
 import classNames from 'classnames'
 import { FC } from 'react'
@@ -16,8 +15,7 @@ interface iProps {
 
 export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 	return (
-		<Layout className={s.layout}>
-			<SidebarMenu />
+		<PageLayout className={s.layout}>
 			<div className={s.area}>
 				<Container className={s.container}>
 					<PageCommonInfo
@@ -70,6 +68,6 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 					</footer>
 				</Container>
 			</div>
-		</Layout>
+		</PageLayout>
 	)
 }

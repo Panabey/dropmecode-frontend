@@ -1,8 +1,7 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { useHeadingsNavigation } from '@/hooks/useHeadingsNavigation'
 import { capitalizeString } from '@/lib/utils'
 import { iLangDocs } from '@/pages/langs/[id]/[theme]'
@@ -24,13 +23,12 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 
 	return (
 		<>
-			<Layout className={s.layout}>
-				<SidebarMenu />
+			<PageLayout className={s.layout}>
 				<div className={s.area}>
 					<Container className={s.container}>
 						<PageCommonInfo
 							title={langDocs.title}
-							description={langDocs.short_description}
+							description=""
 							breadcrumbs={[
 								{ title: "Главная", navigationUrl: "/" },
 								{ title: "Справочники", navigationUrl: "/langs" },
@@ -44,7 +42,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 						<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
 					</Container>
 				</div>
-			</Layout>
+			</PageLayout>
 			{pageNavigationLinks.length ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
 			<LangDocsLeftSidebar />
 		</>
