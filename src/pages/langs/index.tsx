@@ -21,7 +21,13 @@ export interface iHandbook {
 	title: string;
 	description: string;
 	logo_url: string;
-	status: string;
+	status: iStatus;
+}
+
+interface iStatus{
+	title: string;
+	color_text: string;
+	color_background: string;
 }
 
 export const getServerSideProps: GetServerSideProps<{

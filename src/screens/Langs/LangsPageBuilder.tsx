@@ -31,7 +31,9 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 								return (
 									<SquareButtonBlock
 										key={handbook.id}
-										labelTitle={handbook.status && handbook.status.length ? handbook.status : ''}
+										labelTitle={handbook.status && handbook.status.title.length ? handbook.status.title : ''}
+										labelBgColor={handbook.status && handbook.status.color_background.length ? handbook.status.color_background : ''}
+										labelColor={handbook.status && handbook.status.color_text.length ? handbook.status.color_text : ''}
 										imageUrl={UPLOADS_URL + handbook.logo_url}
 										navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`}
 										title={handbook.title} />

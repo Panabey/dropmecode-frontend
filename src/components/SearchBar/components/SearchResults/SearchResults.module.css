@@ -1,7 +1,7 @@
-.history{
+.results{
 	flex: 1;
 }
-.history__empty{
+.results__empty{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -9,18 +9,18 @@
 	height: 100%;
 	text-align: center;
 }
-.history__empty svg{
+.results__empty svg{
 	filter: brightness(0);
 	opacity: 0.4;
 }
-.history__empty h4{
+.results__empty h4{
 	color: #000;
 	font-size: 1.3rem;
 	font-weight: 500;
 	margin-top: 15px;
 	opacity: 0.9;
 }
-.history__empty p{
+.results__empty p{
 	max-width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -81,6 +81,6 @@
 	margin-top: 5px;
 	gap: 15px 0;
 }
-.item__icon_time{
+.item__icon_book{
 	margin-right: 20px;
 }

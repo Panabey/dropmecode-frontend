@@ -3,8 +3,9 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { IoClose, IoSearch } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
-import { searchSlice } from '../../slices/search.slice'
+import { iSearchHistoryItem, searchSlice } from '../../slices/search.slice'
 import { SearchHistory } from '../SearchHistory/SearchHistory'
+import { SearchResults } from '../SearchResults/SearchResults'
 import { SearchSelector } from '../SearchSelector/SearchSelector'
 import s from "./SearchModal.module.css"
 
@@ -23,6 +24,8 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const history = useTypedSelector((state) => state.searchSlice.history)
 	const { onChangeFilter, onRemoveHistoryItem, initStore } = searchSlice.actions
 	const dispatch = useDispatch()
+
+	const [searchResults, setSearchResults] = useState<iSearchHistoryItem[]>([])
 
 	useEffect(() => {
 		ref.current = document.querySelector<HTMLElement>("#search")
@@ -48,6 +51,25 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		dispatch(initStore())
 	}, [])
 
+	useEffect(() => {
+		let timer: any;
+		if (isOpened) {
+			if (searchValue.length === 0) {
+				if (searchResults.length) {
+					setSearchResults([])
+				}
+			} else {
+				timer = setTimeout(() => {
+					console.log('debounce')
+				}, 300)
+			}
+
+		}
+		return () => {
+			clearTimeout(timer)
+		}
+	}, [searchValue, searchResults, selectedFilter, isOpened])
+
 	return (mounted && ref.current)
 		? createPortal(
 			isOpened
@@ -61,7 +83,8 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 							</div>
 							<SearchSelector selectedFilter={selectedFilter} onChangeFilter={(filter) => dispatch(onChangeFilter(filter))} />
 						</div>
-						<SearchHistory history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} />
+						{!searchResults.length && <SearchHistory history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} />}
+						{searchResults.length && <SearchResults results={searchResults} />}
 						<div className={s.results}>
 						</div>
 						<div className={s.statusbar}>

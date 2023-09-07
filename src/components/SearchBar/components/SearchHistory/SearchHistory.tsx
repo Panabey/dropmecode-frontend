@@ -1,9 +1,7 @@
-import Link from 'next/link'
 import { FC } from 'react'
 import { AiOutlineHistory } from 'react-icons/ai'
-import { BsArrowBarRight } from 'react-icons/bs'
-import { IoClose } from 'react-icons/io5'
 import { iSearchHistoryItem } from '../../slices/search.slice'
+import { SearchItem } from '../SearchItem/SearchItem'
 import s from './SearchHistory.module.css'
 
 interface iProps {
@@ -15,7 +13,6 @@ interface iProps {
 export const SearchHistory: FC<iProps> = ({ history, removeHistoryItem }) => {
 
 	function onClickRemoveItem(event: MouseEvent, item: iSearchHistoryItem) {
-		console.log(event)
 		event.preventDefault()
 		event.stopPropagation()
 		removeHistoryItem(item)
@@ -31,9 +28,6 @@ export const SearchHistory: FC<iProps> = ({ history, removeHistoryItem }) => {
 						<p>Вы не искали ещё ни одной страницы. Пожалуйста, выберите категорию поиска, введите текст в поле ввода и найдите нужный вам материал!</p>
 					</div>
 					: <div className={s.items}>
-						<HistoryLinks history={history} filter='langs' title='Справочники' onRemoveItem={onClickRemoveItem} />
-						<HistoryLinks history={history} filter='articles' title='Статьи' onRemoveItem={onClickRemoveItem} />
-						<HistoryLinks history={history} filter='quizes' title='Квизы' onRemoveItem={onClickRemoveItem} />
 						<HistoryLinks history={history} filter='langs' title='Справочники' onRemoveItem={onClickRemoveItem} />
 						<HistoryLinks history={history} filter='articles' title='Статьи' onRemoveItem={onClickRemoveItem} />
 						<HistoryLinks history={history} filter='quizes' title='Квизы' onRemoveItem={onClickRemoveItem} />
@@ -62,16 +56,9 @@ const HistoryLinks: FC<iHistoryLinks> = ({ history, title, filter, onRemoveItem 
 			<div className={s.items__column}>
 				{history.filter((theme) => theme.label === filter).map((item) => {
 					return (
-						<Link className={s.item} href={item.link} key={item.link}>
+						<SearchItem {...item} key={item.link} onRemoveItem={onRemoveItem} isHistoryItem={true}>
 							<AiOutlineHistory color='#000' size={25} className={s.item__icon_time} />
-							<div className={s.item__content}>
-								<span>{item.title}</span>
-								<aside>{item.theme}</aside>
-							</div>
-							<IoClose className={s.item__icon_delete} fill="#000" size={22} onClick={(event) => onRemoveItem(event, item)} />
-							<BsArrowBarRight className={s.item__icon_arrow} color='#000' size={25} />
-						</Link>
-
+						</SearchItem>
 					)
 				})}
 			</div>
