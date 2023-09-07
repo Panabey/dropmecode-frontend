@@ -2,17 +2,31 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FaGithub } from 'react-icons/fa'
+import { useEffect, useRef } from 'react'
 import { BsBoxSeam } from 'react-icons/bs'
+import { FaGithub } from 'react-icons/fa'
 import { SearchBar } from '../SearchBar/SearchBar'
-import s from './SidebarMenu.module.css'
+import s from './Header.module.css'
 
-export const SidebarMenu = () => {
+export const Header = () => {
 
 	const { pathname } = useRouter();
 
+	const headerRef = useRef<HTMLHeadingElement | null>(null)
+	useEffect(() => {
+		if (headerRef.current) {
+			const rootNode = document.getElementsByTagName('html')
+			rootNode[0].style.scrollPaddingTop = headerRef.current.clientHeight + 'px';
+		}
+
+		return () => {
+			const rootNode = document.getElementsByTagName('html')
+			rootNode[0].style.scrollPaddingTop = '0px';
+		}
+	}, [headerRef])
+
 	return (
-		<div className={s.sidebar}>
+		<header className={s.header} ref={headerRef}>
 			<div className={s.content}>
 				<div className={s.content__row}>
 					<Link href='/' className={s.link_logo}>
@@ -40,6 +54,6 @@ export const SidebarMenu = () => {
 					</ul>
 				</nav>
 			</div>
-		</div>
+		</header>
 	)
 }

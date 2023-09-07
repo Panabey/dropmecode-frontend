@@ -1,15 +1,12 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { iQuizesinfo } from '@/pages/quizes'
-import { FC } from 'react'
-import s from './QuizesThemePageBuilder.module.css'
-import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
-import { useRouter } from 'next/router'
-import getSlug from 'speakingurl'
-import { iQuizesThemePage } from '@/pages/quizes/[theme]'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
+import { iQuizesThemePage } from '@/pages/quizes/[theme]'
+import { useRouter } from 'next/router'
+import { FC } from 'react'
+import getSlug from 'speakingurl'
+import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
+import s from './QuizesThemePageBuilder.module.css'
 
 interface iProps {
 	pageInfo: iQuizesThemePage
@@ -32,9 +29,9 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 						<div className={s.quizes}>
 							{pageInfo.quizzes.map((quiz) => {
 								return (
-									<QuizPreview 
-										key={quiz.id} 
-										{...quiz}  
+									<QuizPreview
+										key={quiz.id}
+										{...quiz}
 										slug={`/quizes/${router.query.theme}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
 									/>
 								)

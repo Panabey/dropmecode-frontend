@@ -1,14 +1,12 @@
 import { Container } from '@/components/Container/Container'
-import { Layout } from '@/components/Layout/Layout'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
+import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { PartitionInfo } from '@/components/PartitionInfo/PartitionInfo'
-import { SidebarMenu } from '@/components/SidebarMenu/SidebarMenu'
-import { iLangInfo, iLangPage } from '@/pages/langs/[id]'
+import { iLangInfo } from '@/pages/langs/[id]'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './LangDocsPageBuilder.module.css'
-import { PageLayout } from '@/components/PageLayout/PageLayout'
 
 interface iProps {
 	langInfo: iLangInfo

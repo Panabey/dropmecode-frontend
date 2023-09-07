@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { FC, ReactNode } from 'react'
+import { Header } from '../Header/Header'
 import { Layout } from '../Layout/Layout'
-import { SidebarMenu } from '../SidebarMenu/SidebarMenu'
 import s from './PageLayout.module.css'
 
 interface iProps {
@@ -12,7 +12,7 @@ interface iProps {
 export const PageLayout: FC<iProps> = ({ children, className }) => {
 	return (
 		<>
-			<SidebarMenu />
+			<Header />
 			<Layout className={classNames(s.Layout, { [className || '']: className })}>
 				{children}
 			</Layout>
