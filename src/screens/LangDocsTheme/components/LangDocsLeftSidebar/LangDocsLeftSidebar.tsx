@@ -36,7 +36,7 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook }) => {
 													{section.page.map((link) => {
 														return (
 															<Link
-																href={'/langs/' + handbook + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`}
+																href={'/langs/' + handbook + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`}
 																className={s.tree__link}
 																key={link.id}
 															>

@@ -81,6 +81,6 @@
 	margin-top: 5px;
 	gap: 15px 0;
 }
-.item__icon_time{
+.item__icon_time, .item__icon_book{
 	margin-right: 20px;
 }

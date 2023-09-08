@@ -5,6 +5,7 @@ export interface iSearchHistoryItem {
 	link: string
 	label: iInitialState['selectedFilter']
 	theme: string
+	imageUrl?: string
 }
 
 interface iInitialState {
@@ -30,7 +31,8 @@ export const searchSlice = createSlice({
 			state.selectedFilter = action.payload
 		},
 		onAddHistoryItem: (state, action: PayloadAction<iSearchHistoryItem>) => {
-			state.history.push(action.payload)
+			state.history = state.history.filter((item) => item.link !== action.payload.link)
+			state.history.unshift(action.payload)
 			localStorage.setItem('history', JSON.stringify(state.history));
 		},
 		onRemoveHistoryItem: (state, action: PayloadAction<iSearchHistoryItem>) => {

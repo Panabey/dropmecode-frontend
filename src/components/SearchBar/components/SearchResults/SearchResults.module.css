@@ -34,6 +34,7 @@
 	flex-direction: column;
 	overflow-y: auto;
 	max-height: 45vh;
+	padding-top: 10px;
 }
 .items::-webkit-scrollbar-track
 {

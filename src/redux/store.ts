@@ -1,3 +1,4 @@
+import { searchAPI } from '@/components/SearchBar/api/search.api'
 import { searchSlice } from '@/components/SearchBar/slices/search.slice'
 import { langDocsThemeAPI } from '@/screens/LangDocsTheme/api/langDocsTheme.api'
 import { quizAPI } from '@/screens/Quiz/api/quiz.api'
@@ -7,6 +8,7 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux'
 const rootReducer = combineReducers({
 	[quizAPI.reducerPath]: quizAPI.reducer,
 	[langDocsThemeAPI.reducerPath]: langDocsThemeAPI.reducer,
+	[searchAPI.reducerPath]: searchAPI.reducer,
 	[searchSlice.name]: searchSlice.reducer
 })
 
@@ -16,7 +18,8 @@ export const setupStore = () => {
 		middleware: getDefaultMiddleware =>
 			getDefaultMiddleware().concat(
 				quizAPI.middleware,
-				langDocsThemeAPI.middleware
+				langDocsThemeAPI.middleware,
+				searchAPI.middleware
 			),
 	})
 }

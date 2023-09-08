@@ -1,7 +1,11 @@
+import { UPLOADS_URL } from '@/lib/constants'
 import { FC } from 'react'
 import { AiOutlineHistory } from 'react-icons/ai'
-import { iSearchHistoryItem } from '../../slices/search.slice'
+import { BsBook } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
+import { iSearchHistoryItem, searchSlice } from '../../slices/search.slice'
 import { SearchItem } from '../SearchItem/SearchItem'
+import { SearchItemExtended } from '../SearchItemExended/SearchItemExended'
 import s from './SearchHistory.module.css'
 
 interface iProps {
@@ -55,11 +59,17 @@ const HistoryLinks: FC<iHistoryLinks> = ({ history, title, filter, onRemoveItem 
 			<h4 className={s.items__title}>{title}</h4>
 			<div className={s.items__column}>
 				{history.filter((theme) => theme.label === filter).map((item) => {
-					return (
-						<SearchItem {...item} key={item.link} onRemoveItem={onRemoveItem} isHistoryItem={true}>
-							<AiOutlineHistory color='#000' size={25} className={s.item__icon_time} />
-						</SearchItem>
-					)
+					if (item.label === 'langs') {
+						return (
+							<SearchItem {...item} key={item.link} isHistoryItem={false} onRemoveItem={onRemoveItem}>
+								<BsBook color='#000' size={25} className={s.item__icon_book} />
+							</SearchItem>
+						)
+					} else {
+						return (
+							<SearchItemExtended {...item} key={item.link} isHistoryItem={false} imageUrl={(item.imageUrl || '')} onRemoveItem={onRemoveItem} />
+						)
+					}
 				})}
 			</div>
 		</div>

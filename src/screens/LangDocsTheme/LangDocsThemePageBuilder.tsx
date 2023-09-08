@@ -35,7 +35,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 								{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
 								{
 									title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
-									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`
+									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`
 								},
 							]}
 						/>

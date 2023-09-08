@@ -37,7 +37,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 								description={content.description}
 								links={content.page.map((link) => {
 									return {
-										navigationUrl: '/langs/' + router.query.id + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join('').toLowerCase(), { lang: 'ru' })}`,
+										navigationUrl: '/langs/' + router.query.id + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`,
 										partnumber: link.title.split(' ')[0],
 										title: link.title.split(' ').filter((_, idx) => idx !== 0).join(' ')
 									}

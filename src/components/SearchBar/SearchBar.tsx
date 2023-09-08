@@ -1,6 +1,6 @@
 import { useTypedSelector } from '@/redux/store';
 import classNames from 'classnames';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import s from './SearchBar.module.css';
@@ -18,12 +18,16 @@ export const SearchBar: FC<iProps> = ({ className }) => {
 	const { onChangeOpen } = searchSlice.actions
 	const dispatch = useDispatch()
 
+	function onCloseModal() {
+		dispatch(onChangeOpen(false))
+	}
+
 	return (
 		<div className={classNames(s.search, { [className || '']: className })} onClick={() => dispatch(onChangeOpen(true))}>
 			<IoSearch fill="#000" size={35} />
 			<span className={s.search__input}>Поиск...</span>
 			<span className={s.search__hotkey}>CTRL + <aside>K</aside> </span>
-			<SearchModal isOpened={isOpenedModal} onClose={() => dispatch(onChangeOpen(false))} />
+			<SearchModal isOpened={isOpenedModal} onClose={onCloseModal} />
 		</div>
 	)
 }
