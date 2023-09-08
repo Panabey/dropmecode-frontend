@@ -1,6 +1,7 @@
+import { useHotkey } from '@/hooks/useHotkey';
 import { useTypedSelector } from '@/redux/store';
 import classNames from 'classnames';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import s from './SearchBar.module.css';
@@ -21,6 +22,10 @@ export const SearchBar: FC<iProps> = ({ className }) => {
 	function onCloseModal() {
 		dispatch(onChangeOpen(false))
 	}
+
+	useHotkey('ctrl', 'KeyK', () => {
+		dispatch(onChangeOpen(true))
+	})
 
 	return (
 		<div className={classNames(s.search, { [className || '']: className })} onClick={() => dispatch(onChangeOpen(true))}>
