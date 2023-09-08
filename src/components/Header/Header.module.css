@@ -8,14 +8,12 @@
 	background-color: #FFFFFF;
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 	padding: 20px 15px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 2.5fr 11fr 4fr;
 }
 .content{
 	display: flex;
-	width: 73%;
+	width: 100%;
 	margin: 0 auto;
 	align-items: center;
 	justify-content: space-between;

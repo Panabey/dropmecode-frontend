@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container/Container'
 import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { useHeadingsNavigation } from '@/hooks/useHeadingsNavigation'
@@ -24,7 +25,8 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 	return (
 		<>
 			<PageLayout className={s.layout}>
-				<div className={s.area}>
+				<PageArea>
+					<div></div>
 					<Container className={s.container}>
 						<PageCommonInfo
 							title={langDocs.title}
@@ -41,7 +43,8 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 						/>
 						<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
 					</Container>
-				</div>
+					<div></div>
+				</PageArea>
 			</PageLayout>
 			{pageNavigationLinks.length && router.isReady ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
 			{router.isReady && <LangDocsLeftSidebar handbook={String(router.query.id)} />}

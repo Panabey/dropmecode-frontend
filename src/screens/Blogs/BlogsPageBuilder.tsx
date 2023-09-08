@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container/Container'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import s from './BlogsPageBuilder.module.css'
@@ -6,7 +7,8 @@ import s from './BlogsPageBuilder.module.css'
 export const BlogsPageBuilder = () => {
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<div></div>
+			<PageArea>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Блог проекта'
@@ -15,7 +17,8 @@ export const BlogsPageBuilder = () => {
 					/>
 					123
 				</Container>
-			</div>
+			</PageArea>
+			<div></div>
 		</PageLayout>
 	)
 }

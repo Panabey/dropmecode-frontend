@@ -7,6 +7,7 @@ import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './QuizesPageBuilder.module.css'
 import { QuizPreview } from './components/QuizPreview/QuizPreview'
+import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	pageInfo: iQuizesPageInfo[]
@@ -15,7 +16,8 @@ interface iProps {
 export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Квизы'
@@ -47,7 +49,8 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						)
 					})}
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }

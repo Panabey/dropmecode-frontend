@@ -11,6 +11,7 @@ import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
 import { QuizQuestionLoader } from './components/QuizQuestionLoader/QuizQuestionLoader'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 import { getQuizResultInfo } from './utils/quizUtils'
+import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	pageInfo: iQuizPagePreview
@@ -73,7 +74,8 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={quizStatus === 'preview' ? pageInfo.title : ''}
@@ -127,7 +129,8 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						}
 					</section>
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 			<QuizRightSidebar quizStatus={quizStatus} quizTags={[{ title: "Квизы дня", navigationUrl: "/quizes/hot" }, { title: "Javascript", navigationUrl: "/quizes/js" }, { title: "Python", navigationUrl: "/quizes/python" }]} />
 		</PageLayout>
 	)

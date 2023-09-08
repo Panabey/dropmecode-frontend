@@ -27,6 +27,7 @@ export const Header = () => {
 
 	return (
 		<header className={s.header} ref={headerRef}>
+			<div></div>
 			<div className={s.content}>
 				<div className={s.content__row}>
 					<Link href='/' className={s.link_logo}>
@@ -54,6 +55,7 @@ export const Header = () => {
 					</ul>
 				</nav>
 			</div>
+			<div></div>
 		</header>
 	)
 }

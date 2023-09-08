@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container/Container'
 import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { iArticle } from '@/pages/articles/[slug]'
@@ -16,7 +17,8 @@ interface iProps {
 export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={article.title}
@@ -67,7 +69,8 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 						</div>
 					</footer>
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }

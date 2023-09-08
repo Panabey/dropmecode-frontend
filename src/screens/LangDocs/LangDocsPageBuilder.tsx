@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './LangDocsPageBuilder.module.css'
+import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	langInfo: iLangInfo
@@ -17,7 +18,8 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={langInfo.title}
@@ -47,7 +49,8 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 						)
 					})}
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }

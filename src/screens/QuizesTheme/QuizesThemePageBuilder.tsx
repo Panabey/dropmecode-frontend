@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container/Container'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { iQuizesThemePage } from '@/pages/quizes/[theme]'
@@ -18,7 +19,8 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 	return (
 		<PageLayout>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={pageInfo.title}
@@ -39,7 +41,8 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 						</div>
 					</section>
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }

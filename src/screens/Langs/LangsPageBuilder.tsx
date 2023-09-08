@@ -9,6 +9,7 @@ import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import getSlug from 'speakingurl'
 import s from './LangsPageBuilder.module.css'
+import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	handbooks: iHandbook[]
@@ -17,7 +18,8 @@ interface iProps {
 export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Справочники по языкам'
@@ -50,7 +52,8 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 						</div>
 					</section> */}
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }

@@ -7,6 +7,7 @@ import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './ArticlesListPageBuilder.module.css'
 import { ArticlesListPreview } from './components/ArticlesListPreview'
+import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	pageInfo: iArticlePageInfo
@@ -15,7 +16,8 @@ interface iProps {
 export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	return (
 		<PageLayout className={s.layout}>
-			<div className={s.area}>
+			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Статьи'
@@ -39,7 +41,8 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 					</div>
 				</Container>
-			</div>
+				<div></div>
+			</PageArea>
 		</PageLayout>
 	)
 }
