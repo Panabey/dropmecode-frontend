@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-export const useHotkey = (clampedKey: 'ctrl' | 'shift' | 'alt', keyCode: string, onPressed: () => void) => {
+export const useHotkey = (clampedKey: 'ctrl' | 'shift' | 'alt', keyCode: string, onPressed: () => void, deps?: any[]) => {
 	useEffect(() => {
 		function onPressKey(event: KeyboardEvent) {
 			if (clampedKey === 'alt' && event.altKey && event.code === keyCode) {
@@ -25,5 +25,5 @@ export const useHotkey = (clampedKey: 'ctrl' | 'shift' | 'alt', keyCode: string,
 		return () => {
 			document.removeEventListener('keydown', onPressKey, false)
 		}
-	}, [])
+	}, [deps])
 }
