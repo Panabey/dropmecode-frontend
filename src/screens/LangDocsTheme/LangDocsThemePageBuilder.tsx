@@ -26,7 +26,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 		<>
 			<PageLayout className={s.layout}>
 				<PageArea>
-					<div></div>
+					<div className={s.layout__sidebar_left}>{router.isReady && <LangDocsLeftSidebar handbook={String(router.query.id)} />}</div>
 					<Container className={s.container}>
 						<PageCommonInfo
 							title={langDocs.title}
@@ -43,11 +43,11 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 						/>
 						<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
 					</Container>
-					<div></div>
+					<div className={s.layout__sidebar_right}>
+						{pageNavigationLinks.length && router.isReady ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
+					</div>
 				</PageArea>
 			</PageLayout>
-			{pageNavigationLinks.length && router.isReady ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
-			{router.isReady && <LangDocsLeftSidebar handbook={String(router.query.id)} />}
 		</>
 	)
 }

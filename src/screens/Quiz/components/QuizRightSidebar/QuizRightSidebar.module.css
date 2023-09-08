@@ -1,9 +1,19 @@
 .sidebar{
 	position: fixed;
-	right: 17vw;
+	display: grid;
+	grid-template-columns: 11.5fr 6fr;
+	left: 0;
+	width: 100%;
+}
+.filler{
+	position: relative;
+	z-index: -1;
+}
+.blocks{
 	display: flex;
 	flex-direction: column;
-	margin-top: 15vh;
+	padding-top: 30px;
+	padding-left: 30px;
 }
 .block{
 	display: flex;

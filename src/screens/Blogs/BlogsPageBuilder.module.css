@@ -3,9 +3,7 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
-.area{
-	width: 74%;
-}
+
 .container{
 	display: flex;
 	flex-direction: column;

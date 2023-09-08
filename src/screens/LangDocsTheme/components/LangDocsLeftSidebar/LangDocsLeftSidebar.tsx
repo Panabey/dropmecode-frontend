@@ -54,6 +54,7 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook }) => {
 						: <LangDocsSidebarThemeLoader />
 				}
 			</div>
+			<div className={s.filler}></div>
 		</div>
 	)
 }

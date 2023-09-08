@@ -7,8 +7,8 @@ import s from './BlogsPageBuilder.module.css'
 export const BlogsPageBuilder = () => {
 	return (
 		<PageLayout className={s.layout}>
-			<div></div>
 			<PageArea>
+				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Блог проекта'
@@ -17,8 +17,8 @@ export const BlogsPageBuilder = () => {
 					/>
 					123
 				</Container>
+				<div></div>
 			</PageArea>
-			<div></div>
 		</PageLayout>
 	)
 }
