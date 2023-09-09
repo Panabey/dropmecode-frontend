@@ -91,8 +91,17 @@
 	opacity: 0.7;
 }
 .tree__link{
+	cursor: pointer;
 	text-decoration: none;
 	font-size: 0.8rem;
 	margin-left: 10px;
 	color: #000;
+}
+.tree__link:hover{
+	font-weight: 500;
+}
+.tree__link.active{
+	pointer-events: none;
+	text-decoration: underline;
+	font-weight: 500;
 }

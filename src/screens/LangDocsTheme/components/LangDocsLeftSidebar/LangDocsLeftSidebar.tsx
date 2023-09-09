@@ -8,9 +8,10 @@ import s from './LangDocsLeftSidebar.module.css'
 
 interface iProps {
 	handbook: string
+	activeThemeId: number
 }
 
-export const LangDocsLeftSidebar: FC<iProps> = ({ handbook }) => {
+export const LangDocsLeftSidebar: FC<iProps> = ({ handbook, activeThemeId }) => {
 
 	const { isLoading, data, error } = useGetHandbookThemesQuery({ handbook })
 
@@ -37,7 +38,7 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook }) => {
 														return (
 															<Link
 																href={'/langs/' + handbook + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`}
-																className={s.tree__link}
+																className={classNames(s.tree__link, { [s.active]: activeThemeId === link.id })}
 																key={link.id}
 															>
 																{link.title}
@@ -54,7 +55,7 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook }) => {
 						: <LangDocsSidebarThemeLoader />
 				}
 			</div>
-			<div className={s.filler}></div>
+			<div className={"filler"}></div>
 		</div>
 	)
 }

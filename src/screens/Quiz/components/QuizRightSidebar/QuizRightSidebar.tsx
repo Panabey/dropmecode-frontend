@@ -16,7 +16,7 @@ interface iProps {
 export const QuizRightSidebar: FC<iProps> = ({ quizStatus, quizTags }) => {
 	return (
 		<div className={s.sidebar}>
-			<div className={s.filler}></div>
+			<div className={"filler"}></div>
 			<div className={s.blocks}>
 				{
 					quizStatus !== 'running'

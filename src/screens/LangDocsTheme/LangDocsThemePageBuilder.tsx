@@ -26,7 +26,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 		<>
 			<PageLayout className={s.layout}>
 				<PageArea>
-					<div className={s.layout__sidebar_left}>{router.isReady && <LangDocsLeftSidebar handbook={String(router.query.id)} />}</div>
+					<div className={s.layout__sidebar_left}>{router.isReady && <LangDocsLeftSidebar activeThemeId={Number(String(router.query.theme).split('-')[0])} handbook={String(router.query.id)} />}</div>
 					<Container className={s.container}>
 						<PageCommonInfo
 							title={langDocs.title}
