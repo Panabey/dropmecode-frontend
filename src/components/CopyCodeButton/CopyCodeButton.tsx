@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { FC, ReactNode, useState } from 'react';
-import { HiOutlineClipboardDocumentCheck, HiOutlineClipboardDocumentList } from 'react-icons/hi2';
+import { GoCheckbox, GoCopy } from 'react-icons/go';
 import s from './CopyCodeButton.module.css';
 
 interface iProps {
@@ -19,12 +19,15 @@ export const CopyCodeButton: FC<iProps> = ({ children }) => {
 		}, 3000);
 	}
 	return (
-		<div className={classNames(s.copy, { [s.copied]: isCopied }, { [s.nocopied]: !isCopied })} onClick={handleClick}>
-			{
-				!isCopied
-					? <HiOutlineClipboardDocumentList color="#000" size={25} />
-					: <HiOutlineClipboardDocumentCheck color="#1DC989" size={25} />
-			}
+		<div className={s.copy} onClick={handleClick}>
+			<aside className={classNames(s.text, { [s.copied]: isCopied }, { [s.nocopied]: !isCopied })}>Скопировано!</aside>
+			<div className={classNames(s.icon, { [s.copied]: isCopied }, { [s.nocopied]: !isCopied })}>
+				{
+					!isCopied
+						? <GoCopy color="#000" size={20} />
+						: <GoCheckbox color="#1DC989" size={20} />
+				}
+			</div>
 		</div>
 	)
 }
