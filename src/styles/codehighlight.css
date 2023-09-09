@@ -1,3 +1,8 @@
+.markdown-body pre{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
 pre > div{
 	background: transparent !important;
 }
