@@ -1,0 +1,40 @@
+.copy{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 15px;
+	margin-top: 15px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+	background-color: #F6F8FA !important;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.05);
+	z-index: 2;
+}
+.copy svg{
+	opacity: 0.6;
+}
+.copy:hover svg{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 1;
+}
+.copy:hover{
+	transition: 0.2s ease-in-out background-color;
+	background-color: rgba(255, 255, 255, 0.7) !important;
+}
+.copy.nocopied svg{
+	filter: brightness(0);
+}
+.copy.copied path{
+	color: #1DC989 !important;
+}
+.copy.copied{
+	transition: 0.2s ease-in-out background-color;
+	background-color: rgba(255, 255, 255, 0.7) !important;
+}
+.copy.copied svg{
+	opacity: 1;
+}

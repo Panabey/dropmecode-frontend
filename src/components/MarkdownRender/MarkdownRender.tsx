@@ -5,10 +5,23 @@ import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import highlightStyle from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import { CopyCodeButton } from "../CopyCodeButton/CopyCodeButton"
 
 interface iProps {
 	children: string
 	className?: string
+}
+
+interface iPropsPre {
+	children: any
+}
+const Pre: FC<iPropsPre> = ({ children }) => {
+	return (
+		<pre style={{ position: 'relative' }}>
+			<CopyCodeButton>{children}</CopyCodeButton>
+			{children}
+		</pre>
+	)
 }
 
 export const MarkdownRender: FC<iProps> = ({ children, className: customClass }) => {
@@ -18,6 +31,7 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
 			components={{
+				pre: Pre,
 				code({ node, inline, className, children, ...props }) {
 					const match = /language-(\w+)/.exec(className || '')
 					return !inline && match ? (
