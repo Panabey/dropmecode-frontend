@@ -32,7 +32,10 @@ export const searchSlice = createSlice({
 		},
 		onAddHistoryItem: (state, action: PayloadAction<iSearchHistoryItem>) => {
 			state.history = state.history.filter((item) => item.link !== action.payload.link)
-			state.history.unshift(action.payload)
+			if (state.history.length >= 100) {
+				state.history = state.history.slice(0, 99)
+			}
+			state.history = [action.payload, ...state.history]
 			localStorage.setItem('history', JSON.stringify(state.history));
 		},
 		onRemoveHistoryItem: (state, action: PayloadAction<iSearchHistoryItem>) => {

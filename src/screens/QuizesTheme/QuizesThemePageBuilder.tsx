@@ -34,7 +34,7 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 									<QuizPreview
 										key={quiz.id}
 										{...quiz}
-										slug={`/quizes/${router.query.theme}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
+										slug={`/quizes/content/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
 									/>
 								)
 							})}

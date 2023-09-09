@@ -40,7 +40,7 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 												logo_url={quiz.logo_url}
 												short_description={quiz.short_description}
 												title={quiz.title}
-												slug={`/quizes/${info.id}-${getSlug(info.title, { lang: 'ru' })}/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
+												slug={`/quizes/content/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`}
 											/>
 										)
 									})}

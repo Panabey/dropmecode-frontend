@@ -1,17 +1,18 @@
 import { Container } from '@/components/Container/Container'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
-import { iQuizPagePreview } from '@/pages/quizes/[theme]/[quiz]'
+import { iQuizPagePreview } from '@/pages/quizes/content/[id]'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
+import getSlug from 'speakingurl'
 import s from './QuizPageBuilder.module.css'
 import { iAPIQuizQuestion, useGetQuestionAnswerMutation, useGetQuestionMutation } from './api/quiz.api'
 import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
 import { QuizQuestionLoader } from './components/QuizQuestionLoader/QuizQuestionLoader'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 import { getQuizResultInfo } from './utils/quizUtils'
-import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	pageInfo: iQuizPagePreview
@@ -72,6 +73,8 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 		}
 	}
 
+	console.log(router)
+
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
@@ -83,8 +86,8 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Квизы", navigationUrl: "/quizes" },
-							{ title: pageInfo.topic.title, navigationUrl: "/quizes/" + router.query.theme },
-							{ title: pageInfo.title, navigationUrl: "/quizes/" + router.query.theme + "/" + router.query.quiz },
+							{ title: (pageInfo?.topic?.title || 'Без категории'), navigationUrl: "/quizes/" + (pageInfo?.topic?.id ? (pageInfo.topic.id + '-' + getSlug((pageInfo.topic.title), { lang: 'ru' })) : 'unsetted') },
+							{ title: pageInfo.title, navigationUrl: "/quizes/content/" + router.query.id },
 						]}
 					/>
 					<section className={s.quiz}>

@@ -36,14 +36,14 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 
 	const router = useRouter()
 
-	function onCloseModal(){
+	function onCloseModal() {
 		onClose()
 		setSearchValue('')
 		dispatch(onChangeFilter('langs'))
 	}
 
 	useEffect(() => {
-		if(router.isReady){
+		if (router.isReady) {
 			onCloseModal()
 		}
 	}, [router])
@@ -139,7 +139,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 				{
 					return {
 						title: quiz.title,
-						link: `/quizes/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`,
+						link: `/quizes/content/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`,
 						label: 'quizes',
 						theme: quiz.short_description,
 						imageUrl: quiz.logo_url
