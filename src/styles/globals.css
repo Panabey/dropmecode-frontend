@@ -38,3 +38,18 @@ body{
 	z-index: -1;
   pointer-events: none;
 }
+.goose2{
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  transform: scaleX(-1);
+  max-height: 3rem;
+  margin: auto;
+}
+.hidden{
+  display: none;
+}
