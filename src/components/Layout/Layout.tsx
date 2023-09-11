@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import s from './Layout.module.css'
 
 interface iProps {
@@ -8,7 +8,14 @@ interface iProps {
 }
 
 export const Layout: FC<iProps> = ({ children, className }) => {
+
+	const [headerHeight, setHeaderHeight] = useState<number>(0);
+
+	useEffect(() => {
+		setHeaderHeight(document.querySelector('.header')?.clientHeight || 0);
+	}, [])
+
 	return (
-		<div className={classNames(s.layout, { [className || '']: className })}>{children}</div>
+		<div className={classNames(s.layout, { [className || '']: className })} style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}>{children}</div>
 	)
 }

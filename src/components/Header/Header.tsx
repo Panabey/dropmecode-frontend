@@ -26,7 +26,7 @@ export const Header = () => {
 	}, [headerRef])
 
 	return (
-		<header className={s.header} ref={headerRef}>
+		<header className={classNames(s.header, 'header')} ref={headerRef}>
 			<div></div>
 			<div className={s.content}>
 				<div className={s.content__row}>
