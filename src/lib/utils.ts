@@ -11,3 +11,10 @@ export function splitText(str: string, length: number): string {
 	}
 	return str.slice(0, length)
 }
+
+export function getScreenWidthPercent(percent: number): number{
+	if(typeof window === 'undefined'){
+		return 0;
+	}
+	return Math.floor(window.screen.width / 100 * percent)
+}

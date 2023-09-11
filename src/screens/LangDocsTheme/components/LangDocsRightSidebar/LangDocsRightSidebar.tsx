@@ -11,7 +11,6 @@ export const LangDocsRightSidebar: FC<iProps> = ({ navigationLinks }) => {
 
 	return (
 		<div className={s.sidebar}>
-			<div className={"filler"}></div>
 			<div className={s.block}>
 				<h4 className={s.block__title}>На этой странице</h4>
 				<div className={s.block__column}>
