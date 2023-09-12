@@ -1,6 +1,7 @@
 import { HiCode, HiMenuAlt1 } from 'react-icons/hi'
 import { ImNewspaper } from 'react-icons/im'
 import { RiCheckboxMultipleLine } from 'react-icons/ri'
+import { HomeAbout } from '../HomeAbout/HomeAbout'
 import { HomePartition } from '../HomePartition/HomePartition'
 import s from './HomeInfo.module.css'
 
@@ -23,6 +24,8 @@ export const HomeInfo = () => {
 					<RiCheckboxMultipleLine size={40} />
 				</HomePartition>
 			</div>
+			<HomeAbout />
+			{/* <HomeAboutDetails /> */}
 		</main>
 	)
 }

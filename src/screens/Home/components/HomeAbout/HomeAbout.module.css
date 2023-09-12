@@ -1,0 +1,26 @@
+.about{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0 30px;
+	margin-top: 20px;
+}
+.about__img{
+	width: auto;
+	height: auto;
+	max-width: 50%;
+}
+.about__title{
+	font-size: 2rem;
+	color: #1DC989;
+}
+.about__subtitle{
+	margin-top: 10px;
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+.about__description{
+	margin-top: 10px;
+	font-size: 0.9rem;
+	opacity: 0.7;
+}

@@ -1,0 +1,31 @@
+.details{
+	display: flex;
+	flex-direction: column;
+}
+.details__title{
+	font-size: 2rem;
+	color: #1DC989;
+}
+.details__subtitle{
+	margin-top: 10px;
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+.details__blocks{
+	margin-top: 25px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 15px;
+}
+.block{
+	width: 100%;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid rgba(0,0,0,0.1);
+	display: flex;
+	align-items: center;
+	gap: 0 10px;
+}
+.block aside{
+	font-size: 0.9rem;
+}
