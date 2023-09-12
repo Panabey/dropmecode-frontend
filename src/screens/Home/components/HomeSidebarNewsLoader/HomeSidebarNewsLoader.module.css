@@ -1,0 +1,31 @@
+.link{
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 0 20px;
+	width: 100%;
+}
+.content{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.title{
+	width: 85%;
+	height: 0.95rem;
+}
+.datetime{
+	margin-top: 5px;
+	height: 0.8rem;
+	width: 60%;
+}
+.block__underline{
+	background-color: #000;
+	opacity: 0.1;
+	border: none;
+	height: 1px;
+	width: 100%;
+}
+.block__underline:last-child{
+	display: none;
+}

@@ -49,3 +49,13 @@
 .link:hover .datetime{
 	opacity: 0.4;
 }
+.block__underline{
+	background-color: #000;
+	opacity: 0.1;
+	border: none;
+	height: 1px;
+	width: 100%;
+}
+.block__underline:last-child{
+	display: none;
+}
