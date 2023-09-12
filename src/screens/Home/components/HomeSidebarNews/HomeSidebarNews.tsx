@@ -1,3 +1,4 @@
+import { splitText } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -19,8 +20,8 @@ export const HomeSidebarNews: FC<iProps> = ({ id, title, description, imageUrl, 
 			{imageUrl ? <Image width={512} height={512} alt="Картинка новости из блога" src={imageUrl} className={s.icon} /> : <></>}
 			<div className={s.content}>
 				<h5 className={s.title}>{title}</h5>
-				<p className={s.description}>{description}</p>
-				<span className={s.datetime}>{new Date(createDateTime).toLocaleString()}</span>
+				<p className={s.description}>{splitText(description, 45) + '...'}</p>
+				<span className={s.datetime}>{new Date(createDateTime).toLocaleString().slice(0, -3)}</span>
 			</div>
 		</Link>
 	)
