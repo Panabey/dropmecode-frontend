@@ -6,5 +6,10 @@
 .container{
 	display: flex;
 	flex-direction: column;
-	max-width: 85%;
+	max-width: 90%;
+}
+.layout__sidebar_right{
+	position: relative;
+	height: 100%;
+	padding-top: 35px;
 }

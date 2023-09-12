@@ -3,6 +3,7 @@ import { PageArea } from '@/components/PageArea/PageArea'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import s from './HomePageBuilder.module.css'
 import { HomeInfo } from './components/HomeInfo/HomeInfo'
+import { HomeRightSidebar } from './components/HomeRightSidebar/HomeRightSidebar'
 
 export const HomePageBuilder = () => {
 	return (
@@ -12,7 +13,9 @@ export const HomePageBuilder = () => {
 				<Container className={s.container}>
 					<HomeInfo />
 				</Container>
-				<div></div>
+				<div className={s.layout__sidebar_right}>
+					<HomeRightSidebar />
+				</div>
 			</PageArea>
 		</PageLayout>
 	)
