@@ -94,6 +94,8 @@
 	right: 0;
 	bottom: 7%;
 	transform: rotate(0deg) translateX(10%);
+	pointer-events: none;
+	user-select: none;
 }
 .goose.animated{
 	transition: 0.2s ease-in-out transform, 0.2s ease-in-out opacity;

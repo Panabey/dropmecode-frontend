@@ -15,6 +15,9 @@ export const Footer = () => {
 	const [actions, setActions] = useState<typeof goosePhrases>(goosePhrases);
 
 	function onClickGoose() {
+		if (actions.length === 0) {
+			return;
+		}
 		setGooseIsVisible(true)
 		setTimeout(() => {
 			setGooseIsAnimated(true)
