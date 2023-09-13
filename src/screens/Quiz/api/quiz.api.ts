@@ -28,6 +28,29 @@ interface iQuizAnswerParams {
 	question_id: number
 }
 
+interface iQuizTopicParams {
+	limit: number
+	count_content: number
+}
+
+interface iQuiz {
+	id: number;
+	logo_url: string;
+	title: string;
+	short_description: string;
+}
+
+interface iQuizTopics {
+	id: number;
+	title: string;
+	quizzes: iQuiz[];
+}
+
+interface iTopicQuizesParams {
+	limit: number
+	topic_id: number | null
+}
+
 export const quizAPI = createApi({
 	reducerPath: 'quizAPI',
 	baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
@@ -50,8 +73,26 @@ export const quizAPI = createApi({
 				}
 			},
 		}),
+		getTopics: builder.query<iQuizTopics[], iQuizTopicParams>({
+			query: (data) => {
+				return {
+					url: `/quiz/topic/all`,
+					method: 'GET',
+					params: data
+				}
+			},
+		}),
+		getQuizesFromTopic: builder.query<iQuizTopics, iTopicQuizesParams>({
+			query: (data) => {
+				return {
+					url: `/quiz/topic`,
+					method: 'GET',
+					params: data
+				}
+			},
+		}),
 	}),
 })
 
-export const { useGetQuestionMutation, useGetQuestionAnswerMutation } = quizAPI
+export const { useGetQuestionMutation, useGetQuestionAnswerMutation, useGetTopicsQuery, useGetQuizesFromTopicQuery } = quizAPI
 

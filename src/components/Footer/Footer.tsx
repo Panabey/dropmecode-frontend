@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import s from './Footer.module.css'
@@ -50,8 +51,12 @@ export const Footer = () => {
 					<div className={classNames(s.row)}>
 						<aside>Мы в соцсетях:</aside>
 						<div className={s.row}>
-							<FaGithub fill="#000" size={20} className={s.icon} />
-							<Image width={20} height={20} alt='SVG VK' src='/assets/Header/vk1.svg' className={s.icon} />
+							<Link href="https://github.com/Panabey">
+								<FaGithub fill="#000" size={20} className={s.icon} />
+							</Link>
+							<Link href="https://vk.com/dropmecode" target="_blank">
+								<Image width={20} height={20} alt='SVG VK' src='/assets/Header/vk1.svg' className={s.icon} />
+							</Link>
 						</div>
 					</div>
 					<div className={classNames(s.row, s.row__copyright)}>

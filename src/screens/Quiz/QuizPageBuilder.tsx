@@ -73,8 +73,6 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 		}
 	}
 
-	console.log(router)
-
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
@@ -134,7 +132,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 				</Container>
 				<div></div>
 			</PageArea>
-			<QuizRightSidebar quizStatus={quizStatus} quizTags={[{ title: "Квизы дня", navigationUrl: "/quizes/hot" }, { title: "Javascript", navigationUrl: "/quizes/js" }, { title: "Python", navigationUrl: "/quizes/python" }]} />
+			<QuizRightSidebar quizStatus={quizStatus} topicId={pageInfo.topic?.id || null} quizId={pageInfo.id} />
 		</PageLayout>
 	)
 }

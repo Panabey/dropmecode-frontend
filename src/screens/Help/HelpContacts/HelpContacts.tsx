@@ -12,17 +12,17 @@ export const HelpContacts = () => {
 				<div className={s.contacts__method}>
 					<GoMail size={32} color="#1F477D" className={s.contacts__icon} />
 					<aside className={s.contacts__text}>Напишите нам на почту: </aside>
-					<Link href='mailto:test@test.ru'>test@test.ru</Link>
+					<Link href='mailto:dropmecode@mail.ru'>dropmecode@mail.ru</Link>
 				</div>
 				<div className={s.contacts__method}>
 					<Image width={32} height={32} alt='SVG VK' src='/assets/Help/vk_1.png' className={s.contacts__icon} />
 					<aside className={s.contacts__text}>Напишите лично в VK: </aside>
-					<Link href='https://vk.com/test'>https://vk.com/test</Link>
+					<Link href='https://vk.com/dropmecode'>https://vk.com/dropmecode</Link>
 				</div>
 				<div className={s.contacts__method}>
 					<Image width={32} height={32} alt='SVG VK' src='/assets/Help/github.png' className={s.contacts__icon} />
-					<aside className={s.contacts__text}>Свяжитель через Github: </aside>
-					<Link href='https://github.com/kuligin'>https://github.com/kuligin</Link>
+					<aside className={s.contacts__text}>Мы на Github: </aside>
+					<Link href='https://github.com/Panabey'>https://github.com/Panabey</Link>
 				</div>
 			</div>
 		</div>

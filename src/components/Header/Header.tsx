@@ -49,8 +49,12 @@ export const Header = () => {
 						<Link href='/help'><li className={classNames(s.menu__item, { [s.menu__item_active]: pathname.startsWith('/help') })}>Помощь</li></Link>
 						<div className={s.menu__row}>
 							<div className={s.menu__upperline}></div>
-							<FaGithub fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
-							<Image width={20} height={20} alt='SVG VK' src='/assets/Header/vk1.svg' className={classNames(s.menu__item, s.menu__icon)} />
+							<Link href="https://github.com/Panabey">
+								<FaGithub fill="#000" size={20} className={classNames(s.menu__item, s.menu__icon)} />
+							</Link>
+							<Link href="https://vk.com/dropmecode" target="_blank">
+								<Image width={20} height={20} alt='SVG VK' src='/assets/Header/vk1.svg' className={classNames(s.menu__item, s.menu__icon)} />
+							</Link>
 						</div>
 					</ul>
 				</nav>

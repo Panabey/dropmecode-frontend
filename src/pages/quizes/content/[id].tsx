@@ -19,7 +19,7 @@ export interface iQuizPagePreview {
 	topic: {
 		id: number;
 		title: string;
-	}
+	} | null
 }
 
 export const getServerSideProps: GetServerSideProps<{
