@@ -1,0 +1,33 @@
+.contacts{
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+.contacts__title{
+	font-size: 2rem;
+	color: #1DC989;
+}
+.contacts__subtitle{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+.methods{
+	display: flex;
+	flex-direction: column;
+	gap: 18px 0;
+}
+.contacts__method{
+	display: flex;
+	align-items: center;
+}
+.contacts__icon{
+	margin-right: 12px;
+	max-width: 100%;
+	height: auto;
+}
+.contacts__text{
+	font-size: 1rem;
+	margin-right: 10px;
+}

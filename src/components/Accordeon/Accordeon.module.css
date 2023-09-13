@@ -1,0 +1,34 @@
+.accordeon{
+	width: 100%;
+	border: 1px solid rgba(0,0,0,0.1);
+}
+.accordeon__head{
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #FAFBFF;
+	padding: 15px 30px;
+}
+.title{
+	color: #000;
+	font-size: 1rem;
+	font-weight: 400;
+}
+.arrow{
+	transition: 0.2s ease-in-out transform;
+}
+.arrow.opened{
+	transform: rotate(180deg);
+}
+.accordeon__body{
+	background-color: #fff;
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+}
+.description{
+	padding: 15px 30px;
+	color: #000;
+	font-size: 0.9rem;
+}
