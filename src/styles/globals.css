@@ -53,3 +53,6 @@ body{
 .hidden{
   display: none;
 }
+.goose__cursor{
+  cursor:url('/assets/Goose/cursor.png'), auto;
+}

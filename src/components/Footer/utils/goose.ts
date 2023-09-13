@@ -1,4 +1,5 @@
-export const goosePhrases = [{
+export const goosePhrases = [
+	{
 	text: 'Я - гусь. На вашу страницу припрусь!',
 	callback: () => {
 		setTimeout(() => {
@@ -35,11 +36,21 @@ export const goosePhrases = [{
 	callback: () => {
 		const audio = new Audio('/assets/Goose/honk-sound.mp3');
 		audio.loop = true;
-		audio.volume = 0.5;
+		audio.volume = 0.2;
 		audio.play();
 		setTimeout(() => {
 			audio.pause();
 		}, 1000)
 	}
-}
+},
+{
+	text: 'Я - гусь. В курсор превращусь',
+	callback: () => {
+		setTimeout(() => {
+			if(typeof document !== 'undefined'){
+				document.body.classList.add('goose__cursor');
+			}
+		}, 1000)
+	}
+},
 ]
