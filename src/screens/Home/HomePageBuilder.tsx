@@ -13,9 +13,7 @@ export const HomePageBuilder = () => {
 				<Container className={s.container}>
 					<HomeInfo />
 				</Container>
-				<div className={s.layout__sidebar_right}>
-					<HomeRightSidebar />
-				</div>
+				<HomeRightSidebar />
 			</PageArea>
 		</PageLayout>
 	)

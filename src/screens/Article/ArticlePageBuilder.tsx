@@ -3,18 +3,26 @@ import { MarkdownRender } from '@/components/MarkdownRender/MarkdownRender'
 import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
+import { useHeadingsNavigation } from '@/hooks/useHeadingsNavigation'
 import { iArticle } from '@/pages/articles/[slug]'
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { AiOutlineClockCircle, AiOutlineRead, AiOutlineTag } from 'react-icons/ai'
 import getSlug from 'speakingurl'
 import s from './ArticlePageBuilder.module.css'
+import { ArticleRightSidebar } from './components/ArticleRightSidebar/ArticleRightSidebar'
 
 interface iProps {
 	article: iArticle
 }
 
 export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
+
+	const router = useRouter()
+
+	const { pageNavigationLinks } = useHeadingsNavigation(s.markdown, String(router.query.slug))
+
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
@@ -69,7 +77,12 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 						</div>
 					</footer>
 				</Container>
-				<div></div>
+				{pageNavigationLinks.length
+					&& router.isReady
+					&& <div className={s.layout__sidebar_right}>
+						<ArticleRightSidebar navigationLinks={pageNavigationLinks} />
+					</div>
+				}
 			</PageArea>
 		</PageLayout>
 	)
