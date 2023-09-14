@@ -3,8 +3,13 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
-
 .container{
 	display: flex;
 	flex-direction: column;
+}
+.blogs{
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px 0;
 }

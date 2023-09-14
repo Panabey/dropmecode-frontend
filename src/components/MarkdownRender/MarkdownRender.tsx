@@ -1,3 +1,4 @@
+import { MARKDOWN_UPLOADS_URL } from "@/lib/constants"
 import classNames from "classnames"
 import { FC } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
@@ -30,6 +31,9 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 			className={classNames({ [customClass || '']: customClass }, 'markdown-body')}
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
+			transformImageUri={uri =>
+				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
+			}
 			components={{
 				pre: Pre,
 				code({ node, inline, className, children, ...props }) {

@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container/Container'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
@@ -7,7 +8,6 @@ import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './ArticlesListPageBuilder.module.css'
 import { ArticlesListPreview } from './components/ArticlesListPreview'
-import { PageArea } from '@/components/PageArea/PageArea'
 
 interface iProps {
 	pageInfo: iArticlePageInfo
@@ -38,7 +38,6 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 								/>
 							)
 						})}
-
 					</div>
 				</Container>
 				<div></div>

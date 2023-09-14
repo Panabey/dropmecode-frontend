@@ -1,0 +1,60 @@
+.area{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border-radius: 7px;
+	border: 1px solid rgba(0,0,0,0.05);
+	background-color: #fff;
+	opacity: 0.8;
+}
+.area:hover{
+	transition: 0.2s ease-in-out border, 0.2s ease-in-out opacity;
+	border: 1px solid rgba(0,0,0,0.1);
+	opacity: 1;
+}
+.area a, .link{
+	text-decoration: none;
+}
+.arrow{
+	margin-right: 20px;
+	opacity: 0.3;
+}
+.area:hover .arrow{
+	transition: 0.2s ease-in-out opacity;
+	opacity: 0.5;
+}
+.info{
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+}
+.info__title{
+	font-size: 1.3rem;
+}
+.info__meta{
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 0px 20px;
+}
+.info__date{
+	color: #000;
+	opacity: 0.4;
+	font-size: 0.9rem;
+}
+.metainfo__label{
+	opacity: 0.7;
+	display: flex;
+	align-items: center;
+	margin-right: 7px;
+}
+.metainfo__row{
+	display: flex;
+	align-items: center;
+}
+.metainfo__datetime{
+	font-size: 0.9rem;
+	opacity: 0.6;
+	color: #000;
+}
