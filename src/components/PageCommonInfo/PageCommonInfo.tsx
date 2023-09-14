@@ -1,8 +1,9 @@
+import { splitText } from '@/lib/utils'
 import classNames from 'classnames'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import s from './PageCommonInfo.module.css'
-import Link from 'next/link'
 
 export interface iBreadcrumb {
 	title: string
@@ -28,8 +29,8 @@ export const PageCommonInfo: FC<iProps> = ({ title, breadcrumbs, description, cl
 					return (
 						<div key={idx}>{
 							idx !== breadcrumbs.length - 1
-								? <Link className={s.breadcrumb} href={breadcrumb.navigationUrl}>{breadcrumb.title}<span>/</span></Link>
-								: <div className={classNames(s.breadcrumb, s.breadcrumb_active)} onClick={() => router.push(breadcrumb.navigationUrl)}>{breadcrumb.title}</div>
+								? <Link className={s.breadcrumb} href={breadcrumb.navigationUrl}>{splitText(breadcrumb.title, 60, '...')}<span>/</span></Link>
+								: <div className={classNames(s.breadcrumb, s.breadcrumb_active)} onClick={() => router.push(breadcrumb.navigationUrl)}>{splitText(breadcrumb.title, 60, '...')}</div>
 						}
 						</div>
 					)

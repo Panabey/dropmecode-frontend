@@ -5,11 +5,12 @@ import { iHandbook } from '@/pages/langs'
 import { FC } from 'react'
 import { HiCode } from 'react-icons/hi'
 //import { SiMoleculer } from 'react-icons/si'
+import { PageArea } from '@/components/PageArea/PageArea'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import getSlug from 'speakingurl'
 import s from './LangsPageBuilder.module.css'
-import { PageArea } from '@/components/PageArea/PageArea'
+import { LangsAbout } from './components/LangsAbout/LangsAbout'
 
 interface iProps {
 	handbooks: iHandbook[]
