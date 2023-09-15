@@ -9,7 +9,7 @@ export const HomePageBuilder = () => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<HomeInfo />
 				</Container>

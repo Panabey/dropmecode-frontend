@@ -10,6 +10,14 @@
 	height: auto;
 	max-width: 50%;
 }
+@media screen and (max-width: 600px) {
+	.about{
+		flex-direction: column;
+	}
+	.about__img{
+		display: none;
+	}
+}
 .about__title{
 	font-size: 2rem;
 	color: #1DC989;

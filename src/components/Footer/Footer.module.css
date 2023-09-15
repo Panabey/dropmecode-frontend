@@ -24,6 +24,16 @@
 	align-items: center;
 	gap: 0 10px;
 }
+@media screen and (max-width: 768px) {
+	.container{
+		grid-template-columns: 1fr;
+		gap: 12px 0;
+		text-align: center;
+	}
+	.row{
+		margin: 0 auto;
+	}
+}
 .column{
 	color: #000;
 	display: flex;
@@ -36,6 +46,7 @@
 	color: #000;
 	opacity: 0.7;
 	font-size: 0.9rem;
+	text-align: center;
 }
 .row__copyright aside{
 	font-size: 1rem;

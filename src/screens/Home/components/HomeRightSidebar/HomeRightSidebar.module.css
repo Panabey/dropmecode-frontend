@@ -9,6 +9,11 @@
 	padding: 15px 20px;
 	border-radius: 7px;
 }
+@media screen and (max-width: 920px) {
+	.sidebar{
+		display: none;
+	}
+}
 .block{
 	position: relative;
 	z-index: 2;

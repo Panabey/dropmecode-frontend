@@ -8,3 +8,8 @@
 	flex-direction: column;
 	max-width: 100%;
 }
+@media screen and (max-width: 768px) {
+	.filler{
+		display: none;
+	}
+}

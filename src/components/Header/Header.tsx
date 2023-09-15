@@ -25,6 +25,7 @@ export const Header = () => {
 		}
 	}, [headerRef])
 
+
 	return (
 		<header className={classNames(s.header, 'header')} ref={headerRef}>
 			<div></div>

@@ -11,6 +11,11 @@
 	display: grid;
 	grid-template-columns: 2.5fr 11fr 4fr;
 }
+@media screen and (max-width: 768px) {
+	.header{
+		display: none;
+	}
+}
 .content{
 	display: flex;
 	width: 100%;

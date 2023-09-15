@@ -1,9 +1,10 @@
 import classNames from 'classnames'
 import { FC, ReactNode } from 'react'
+import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header'
+import { HeaderMobile } from '../HeaderMobile/HeaderMobile'
 import { Layout } from '../Layout/Layout'
 import s from './PageLayout.module.css'
-import { Footer } from '../Footer/Footer'
 
 interface iProps {
 	children: ReactNode
@@ -14,6 +15,7 @@ interface iProps {
 export const PageLayout: FC<iProps> = ({ children, className, disableFooter }) => {
 	return (
 		<>
+			<HeaderMobile />
 			<Header />
 			<Layout className={classNames(s.Layout, { [className || '']: className })}>
 				{children}
