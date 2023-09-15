@@ -23,6 +23,9 @@
 	object-fit: cover;
 	aspect-ratio: 2/1;
 }
+.image[src$=".svg"]{
+	object-fit: scale-down;
+}
 .info{
 	padding: 15px;
 	display: flex;

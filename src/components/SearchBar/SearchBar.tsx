@@ -24,7 +24,6 @@ export const SearchBar: FC<iProps> = ({ className }) => {
 	}
 
 	useHotkey('ctrl', 'KeyK', () => {
-		console.log(isOpenedModal)
 		dispatch(onChangeOpen(!isOpenedModal))
 	}, [isOpenedModal])
 

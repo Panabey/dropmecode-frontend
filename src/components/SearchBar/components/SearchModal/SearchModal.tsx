@@ -95,7 +95,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 						fetchQuizes({ q: searchValue, limit: 15 })
 						break;
 				}
-			}, 300)
+			}, 600)
 		}
 		return () => {
 			clearTimeout(timer)
