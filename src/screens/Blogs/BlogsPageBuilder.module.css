@@ -13,3 +13,25 @@
 	flex-direction: column;
 	gap: 25px 0;
 }
+.paginator{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+}
+.arrow{
+	cursor: pointer;
+	opacity: 0.7;
+}
+.arrow.disabled{
+	pointer-events: none;
+	user-select: none;
+	opacity: 0.2;
+}
+.page__current{
+	font-size: 1rem;
+	padding: 4px 10px;
+	background-color: #1F477D;
+	color: #fff;
+	margin: 0 8px;
+	border-radius: 5px;
+}

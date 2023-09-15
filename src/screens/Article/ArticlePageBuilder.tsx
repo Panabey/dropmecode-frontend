@@ -79,9 +79,10 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 				</Container>
 				{pageNavigationLinks.length
 					&& router.isReady
-					&& <div className={s.layout__sidebar_right}>
+					? <div className={s.layout__sidebar_right}>
 						<ArticleRightSidebar navigationLinks={pageNavigationLinks} />
 					</div>
+					: <></>
 				}
 			</PageArea>
 		</PageLayout>

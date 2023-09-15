@@ -33,7 +33,7 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 									title={article.title}
 									dateTime={new Date(article.create_date).toLocaleString().slice(0, -3)}
 									description={article.anons}
-									imageUrl={UPLOADS_URL + article.logo_url}
+									imageUrl={article.logo_url.length ? UPLOADS_URL + article.logo_url : ''}
 									tags={article.tags}
 								/>
 							)

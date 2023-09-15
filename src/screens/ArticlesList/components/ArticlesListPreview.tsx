@@ -15,7 +15,7 @@ interface iProps {
 export const ArticlesListPreview: FC<iProps> = ({ slug, title, description, dateTime, imageUrl, tags }) => {
 	return (
 		<div className={classNames(s.area, { [s.area_noimg]: !imageUrl })}>
-			{imageUrl && <Link href={slug}><img src={imageUrl} alt="Картинка новости" className={s.image} /></Link>}
+			{imageUrl && imageUrl.length && <Link href={slug}><img src={imageUrl} alt="Картинка новости" className={s.image} /></Link>}
 			<div className={s.info}>
 				<Link href={slug}><h3 className={s.info__title}>{title}</h3></Link>
 				<div className={s.info__meta}>
