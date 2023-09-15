@@ -1,5 +1,6 @@
 import { searchAPI } from '@/components/SearchBar/api/search.api'
 import { searchSlice } from '@/components/SearchBar/slices/search.slice'
+import { articlesAPI } from '@/screens/ArticlesList/api/articles.api'
 import { blogsAPI } from '@/screens/Blogs/api/blogs.api'
 import { homeAPI } from '@/screens/Home/api/home.api'
 import { langDocsThemeAPI } from '@/screens/LangDocsTheme/api/langDocsTheme.api'
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	[searchAPI.reducerPath]: searchAPI.reducer,
 	[homeAPI.reducerPath]: homeAPI.reducer,
 	[blogsAPI.reducerPath]: blogsAPI.reducer,
+	[articlesAPI.reducerPath]: articlesAPI.reducer,
 	[searchSlice.name]: searchSlice.reducer
 })
 
@@ -25,7 +27,8 @@ export const setupStore = () => {
 				langDocsThemeAPI.middleware,
 				searchAPI.middleware,
 				homeAPI.middleware,
-				blogsAPI.middleware
+				blogsAPI.middleware,
+				articlesAPI.middleware
 			),
 	})
 }

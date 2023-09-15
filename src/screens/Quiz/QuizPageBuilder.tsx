@@ -13,6 +13,7 @@ import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
 import { QuizQuestionLoader } from './components/QuizQuestionLoader/QuizQuestionLoader'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 import { getQuizResultInfo } from './utils/quizUtils'
+import classNames from 'classnames'
 
 interface iProps {
 	pageInfo: iQuizPagePreview
@@ -104,7 +105,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						{
 							quizStatus === 'preview'
 								? <div className={s.preivew}>
-									<img className={s.preview__img} src={UPLOADS_URL + pageInfo.logo_url} alt="Превью картинка квиза" />
+									<img  className={classNames(s.preview__img, { [s.noimg]: !pageInfo.logo_url || !pageInfo.logo_url.length })}  src={pageInfo.logo_url && pageInfo.logo_url.length ? UPLOADS_URL + pageInfo.logo_url : '/assets/Quizes/plug1.png'} alt="Превью картинка квиза" />
 									<span className={s.preview__counter}>Вопросов: {pageInfo.questions.length}</span>
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>

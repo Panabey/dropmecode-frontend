@@ -32,6 +32,9 @@
 	object-fit: cover;
 	border-radius: 7px;
 }
+.noimg{
+	object-fit: scale-down;
+}
 .preview__counter{
 	margin-top: 15px;
 	font-size: 1rem;

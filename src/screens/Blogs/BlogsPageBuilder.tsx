@@ -2,9 +2,10 @@ import { Container } from '@/components/Container/Container'
 import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
-import { iBlogPreview, iBlogsPageInfo } from '@/pages/blog'
+import { usePaginator } from '@/hooks/usePaginator'
+import { iBlogsPageInfo } from '@/pages/blog'
 import classNames from 'classnames'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import getSlug from 'speakingurl'
 import s from './BlogsPageBuilder.module.css'
@@ -18,20 +19,17 @@ interface iProps {
 
 export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
-	const [blogs, setBlogs] = useState<iBlogPreview[]>(pageInfo.items)
-	const [currentPage, setCurrentPage] = useState<number>(1)
+	const { items: blogs, currentPage, setItems: setBlogs, onClickPaginator } = usePaginator(pageInfo.total_page, onLoadBlogs, pageInfo.items)
 
 	const [fetchBlogs, { isLoading, data, error }] = useGetBlogsPreviewsMutation()
 
-	function onClickPaginator(action: '+' | '-') {
-		if (action === '+' && currentPage + 1 <= pageInfo.total_page) {
+	function onLoadBlogs(action: '+' | '-') {
+		if (action === '+') {
 			fetchBlogs({ limit: 20, page: currentPage + 1 })
-			setCurrentPage((prev) => prev + 1)
 			return
 		}
-		if (action === '-' && currentPage - 1 >= 1) {
+		if (action === '-') {
 			fetchBlogs({ limit: 20, page: currentPage - 1 })
-			setCurrentPage((prev) => prev - 1)
 			return
 		}
 	}
@@ -46,8 +44,6 @@ export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 		console.error(error)
 		throw new Error('Ошибка при загрузке превьюшек блога из запроса пагинатора')
 	}
-
-	console.log(pageInfo)
 
 	return (
 		<PageLayout className={s.layout}>

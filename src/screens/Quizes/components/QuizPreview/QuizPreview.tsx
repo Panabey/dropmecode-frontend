@@ -1,8 +1,9 @@
+import { UPLOADS_URL } from '@/lib/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import s from './QuizPreview.module.css'
-import { UPLOADS_URL } from '@/lib/constants'
+import classNames from 'classnames'
 
 export interface iQuizPreview {
 	id: number
@@ -16,7 +17,7 @@ export const QuizPreview: FC<iQuizPreview> = ({ title, slug, short_description, 
 	return (
 		<div className={s.area}>
 			<Link href={slug}>
-				<Image src={UPLOADS_URL + logo_url} alt='Картинка квиза' className={s.image} width={600} height={600} />
+				<Image src={logo_url && logo_url.length ? UPLOADS_URL + logo_url : '/assets/Quizes/plug1.png'} alt='Картинка квиза' className={classNames(s.image, { [s.noimg]: !logo_url || !logo_url.length })} width={600} height={600} />
 			</Link>
 			<div className={s.info}>
 				<h3 className={s.title}>{title}</h3>
