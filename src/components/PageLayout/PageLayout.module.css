@@ -5,3 +5,12 @@
 	width: 100%;
 	min-height: 100vh;
 }
+.filler{
+	display: none;
+}
+@media screen and (max-width:992px) {
+	.filler{
+		display: block;
+		flex: 1;
+	}
+}

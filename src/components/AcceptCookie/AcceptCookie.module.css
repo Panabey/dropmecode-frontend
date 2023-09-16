@@ -21,6 +21,27 @@
 .cookie:hover{
 	border: 1px solid rgba(0,0,0,0.08);
 }
+@media screen and (max-width: 992px) {
+	.cookie{
+		max-width: 40vw;
+		flex-direction: column;
+		gap: 15px 0;
+	}
+}
+@media screen and (max-width: 768px) {
+	.cookie{
+		max-width: 60vw;
+		flex-direction: column;
+		gap: 15px 0;
+	}
+}
+@media screen and (max-width: 480px) {
+	.cookie{
+		max-width: 90vw;
+		flex-direction: column;
+		gap: 15px 0;
+	}
+}
 .icon{
 	position: absolute;
 	top: 0;

@@ -20,7 +20,7 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Справочники по языкам'

@@ -51,6 +51,11 @@
 .row__copyright aside{
 	font-size: 1rem;
 }
+@media screen and (max-width: 768px) {
+	.row aside{
+		font-size: 0.9rem;
+	}
+}
 .icon{
 	cursor: pointer;
 	opacity: 0.2;
@@ -87,6 +92,11 @@
 	justify-content: center;
 	transform: rotate(120deg);
 	opacity: 0.1;
+}
+@media screen and (max-width: 768px) {
+	.goose{
+		display: none;
+	}
 }
 .goose img{
 	max-width: 50%;
