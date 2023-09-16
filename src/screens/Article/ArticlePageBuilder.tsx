@@ -25,7 +25,7 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 
 	return (
 		<PageLayout className={s.layout}>
-			<PageArea>
+			<PageArea className={s.area}>
 				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo

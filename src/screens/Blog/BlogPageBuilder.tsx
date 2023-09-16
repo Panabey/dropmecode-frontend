@@ -26,7 +26,7 @@ export const BlogPageBuilder: FC<iProps> = ({ blog }) => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={blog.title}
