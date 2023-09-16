@@ -512,6 +512,12 @@
   width: fit-content;
 }
 
+@media screen and (max-width: 768px) {
+  .markdown-body table{
+    max-width: 86vw;
+  }
+}
+
 .markdown-body blockquote>:first-child {
   margin-top: 0;
 }
@@ -564,7 +570,6 @@
   padding: 0 .2em;
   font-size: inherit;
 }
-
 .markdown-body summary h1,
 .markdown-body summary h2,
 .markdown-body summary h3,
