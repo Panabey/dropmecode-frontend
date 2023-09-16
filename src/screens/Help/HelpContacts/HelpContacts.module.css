@@ -7,6 +7,11 @@
 	font-size: 2rem;
 	color: #1DC989;
 }
+@media screen and (max-width: 480px) {
+	.contacts__title{
+		font-size: 1.8rem;
+	}
+}
 .contacts__subtitle{
 	margin-top: 10px;
 	margin-bottom: 20px;
@@ -30,4 +35,9 @@
 .contacts__text{
 	font-size: 1rem;
 	margin-right: 10px;
+}
+@media screen and (max-width: 480px) {
+	.contacts__text{
+		display: none;
+	}
 }
