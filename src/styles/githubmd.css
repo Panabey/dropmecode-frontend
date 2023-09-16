@@ -509,6 +509,7 @@
 .markdown-body details {
   margin-top: 0;
   margin-bottom: 16px;
+  width: fit-content;
 }
 
 .markdown-body blockquote>:first-child {
@@ -807,7 +808,7 @@
   padding: 0;
   margin: 0;
   word-break: normal;
-  white-space: pre;
+  white-space: pre-wrap;
   background: transparent;
   border: 0;
 }
@@ -834,7 +835,7 @@
 .markdown-body pre code,
 .markdown-body pre tt {
   display: inline;
-  max-width: auto;
+  max-width: 100%;
   padding: 0;
   margin: 0;
   overflow: visible;
@@ -1099,4 +1100,7 @@
 
 .markdown-body ::-webkit-calendar-picker-indicator {
   filter: invert(50%);
+}
+.markdown-body pre {
+  width: 100%;
 }

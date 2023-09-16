@@ -3,6 +3,17 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
+@media screen and (min-width: 922px) and (max-width: 1200px) {
+	.area{
+		grid-template-columns: 4fr 16fr 6fr !important;
+	}
+}
+@media screen and (min-width: 769px) and (max-width: 921px) {
+	.area{
+		padding: 20px;
+		grid-template-columns: 1fr !important;
+	}
+}
 .container{
 	position: relative;
 	z-index: 2;
@@ -15,6 +26,11 @@
 .layout__sidebar_left, .layout__sidebar_right{
 	position: relative;
 	height: 100%;
+}
+@media screen and (max-width: 922px) {
+	.layout__sidebar_left{
+		display: none !important;
+	}
 }
 .container__footer{
 	margin-top: 15px;
