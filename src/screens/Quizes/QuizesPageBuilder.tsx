@@ -86,7 +86,11 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						})}
 						{
 							isLoading
-								? <QuizesTopicLoader />
+								? <>
+									<QuizesTopicLoader />
+									<QuizesTopicLoader />
+									<QuizesTopicLoader />
+								</>
 								: <></>
 						}
 					</div>
