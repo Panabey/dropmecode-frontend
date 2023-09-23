@@ -5,6 +5,7 @@ import { blogsAPI } from '@/screens/Blogs/api/blogs.api'
 import { homeAPI } from '@/screens/Home/api/home.api'
 import { langDocsThemeAPI } from '@/screens/LangDocsTheme/api/langDocsTheme.api'
 import { quizAPI } from '@/screens/Quiz/api/quiz.api'
+import { quizesAPI } from '@/screens/Quizes/api/quizes.api'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
 	[homeAPI.reducerPath]: homeAPI.reducer,
 	[blogsAPI.reducerPath]: blogsAPI.reducer,
 	[articlesAPI.reducerPath]: articlesAPI.reducer,
+	[quizesAPI.reducerPath]: quizesAPI.reducer,
 	[searchSlice.name]: searchSlice.reducer
 })
 
@@ -28,7 +30,8 @@ export const setupStore = () => {
 				searchAPI.middleware,
 				homeAPI.middleware,
 				blogsAPI.middleware,
-				articlesAPI.middleware
+				articlesAPI.middleware,
+				quizesAPI.middleware
 			),
 	})
 }

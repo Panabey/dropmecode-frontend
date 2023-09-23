@@ -19,7 +19,7 @@ export interface iQuizesinfo {
 	logo_url: string;
 	title: string;
 	short_description: string;
-	tags?: string[] 
+	tags?: string[]
 }
 
 export const getServerSideProps: GetServerSideProps<{

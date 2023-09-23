@@ -1,0 +1,51 @@
+.area{
+	width: 100%;
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 7px;
+	overflow: hidden;
+}
+.image{
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	aspect-ratio: 2/1.2;
+	object-fit: cover;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	transition: 0.2s ease-in-out transform;
+	overflow: hidden;
+}
+.info{
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	height: 100%;
+}
+.info__column{
+	display: flex;
+	flex-direction: column;
+}
+.title{
+	width: 70%;
+	height: 1.1rem;
+}
+.description{
+	margin-top: 10px;
+	height: 0.9rem;
+	width: 50%;
+}
+.button{
+	cursor: pointer;
+	width: 35%;
+	display: block;
+	text-decoration: none;
+	height: 2rem;
+	padding: 5px 10px;
+	border-radius: 7px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+	margin-right: 15px;
+}

@@ -19,7 +19,7 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 	return (
 		<PageLayout>
-			<PageArea>
+			<PageArea className={s.layout__area}>
 				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo

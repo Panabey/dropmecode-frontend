@@ -3,8 +3,17 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
-
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+	.area{
+		grid-template-columns: 1.5fr 13fr 4fr;
+	}
+}
 .container{
+	display: flex;
+	flex-direction: column;
+}
+.topics{
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
@@ -15,6 +24,16 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 15px;
+}
+@media screen and (max-width: 768px) {
+	.quizes{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media screen and (max-width: 400px) {
+	.quizes{
+		grid-template-columns: 1fr;
+	}
 }
 .section{
 	margin-top: 40px;
@@ -32,6 +51,15 @@
 	font-size: 1.5rem;
 	font-weight: 500;
 	margin-bottom: 15px;
+}
+@media screen and (max-width: 480px) {
+	.section__title{
+		width: 100%;
+		max-width: 60%;
+	}
+	.section__row{
+		align-items: baseline;
+	}
 }
 .section__title svg{
 	margin-right: 10px;

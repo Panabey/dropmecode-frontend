@@ -9,7 +9,7 @@
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 	padding: 20px 15px;
 	display: grid;
-	grid-template-columns: 2.5fr 11fr 4fr;
+	grid-template-columns: 3fr 12fr 4fr;
 }
 @media screen and (max-width: 768px) {
 	.header{

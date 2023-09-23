@@ -76,7 +76,7 @@
 }
 .burger{
 	top: 0;
-	right: 0;
+	left: 0;
 	position: fixed;
 	z-index: 6;
 	background-color: #fff;
@@ -85,7 +85,7 @@
 	border-left: 1px solid rgba(0,0,0,0.3);
 	display: flex;
 	flex-direction: column;
-	transform: translateX(100%);
+	transform: translateX(-100%);
 	transition: 0.3s ease-in-out transform;
 }
 @media screen and (max-width: 768px) {
@@ -110,7 +110,7 @@
 }
 .burger.opened{
 	transition: 0.3s ease-in-out transform;
-	transform: translateX(0%);
+	transform: translateX(-1%);
 }
 .nav{
 	flex: 1;
