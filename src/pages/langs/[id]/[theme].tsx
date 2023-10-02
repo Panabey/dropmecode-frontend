@@ -21,6 +21,10 @@ export interface iLangDocs {
   reading_time: number;
   create_date: string;
   update_date: string;
+  subpart: number;
+  content: {
+    part: number
+  }
 }
 
 export const getServerSideProps: GetServerSideProps<{

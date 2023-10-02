@@ -15,7 +15,10 @@ const LangsPage = ({ handbooks }: InferGetServerSidePropsType<typeof getServerSi
 
 	)
 }
-
+export interface iHandbookPageInfo{
+	title: string
+	handbook: iHandbook[]
+}
 export interface iHandbook {
 	id: number;
 	title: string;
@@ -31,7 +34,7 @@ interface iStatus{
 }
 
 export const getServerSideProps: GetServerSideProps<{
-	handbooks: iHandbook[]
+	handbooks: iHandbookPageInfo[]
 }> = async ({ res }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const response = await fetch(API_URL + '/handbook/all')

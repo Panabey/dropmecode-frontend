@@ -32,16 +32,16 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook, activeThemeId }) => 
 									{
 										section.page.length > 0
 											? <div className={s.tree__section}>
-												<Link href='/' className={s.tree__part}>{section.title}</Link>
+												<Link href='/' className={s.tree__part}>{section.part}. {section.title}</Link>
 												<div className={s.tree__links}>
 													{section.page.map((link) => {
 														return (
 															<Link
-																href={'/langs/' + handbook + `/${link.id}-${getSlug(link.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`}
+																href={'/langs/' + handbook + `/${link.id}-${getSlug(link.title.toLowerCase(), { lang: 'ru' })}`}
 																className={classNames(s.tree__link, { [s.active]: activeThemeId === link.id })}
 																key={link.id}
 															>
-																{link.title}
+																{section.part}.{link.subpart}. {link.title}
 															</Link>
 														)
 													})}

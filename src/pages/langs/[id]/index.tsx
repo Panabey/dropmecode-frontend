@@ -19,11 +19,13 @@ export interface iLangContent {
 	title: string;
 	description: string;
 	page: iLangPage[];
+	part: number;
 }
 
 export interface iLangPage {
 	id: number;
 	title: string;
+	subpart: string;
 }
 
 export const getServerSideProps: GetServerSideProps<{

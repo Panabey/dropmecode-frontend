@@ -12,11 +12,13 @@ interface iContent {
 	title: string;
 	description: string;
 	page: iPage[];
+	part: number;
 }
 
 interface iPage {
 	id: number;
 	title: string;
+	subpart: string;
 }
 
 interface iGetHandbookThemesParams {

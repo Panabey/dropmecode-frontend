@@ -29,28 +29,28 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 					<div className={s.layout__sidebar_left}>{router.isReady && <LangDocsLeftSidebar activeThemeId={Number(String(router.query.theme).split('-')[0])} handbook={String(router.query.id)} />}</div>
 					<Container className={s.container}>
 						<PageCommonInfo
-							title={langDocs.title}
+							title={langDocs.content.part + '.' + langDocs.subpart + '. ' + langDocs.title}
 							description=""
 							breadcrumbs={[
 								{ title: "Главная", navigationUrl: "/" },
 								{ title: "Справочники", navigationUrl: "/langs" },
 								{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
 								{
-									title: langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' '),
-									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`
+									title: langDocs.title,
+									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.toLowerCase(), { lang: 'ru' })}`
 								},
 							]}
 						/>
 						<MarkdownRender className={s.markdown}>{langDocs.text}</MarkdownRender>
 						<footer className={s.container__footer}>
-						<hr className={s.container__underline} />
-						<div className={s.footer__metainfo}>
-							<div className={s.metainfo__row}>
-								<span className={s.metainfo__label}>Статья изменена:</span>
-								<aside className={s.metainfo__datetime}> {new Date(langDocs.update_date).toLocaleString().slice(0, -3)}</aside>
+							<hr className={s.container__underline} />
+							<div className={s.footer__metainfo}>
+								<div className={s.metainfo__row}>
+									<span className={s.metainfo__label}>Статья изменена:</span>
+									<aside className={s.metainfo__datetime}> {new Date(langDocs.update_date).toLocaleString().slice(0, -3)}</aside>
+								</div>
 							</div>
-						</div>
-					</footer>
+						</footer>
 					</Container>
 					<div className={s.layout__sidebar_right}>
 						{pageNavigationLinks.length && router.isReady ? <LangDocsRightSidebar navigationLinks={pageNavigationLinks} /> : <></>}
