@@ -18,7 +18,7 @@ interface iProps extends iSearchHistoryItem {
 export const SearchItemExtended: FC<iProps> = ({ link, title, theme, label, onRemoveItem, onAddItem, isHistoryItem, imageUrl }) => {
 	return (
 		<Link className={s.item} href={link} onClick={onAddItem ? (event: any) => onAddItem(event, { link, title, theme, label, imageUrl }) : () => { }}>
-			<Image src={UPLOADS_URL + imageUrl} width={512} height={512} alt="Картинка" className={s.image} />
+			<Image src={imageUrl && imageUrl.length ? UPLOADS_URL + imageUrl : '/assets/Quizes/plug1.png'} width={512} height={512} alt="Картинка" className={s.image} />
 			<div className={s.item__row}>
 				<div className={s.item__content}>
 					<span>{title}</span>

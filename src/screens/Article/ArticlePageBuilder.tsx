@@ -30,7 +30,6 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={article.title}
-						description={article.anons}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Статьи", navigationUrl: "/articles" },
@@ -61,7 +60,7 @@ export const ArticlePageBuilder: FC<iProps> = ({ article }) => {
 							<aside className={s.metainfo__datetime}> {article.reading_time} мин. на чтение</aside>
 						</div>
 					</div>
-
+					<aside className={s.description}>{article.anons}</aside>
 					<MarkdownRender
 						className={classNames(s.markdown, 'markdown-body')}
 					>

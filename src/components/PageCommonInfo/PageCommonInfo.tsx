@@ -2,7 +2,7 @@ import { splitText } from '@/lib/utils'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import s from './PageCommonInfo.module.css'
 
 export interface iBreadcrumb {
@@ -16,9 +16,10 @@ interface iProps {
 	breadcrumbs: iBreadcrumb[]
 	description?: string
 	className?: string
+	children?: ReactNode
 }
 
-export const PageCommonInfo: FC<iProps> = ({ title, breadcrumbs, description, className }) => {
+export const PageCommonInfo: FC<iProps> = ({ title, breadcrumbs, description, className, children }) => {
 
 	const router = useRouter()
 
@@ -38,6 +39,7 @@ export const PageCommonInfo: FC<iProps> = ({ title, breadcrumbs, description, cl
 			</div>
 			{title.length ? <h2 className={s.title}>{title}</h2> : <></>}
 			{description && description.length ? <aside className={s.description}>{description}</aside> : <></>}
+			{children}
 		</div>
 	)
 }

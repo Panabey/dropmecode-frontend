@@ -1,13 +1,13 @@
 import { API_URL } from '@/lib/constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export interface iBlogNote{
+export interface iBlogNote {
 	id: number;
 	title: string;
 	create_date: string;
 }
 
-interface iGetBlogNotesParams{
+interface iGetBlogNotesParams {
 	limit: number
 }
 
@@ -20,7 +20,10 @@ export const homeAPI = createApi({
 				return {
 					url: `/project/news/widget`,
 					method: 'GET',
-					params: data
+					params: data,
+					headers: {
+						"X-Use-Cache": "true"
+					}
 				}
 			},
 		}),

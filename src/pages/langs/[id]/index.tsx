@@ -44,7 +44,11 @@ export const getServerSideProps: GetServerSideProps<{
 			},
 		}
 	}
-	const response = await fetch(API_URL + '/handbook/content?' + new URLSearchParams({ handbook: url[2] }))
+	const response = await fetch(API_URL + '/handbook/content?' + new URLSearchParams({ handbook: url[2] }), {
+		headers: {
+			"X-Use-Cache": "true"
+		}
+	})
 	const errorCode = response.ok ? false : response.status;
 	if (errorCode) {
 		res.statusCode = errorCode;
