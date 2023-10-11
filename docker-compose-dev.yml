@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: next_app/Dockerfile
+    expose:
+      - 3000
+
+  nginx:
+    image: nginx:1.24 # stable version
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx-dev.conf:/etc/nginx/nginx.conf
+  
