@@ -1,0 +1,11 @@
+FROM node:18-alpine
+
+# За основу взят https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose
+WORKDIR /app
+
+COPY next_app/  /app 
+
+RUN npm ci
+
+# Запуск сервера в режиме разработки
+CMD npm run dev

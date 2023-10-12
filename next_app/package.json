@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env RUN_MODE=development next dev",
+    "dev": "cross-env RUN_MODE=development next dev -p 3000",
     "build": "cross-env RUN_MODE=production next build",
     "start": "cross-env RUN_MODE=production next start",
     "lint": "next lint"

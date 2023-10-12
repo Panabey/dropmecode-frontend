@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: frontend
+    container_name: frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: next_app/Dockerfile.prod
+    expose:
+      - 3000
+    environment:
+      - RUN_MODE=production
+      - NEXT_PUBLIC_PROD_API_URL=<url> # change
+      - NEXT_PUBLIC_PROD_UPLOADS_URL=<url/media/> # change
+      - NEXT_PUBLIC_PROD_UPLOADS_MARKDOWN_URL=<admin_url> # change
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextjs.rule=Host(`<domain>`)" # change domain
+      - "traefik.http.routers.nextjs.tls=true"
+      - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
+      # middlewares
+      - "traefik.http.routers.frontend_security.middlewares=frontend_security"
+      - "traefik.http.middlewares.frontend_security.headers.stsseconds=31536000"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
