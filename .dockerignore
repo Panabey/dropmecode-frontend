@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode/
+node_modules/
+
+**/*.md
+**/.env
+**/next-env.d.ts
+**/.eslintrc.json
