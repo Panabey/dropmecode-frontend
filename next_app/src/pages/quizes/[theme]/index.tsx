@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps<{
 	pageInfo: iQuizesThemePage
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
-	const TOPIC_QUIZES_LIMIT = 20
+	const TOPIC_QUIZES_LIMIT = 18
 	const url = resolvedUrl.split('/')
 
 	if (url.length < 3) {

@@ -1,7 +1,7 @@
+/* eslint react-hooks/rules-of-hooks: 0 */
 import { useEffect } from "react";
 
 export const useIntersectionObserver = (refObj: any, callback: (intersectedObj: any) => void, customOptions?: any,) => {
-
 
 	if (typeof document === 'undefined') {
 		return { reObserve }
@@ -24,7 +24,9 @@ export const useIntersectionObserver = (refObj: any, callback: (intersectedObj: 
 	}
 
 	function reObserve(element: any) {
-		observer.observe(element)
+		if (element !== null) {
+			observer.observe(element)
+		}
 	}
 
 	useEffect(() => {

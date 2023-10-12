@@ -75,3 +75,26 @@
 	transition: 0.2s ease-in-out opacity;
 	opacity: 0.8;
 }
+.button__quizes_all{
+	cursor: pointer;
+	width: 100%;
+	background-image: url('/assets/Quizes/bg1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 25px 20px;
+	border-radius: 7px;
+	font-size: 1.5rem;
+	color: #fff;
+	text-align: center;
+	margin-top: 30px;
+	opacity: 0.9;
+	transition: 0.2s ease-in-out opacity, 0.2s ease-in-out filter;
+	outline: none;
+	text-decoration: none;
+}
+.button__quizes_all:hover{
+	opacity: 1;
+	filter: saturate(1.3);
+}

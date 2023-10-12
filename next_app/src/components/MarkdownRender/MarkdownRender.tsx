@@ -42,11 +42,10 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 						<SyntaxHighlighter
 							showLineNumbers={true}
 							{...props}
-							children={String(children).replace(/\n$/, '')}
 							language={match[1]}
 							PreTag="div"
 							style={highlightStyle}
-						/>
+						>{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
 					) : (
 						<code {...props} className={className}>
 							{children}

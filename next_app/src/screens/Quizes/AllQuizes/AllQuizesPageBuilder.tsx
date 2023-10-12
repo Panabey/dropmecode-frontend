@@ -4,24 +4,21 @@ import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { iQuizesinfo } from '@/pages/quizes'
-import { iQuizesThemePage } from '@/pages/quizes/[theme]'
-import { useRouter } from 'next/router'
+import { iAllQuizesPageInfo } from '@/pages/quizes/all'
 import { FC, useEffect, useRef, useState } from 'react'
 import getSlug from 'speakingurl'
-import { useGetAllQuizesMutation } from '../Quizes/api/quizes.api'
-import { QuizPreview } from '../Quizes/components/QuizPreview/QuizPreview'
-import { QuizPreviewLoader } from '../Quizes/components/QuizPreviewLoader/QuizPreviewLoader'
-import s from './QuizesThemePageBuilder.module.css'
+import { useGetAllQuizesMutation } from '../api/quizes.api'
+import { QuizPreview } from '../components/QuizPreview/QuizPreview'
+import { QuizPreviewLoader } from '../components/QuizPreviewLoader/QuizPreviewLoader'
+import s from './AllQuizesPageBuilder.module.css'
 
 interface iProps {
-	pageInfo: iQuizesThemePage
+	pageInfo: iAllQuizesPageInfo
 }
 
 const QUIZES_LIMIT = 18
 
-export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
-
-	const router = useRouter()
+export const AllQuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
 	const [quizes, setQuizes] = useState<iQuizesinfo[]>(pageInfo.quizzes);
 
@@ -30,7 +27,7 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 	const [fetchQuizes, { isLoading, data, error }] = useGetAllQuizesMutation()
 
 	function onIntersected() {
-		fetchQuizes({ limit: QUIZES_LIMIT, continue_after: quizes.length, topic_id: pageInfo.id })
+		fetchQuizes({ limit: QUIZES_LIMIT, continue_after: quizes.length })
 	}
 
 	useEffect(() => {
@@ -57,9 +54,9 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 				<div></div>
 				<Container className={s.container}>
 					<PageCommonInfo
-						title={pageInfo.title}
-						description={`Горячие и интересные квизы по теме "${pageInfo.title}", специально для вас. Пройдите их и оцените свои дедуктивные способности.`}
-						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Квизы", navigationUrl: "/quizes" }, { title: pageInfo.title, navigationUrl: `/quizes/${router.query.theme}` }]}
+						title={"Все квизы"}
+						description={`В этом разделе вы можете найти список всех доступных квизов нашего проекта`}
+						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Квизы", navigationUrl: "/quizes" }, { title: "Все квизы", navigationUrl: `/quizes/all` }]}
 					/>
 					<section className={s.section}>
 						<div className={s.quizes}>

@@ -1,5 +1,6 @@
 import { API_URL } from '@/lib/constants';
 import { iQuizesPageInfo } from '@/pages/quizes';
+import { iAllQuizesPageInfo } from '@/pages/quizes/all';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface iBlogNote {
@@ -11,6 +12,11 @@ export interface iBlogNote {
 interface iGetQuizTopicsParams {
 	limit: number
 	count_content: number
+	continue_after: number
+}
+interface iGetAllQuizesParams {
+	topic_id?: number
+	limit: number
 	continue_after: number
 }
 
@@ -27,8 +33,17 @@ export const quizesAPI = createApi({
 				}
 			},
 		}),
+		getAllQuizes: builder.mutation<iAllQuizesPageInfo, iGetAllQuizesParams>({
+			query: (data) => {
+				return {
+					url: `/quiz/topic`,
+					method: 'GET',
+					params: data
+				}
+			},
+		}),
 	}),
 })
 
-export const { useGetTopicsMutation } = quizesAPI
+export const { useGetTopicsMutation, useGetAllQuizesMutation } = quizesAPI
 

@@ -1,0 +1,42 @@
+import { API_URL } from '@/lib/constants';
+import { AllQuizesPageBuilder } from '@/screens/Quizes/AllQuizes/AllQuizesPageBuilder';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { iQuizesinfo } from './index';
+
+export interface iAllQuizesPageInfo {
+	id: number | null;
+	title: string | null;
+	quizzes: iQuizesinfo[];
+}
+
+
+const AllQuizesPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+	return (
+		<AllQuizesPageBuilder pageInfo={pageInfo} />
+	)
+}
+
+export const getServerSideProps: GetServerSideProps<{
+	pageInfo: iAllQuizesPageInfo
+}> = async ({ res }) => {
+	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
+	const TOPICS_LIMIT = 18
+	const response = await fetch(API_URL + '/quiz/topic?' + new URLSearchParams({ limit: String(TOPICS_LIMIT) }))
+	const errorCode = response.ok ? false : response.status;
+	if (errorCode) {
+		res.statusCode = errorCode;
+		return {
+			props: {
+				pageInfo: []
+			},
+			redirect: {
+				destination: '/error',
+				permanent: true,
+			},
+		}
+	}
+	const pageInfo = await response.json()
+	return { props: { pageInfo } }
+}
+
+export default AllQuizesPage
