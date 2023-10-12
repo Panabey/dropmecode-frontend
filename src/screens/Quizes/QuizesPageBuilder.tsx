@@ -59,6 +59,7 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						description='Занимательные и развлекательные квиз-тесты для закрепления полученных знаний в области IT и не только!'
 						breadcrumbs={[{ title: "Главная", navigationUrl: "/" }, { title: "Квизы", navigationUrl: "/quizes" }]}
 					/>
+					<Link href="/quizes/all" className={s.button__quizes_all}>Посмотреть все квизы</Link>
 					<div className={s.topics}>
 						{topics.map((info, idx) => {
 							return (
