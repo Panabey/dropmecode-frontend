@@ -8,13 +8,15 @@ services:
     build:
       context: .
       dockerfile: next_app/Dockerfile.prod
+      args:
+        - API_URL=<url> # change
+        - UPLOADS_URL=<url/media/> # change
+        - UPLOADS_MARKDOWN_URL=<admin_url> # change
     expose:
       - 3000
     environment:
-      - RUN_MODE=production
-      - NEXT_PUBLIC_PROD_API_URL=<url> # change
-      - NEXT_PUBLIC_PROD_UPLOADS_URL=<url/media/> # change
-      - NEXT_PUBLIC_PROD_UPLOADS_MARKDOWN_URL=<admin_url> # change
+      - HOSTNAME=0.0.0.0
+      - KEEP_ALIVE_TIMEOUT=30
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextjs.rule=Host(`<domain>`)" # change domain

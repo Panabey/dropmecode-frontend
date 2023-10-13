@@ -8,6 +8,14 @@ WORKDIR /app
 
 COPY next_app/  /app 
 
+# Переменные окружения для сборки
+ARG API_URL
+ENV NEXT_PUBLIC_PROD_API_URL=${API_URL}
+ARG UPLOADS_URL
+ENV NEXT_PUBLIC_PROD_UPLOADS_URL=${UPLOADS_URL}
+ARG UPLOADS_MARKDOWN_URL
+ENV NEXT_PUBLIC_PROD_UPLOADS_MARKDOWN_URL=${UPLOADS_MARKDOWN_URL}
+
 RUN npm ci
 
 # Next.js собирает полностью анонимные данные телеметрии об общем использовании. 

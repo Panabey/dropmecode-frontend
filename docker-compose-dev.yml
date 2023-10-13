@@ -8,13 +8,12 @@ services:
     build:
       context: .
       dockerfile: next_app/Dockerfile.dev
+      args:
+        - API_URL=<url> # change
+        - UPLOADS_URL=<url/media/> # change
+        - UPLOADS_MARKDOWN_URL=<admin_url> # change
     ports:
       - 3000:3000
-    environment:
-      - RUN_MODE=development
-      - NEXT_PUBLIC_DEV_API_URL=<url> # change
-      - NEXT_PUBLIC_DEV_UPLOADS_URL=<url/media/> # change
-      - NEXT_PUBLIC_DEV_UPLOADS_MARKDOWN_URL=<admin_url> # change
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextjs.rule=Host(`<domain>`)" # change local IP addres
