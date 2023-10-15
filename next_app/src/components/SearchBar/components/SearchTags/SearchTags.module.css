@@ -1,0 +1,58 @@
+.area{
+	background-color: #fff;
+}
+.underline{
+    height: 1px;
+    background-color: #000;
+    border: none;
+    width: 100%;
+    opacity: 0.1;
+}
+.subarea{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding-top: 15px;
+	white-space: nowrap;
+	font-size: 0.9rem;
+}
+.tags{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.tag{
+	display: flex;
+	align-items: center;
+	gap: 0 5px;
+	padding: 4px 6px;
+	border-radius: 7px;
+	background-color: #efefef;
+	color: #0a0a0a;
+	font-size: 0.8rem;
+	border: 1px solid rgba(0,0,0,0.03);
+}
+.tag svg {
+	cursor: pointer;
+	opacity: 0.4;
+	transition: 0.2s ease-in-out opacity;
+}
+.tag svg:hover{
+	opacity: 0.6;
+}
+.tag.selected{
+	background-color: #1DC989;
+	color: #fff;
+}
+.tag.selected svg{
+	opacity: 0.5;
+}
+.tag.selected svg:hover{
+	opacity: 0.8;
+}
+.tag.loader{
+	height: 1.4rem;
+	width: 20%;
+}

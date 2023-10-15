@@ -11,6 +11,7 @@ import { SearchHistory } from '../SearchHistory/SearchHistory'
 import { SearchLoader } from '../SearchLoader/SearchLoader'
 import { SearchResults } from '../SearchResults/SearchResults'
 import { SearchSelector } from '../SearchSelector/SearchSelector'
+import { SearchTags } from '../SearchTags/SearchTags'
 import s from "./SearchModal.module.css"
 
 interface iProps {
@@ -23,6 +24,8 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const [mounted, setMounted] = useState<boolean>(false)
 	const overlayRef = useRef<HTMLDivElement | null>(null)
 
+	const isIncludeTags = useTypedSelector((state) => state.searchSlice.isIncludeTags)
+	const searchTags = useTypedSelector((state) => state.searchSlice.tags)
 	const [searchValue, setSearchValue] = useState<string>('')
 	const selectedFilter = useTypedSelector((state) => state.searchSlice.selectedFilter)
 	const history = useTypedSelector((state) => state.searchSlice.history)
@@ -83,16 +86,17 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	useEffect(() => {
 		let timer: any;
 		if (isOpened && searchValue.length > 0) {
+			const tags = isIncludeTags ? searchTags.filter((tag) => tag.isSelected === true).map((tag) => tag.id) : []
 			timer = setTimeout(() => {
 				switch (selectedFilter) {
 					case 'langs':
 						fetchHandbooks({ q: searchValue, limit: 15 })
 						break;
 					case 'articles':
-						fetchArticles({ q: searchValue, limit: 15 })
+						fetchArticles({ q: searchValue, limit: 15, tags: tags })
 						break;
 					case 'quizes':
-						fetchQuizes({ q: searchValue, limit: 15 })
+						fetchQuizes({ q: searchValue, limit: 15, tags: tags })
 						break;
 				}
 			}, 600)
@@ -149,6 +153,11 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		}
 	}, [isLoadingQuizes, dataQuizes, setSearchResults, selectedFilter])
 
+	if (errorArticles || errorHandbooks || errorQuizes) {
+		console.error(errorArticles, errorHandbooks, errorQuizes)
+		throw new Error("Ошибка при отправке клиентского запроса на поиск")
+	}
+
 	return (mounted && ref.current)
 		? createPortal(
 			isOpened
@@ -169,7 +178,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 							? <SearchLoader />
 							: (searchValue.length > 0 ? <SearchResults results={searchResults} /> : <></>)}
 						<div className={s.statusbar}>
-
+							<SearchTags />
 						</div>
 					</div>
 				</div>

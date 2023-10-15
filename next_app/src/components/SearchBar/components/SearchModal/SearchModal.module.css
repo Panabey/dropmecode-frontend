@@ -29,6 +29,28 @@
 	display: flex;
 	flex-direction: column;
 }
+.modal::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	background-color: #F5F5F5;
+	margin-left: 5px;
+}
+
+.modal::-webkit-scrollbar
+{
+	margin-left: 5px;
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+.modal::-webkit-scrollbar-thumb
+{
+	margin-left: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	background-color: #b3b3b3;
+}
 @media screen and (max-width: 1200px) {
 	.modal{
 		max-width: 55vw;
@@ -85,4 +107,11 @@
 .searchbar__icon_clear:hover{
 	transition: 0.2s ease-in-out opacity;
 	opacity: 0.5;
+}
+.statusbar{
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 2;
 }

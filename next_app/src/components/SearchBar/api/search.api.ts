@@ -1,5 +1,6 @@
 import { API_URL } from '@/lib/constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { iTag } from '../slices/search.slice';
 
 interface iSearchHandbookParams {
 	q: string
@@ -16,6 +17,7 @@ export interface iSearchHandbookThemes {
 interface iSearchArticlesParams {
 	q: string
 	limit: number
+	tags: number[]
 }
 
 export interface iSearchArticles {
@@ -30,6 +32,12 @@ export interface iSearchArticles {
 
 interface iSearchQuizesParams {
 	q: string
+	limit: number
+	tags: number[]
+}
+
+interface iSearchTagsParams {
+	status: 'article' | 'quiz'
 	limit: number
 }
 
@@ -72,8 +80,17 @@ export const searchAPI = createApi({
 				}
 			},
 		}),
+		getTags: builder.mutation<iTag[], iSearchTagsParams>({
+			query: (data) => {
+				return {
+					url: `/tags`,
+					method: 'GET',
+					params: data
+				}
+			},
+		}),
 	}),
 })
 
-export const { useGetHandbookThemesMutation, useGetArticlesMutation, useGetQuizesMutation } = searchAPI
+export const { useGetHandbookThemesMutation, useGetArticlesMutation, useGetQuizesMutation, useGetTagsMutation } = searchAPI
 

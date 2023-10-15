@@ -67,3 +67,7 @@
 	border-bottom-right-radius: 0;
 	aspect-ratio: 2/1;
 }
+.image[src$=".svg"]{
+	object-fit: scale-down;
+	aspect-ratio: auto;
+}

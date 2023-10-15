@@ -47,3 +47,22 @@
 	width: 100%;
 	opacity: 0.1;
 }
+.filter{
+	margin-left: auto;
+	opacity: 0.4;
+	cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+	.filter{
+		margin-left: 0;
+	}
+}
+.filter * {
+	color: #000;
+}
+.filter.enabled *{
+	color: #F00;
+}
+.filter.noevents{
+	cursor: not-allowed;
+}

@@ -63,7 +63,7 @@ export const Footer = () => {
 						<aside>&copy; DropMeCode 2023. Все права защищены.</aside>
 					</div>
 					<div className={s.row}>
-						<button className={s.button}>Политика конфиденциальности</button>
+						<Link href="/confidentiality"><button className={s.button}>Политика конфиденциальности</button></Link>
 						<button className={s.button}>Условия пользования</button>
 					</div>
 				</div>
