@@ -1,7 +1,7 @@
 .area{
 	position: relative;
 	display: grid;
-	grid-template-columns: 3fr 10fr 6fr;
+	grid-template-columns: 4fr 18.5fr 11.5fr;
 	width: 100%;
 	gap: 0 20px;
 	flex: 1;

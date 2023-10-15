@@ -3,6 +3,9 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
+.area{
+	grid-template-columns: 9fr 15.5fr 8.5fr;
+}
 @media screen and (min-width: 922px) and (max-width: 1200px) {
 	.area{
 		grid-template-columns: 4fr 16fr 6fr !important;

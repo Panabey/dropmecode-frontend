@@ -39,17 +39,20 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 		}
 	}, [isLoading, data, setQuizes])
 
-	if (error) {
-		console.error(error)
-		throw new Error("Ошибка при дозагрузке списка квизов через IntersectionObserverAPI на странице списка всех квизов")
-	}
-
 	useEffect(() => {
 		if (quizes.length > 0) {
 			entryRef.current = document.querySelector(`[data-quiz-id="${quizes[quizes.length - 1].id}"]`);
 			reObserve(entryRef.current)
 		}
-	}, [quizes]);
+	}, [quizes])
+
+	if (error) {
+		//@ts-ignore
+		if (error.status !== 404) {
+			console.error(error)
+			throw new Error("Ошибка при дозагрузке списка квизов через IntersectionObserverAPI на странице списка всех квизов")
+		}
+	}
 
 	return (
 		<PageLayout>

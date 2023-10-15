@@ -7,9 +7,9 @@
 	width: 100%;
 	background-color: #FFFFFF;
 	border-bottom: 1px solid rgba(0,0,0,0.1);
-	padding: 20px 15px;
+	padding: 7px 15px;
 	display: grid;
-	grid-template-columns: 3fr 12fr 4fr;
+	grid-template-columns: 4fr 25fr 4fr;
 }
 @media screen and (max-width: 768px) {
 	.header{

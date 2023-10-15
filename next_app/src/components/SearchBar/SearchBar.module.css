@@ -5,9 +5,11 @@
 	align-items: center;
 	gap: 0px 10px;
 	background-color: rgba(0,0,0,0.01);
-	padding: 3px 20px;
+	padding: 1px 10px;
 	border-radius: 7px;
 	width: 100%;
+	border: 1px solid transparent;
+	transition: 0.2s ease-in-out border;
 }
 .icon_clear{
 	position: absolute;
@@ -21,10 +23,13 @@
 }
 .search__input{
 	outline: none;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	border: none;
 	width: 100%;
 	color: rgba(0,0,0,0.5);
+}
+.search:hover{
+	border: 1px solid rgba(29, 201, 137, 0.15);
 }
 .search:hover .search__input{
 	transition: 0.2s ease-in-out color;
