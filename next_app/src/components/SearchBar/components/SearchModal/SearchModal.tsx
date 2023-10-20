@@ -36,6 +36,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const [fetchHandbooks, { isLoading: isLoadingHandbooks, data: dataHandbooks, error: errorHandbooks }] = useGetHandbookThemesMutation()
 	const [fetchArticles, { isLoading: isLoadingArticles, data: dataArticles, error: errorArticles }] = useGetArticlesMutation()
 	const [fetchQuizes, { isLoading: isLoadingQuizes, data: dataQuizes, error: errorQuizes }] = useGetQuizesMutation()
+	const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false)
 
 	const router = useRouter()
 
@@ -85,26 +86,31 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 
 	useEffect(() => {
 		let timer: any;
-		if (isOpened && searchValue.length > 0) {
+		if ((isOpened && searchValue.length > 0) || (isOpened && isIncludeTags && searchTags.filter((tag) => tag.isSelected === true).length > 0)) {
 			const tags = isIncludeTags ? searchTags.filter((tag) => tag.isSelected === true).map((tag) => tag.id) : []
+			const searchString = searchValue.length > 0 ? searchValue : undefined
+			setIsLoadingSearch(true)
 			timer = setTimeout(() => {
 				switch (selectedFilter) {
 					case 'langs':
-						fetchHandbooks({ q: searchValue, limit: 15 })
+						fetchHandbooks({ q: String(searchString), limit: 15 })
 						break;
 					case 'articles':
-						fetchArticles({ q: searchValue, limit: 15, tags: tags })
+						fetchArticles({ q: searchString, limit: 15, tags: tags })
 						break;
 					case 'quizes':
-						fetchQuizes({ q: searchValue, limit: 15, tags: tags })
+						fetchQuizes({ q: searchString, limit: 15, tags: tags })
 						break;
 				}
+				setIsLoadingSearch(false)
 			}, 600)
+		} else {
+			setSearchResults([])
 		}
 		return () => {
 			clearTimeout(timer)
 		}
-	}, [searchValue, selectedFilter, isOpened, fetchHandbooks, fetchArticles, fetchQuizes])
+	}, [searchValue, selectedFilter, isOpened, fetchHandbooks, fetchArticles, fetchQuizes, searchTags, isIncludeTags])
 
 	useEffect(() => {
 		if (!isLoadingHandbooks && dataHandbooks && selectedFilter === 'langs') {
@@ -175,8 +181,9 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 						{isLoadingQuizes
 							|| isLoadingArticles
 							|| isLoadingHandbooks
+							|| isLoadingSearch
 							? <SearchLoader />
-							: (searchValue.length > 0 ? <SearchResults results={searchResults} /> : <></>)}
+							: (<SearchResults results={searchResults} />)}
 						<div className={s.statusbar}>
 							<SearchTags />
 						</div>

@@ -15,7 +15,7 @@ export interface iSearchHandbookThemes {
 }
 
 interface iSearchArticlesParams {
-	q: string
+	q: string | undefined
 	limit: number
 	tags: number[]
 }
@@ -31,7 +31,7 @@ export interface iSearchArticles {
 }
 
 interface iSearchQuizesParams {
-	q: string
+	q: string | undefined
 	limit: number
 	tags: number[]
 }
