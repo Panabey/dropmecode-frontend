@@ -12,11 +12,17 @@
 .container{
 	display: grid;
 	align-items: center;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 4fr 25fr 4fr;
 	width: 100%;
-	max-width: 70%;
-	gap: 0 10px;
+	max-width: 100%;
 	padding: 20px 0;
+}
+.area{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 0 10px;
+	width: 100%;
+	align-items: center;
 }
 .row{
 	color: #000;
@@ -25,7 +31,7 @@
 	gap: 0 10px;
 }
 @media screen and (max-width: 768px) {
-	.container{
+	.area{
 		grid-template-columns: 1fr;
 		gap: 12px 0;
 		text-align: center;
@@ -47,6 +53,9 @@
 	opacity: 0.7;
 	font-size: 0.9rem;
 	text-align: center;
+}
+.row__buttons{
+	justify-content: flex-end;
 }
 .row__copyright aside{
 	font-size: 1rem;
