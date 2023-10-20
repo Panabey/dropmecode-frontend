@@ -1,10 +1,18 @@
 import { API_URL } from '@/lib/constants';
 import { ArticlesListPageBuilder } from '@/screens/ArticlesList/ArticlesListPageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 
 const ArticlesPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
-		<ArticlesListPageBuilder pageInfo={pageInfo} />
+		<>
+			<Head>
+				<title>DROPMECODE | Статьи</title>
+				<meta name="keywords" content="IT, программирование, технологии, новости, разработка, информационные технологии, последние новости, статьи, новые статьи, статьи из мира IT, программирование новости, DROPMECODE" ></meta>
+				<meta name="description" content="На DROPMECODE вы найдете свежие и интересные материалы о последних технологических трендах, программировании и IT-новостях. Узнавайте о новых языках программирования, фреймворках и инновационных решениях в мире информационных технологий." />
+			</Head>
+			<ArticlesListPageBuilder pageInfo={pageInfo} />
+		</>
 	)
 }
 

@@ -76,9 +76,22 @@
 	opacity: 0.3;
 	text-align: center;
 }
+.version{
+	display: none;
+	font-size: 0.8rem;
+	color: #000;
+	opacity: 0.3;
+	text-align: center;
+}
 @media screen and (max-width: 768px) {
 	.row aside{
 		font-size: 0.9rem;
+	}
+	.row__copyright span{
+		display: none;
+	}
+	.version{
+		display: block;
 	}
 }
 .icon{

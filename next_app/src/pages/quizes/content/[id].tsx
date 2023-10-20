@@ -1,10 +1,18 @@
 import { API_URL } from "@/lib/constants"
 import { QuizPageBuilder } from "@/screens/Quiz/QuizPageBuilder"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import Head from "next/head"
 
 const QuizPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
-		<QuizPageBuilder pageInfo={pageInfo} />
+		<>
+			<Head>
+				<title>DROPMECODE | {pageInfo.title}</title>
+				<meta name="description" content={pageInfo.short_description} />
+				<meta name="keywords" content="IT квизы, Программирование, Тесты знаний, Онлайн экзамены, Оценка навыков, Квиз-тесты по программированию, Технические вопросы, Тестирование знаний IT, DROPMECODE квизы, Программирование викторины, Тесты для разработчиков, Задачи по программированию, Вопросы и ответы по IT, Интерактивные тесты, Обучение программированию" />
+			</Head>
+			<QuizPageBuilder pageInfo={pageInfo} />
+		</>
 	)
 }
 

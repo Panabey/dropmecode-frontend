@@ -1,10 +1,18 @@
 import { API_URL } from '@/lib/constants';
 import { BlogPageBuilder } from '@/screens/Blog/BlogPageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 
 const BlogPage = ({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <BlogPageBuilder blog={blog} />
+    <>
+      <Head>
+        <title>DROPMECODE | Статья блога</title>
+        <meta name="keywords" content="IT, программирование, разработка, обновления, блог, сайт, лог обновлений, веб-разработка, технологии, обновления сайта, DROPMECODE" />
+        <meta name="description" content="В блоге DROPMECODE вы найдете последние обновления и статьи о разработке проекта. Узнаете о всех нововведениях в справочниках и квизах." />
+      </Head>
+      <BlogPageBuilder blog={blog} />
+    </>
   )
 }
 

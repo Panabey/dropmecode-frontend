@@ -1,7 +1,11 @@
+import Head from "next/head"
 
 const Page500 = () => {
 	return (
-		<div>500</div>
+		<Head>
+			<title>DROPMECODE | Проблема</title>
+			<meta name="robots" content="noindex" />
+		</Head>
 	)
 }
 

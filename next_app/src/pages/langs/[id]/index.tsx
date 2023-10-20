@@ -1,10 +1,18 @@
 import { API_URL } from "@/lib/constants"
 import { LangDocsPageBuilder } from "@/screens/LangDocs/LangDocsPageBuilder"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import Head from "next/head"
 
 const LangDocsPage = ({ langInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
-		<LangDocsPageBuilder langInfo={langInfo} />
+		<>
+			<Head>
+				<title>DROPMECODE | {langInfo.title}</title>
+				<meta name="description" content={langInfo.description} />
+				<meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
+			</Head>
+			<LangDocsPageBuilder langInfo={langInfo} />
+		</>
 	)
 }
 

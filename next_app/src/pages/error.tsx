@@ -1,8 +1,14 @@
-import React from 'react'
+import Head from "next/head"
 
 const ErrorPage = () => {
   return (
-	<div>ErrorPage</div>
+    <>
+      <Head>
+        <title>DROPMECODE | Проблема</title>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <div>ErrorPage</div>
+    </>
   )
 }
 

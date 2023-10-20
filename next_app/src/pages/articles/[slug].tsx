@@ -1,10 +1,18 @@
 import { API_URL } from '@/lib/constants'
 import { ArticlePageBuilder } from '@/screens/Article/ArticlePageBuilder'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
 
 const NewsArticlePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
-		<ArticlePageBuilder article={article} />
+		<>
+			<Head>
+				<title>DROPMECODE | {article.title}</title>
+				<meta name="keywords" content="IT, программирование, технологии, новости, разработка, информационные технологии, последние новости, статьи, новые статьи, статьи из мира IT, программирование новости, DROPMECODE" ></meta>
+				<meta name="description" content={article.anons} />
+			</Head>
+			<ArticlePageBuilder article={article} />
+		</>
 	)
 }
 

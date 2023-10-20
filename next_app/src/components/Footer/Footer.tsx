@@ -1,3 +1,4 @@
+import { APP_VERSION } from '@/lib/constants'
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -5,7 +6,6 @@ import { useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import s from './Footer.module.css'
 import { goosePhrases } from './utils/goose'
-import { APP_VERSION } from '@/lib/constants'
 
 export const Footer = () => {
 
@@ -68,6 +68,7 @@ export const Footer = () => {
 							<Link href="/confidentiality"><button className={s.button}>Политика конфиденциальности</button></Link>
 							<button className={s.button}>Условия пользования</button>
 						</div>
+						<span className={s.version}>Версия приложения: {APP_VERSION}</span>
 					</div>
 					<div></div>
 				</div>

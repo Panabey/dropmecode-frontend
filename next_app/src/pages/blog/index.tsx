@@ -1,14 +1,22 @@
 import { API_URL } from "@/lib/constants";
-import { BlogsPageBuilder } from "@/screens/Blogs/BlogsPageBuilder"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import { BlogsPageBuilder } from "@/screens/Blogs/BlogsPageBuilder";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 
 const BlogPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
-		<BlogsPageBuilder pageInfo={pageInfo}  />
+		<>
+			<Head>
+				<title>DROPMECODE | Блог проекта</title>
+				<meta name="keywords" content="IT, программирование, разработка, обновления, блог, сайт, лог обновлений, веб-разработка, технологии, обновления сайта, DROPMECODE" />
+				<meta name="description" content="В блоге DROPMECODE вы найдете последние обновления и статьи о разработке проекта. Узнаете о всех нововведениях в справочниках и квизах." />
+			</Head>
+			<BlogsPageBuilder pageInfo={pageInfo} />
+		</>
 	)
 }
 
-export interface iBlogsPageInfo{
+export interface iBlogsPageInfo {
 	items: iBlogPreview[];
 	current_page: number;
 	total_page: number;
@@ -19,7 +27,7 @@ export interface iBlogPreview {
 	title: string;
 	reading_time: number;
 	create_date: string;
-  }
+}
 
 export const getServerSideProps: GetServerSideProps<{
 	pageInfo: iBlogsPageInfo

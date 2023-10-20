@@ -1,6 +1,7 @@
 import { API_URL } from "@/lib/constants";
 import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 import { FC } from "react";
 
 interface iProps {
@@ -9,7 +10,14 @@ interface iProps {
 
 const LangDocsPageInfo: FC<iProps> = ({ langDocs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <LangDocsThemePageBuilder langDocs={langDocs} />
+    <>
+      <Head>
+        <title>{langDocs.content.handbook.title} | {langDocs.title}</title>
+        <meta name="description" content={langDocs.short_description} />
+        <meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
+      </Head>
+      <LangDocsThemePageBuilder langDocs={langDocs} />
+    </>
   )
 }
 
@@ -24,6 +32,10 @@ export interface iLangDocs {
   subpart: number;
   content: {
     part: number
+    handbook: {
+      id: number
+      title: string
+    }
   }
 }
 
