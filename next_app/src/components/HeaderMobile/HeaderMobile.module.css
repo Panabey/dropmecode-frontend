@@ -37,10 +37,21 @@
 	text-decoration: none;
 }
 .logo{
+	position: relative;
 	display: flex;
 	align-items: center;
 	font-size: 1rem;
 	font-weight: 400;
+}
+.logo__beta{
+	position: absolute;
+	bottom: 80%;
+	right: -17%;
+	color: #fff;
+	font-size: 0.6rem;
+	padding: 3px 6px;
+	border-radius: 7px;
+	background-color: #1DC989;
 }
 .logo svg{
 	margin-right: 10px;

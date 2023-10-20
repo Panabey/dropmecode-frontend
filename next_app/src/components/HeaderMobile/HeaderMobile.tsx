@@ -53,6 +53,7 @@ export const HeaderMobile = () => {
 							<div className={s.logo}>
 								<BsBoxSeam size={25} fill="#1F477D" />
 								DROPMECODE
+								<div className={s.logo__beta}>Бета</div>
 							</div>
 						</Link>
 					</div>
