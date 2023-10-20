@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import s from './Footer.module.css'
 import { goosePhrases } from './utils/goose'
+import { APP_VERSION } from '@/lib/constants'
 
 export const Footer = () => {
 
@@ -61,6 +62,7 @@ export const Footer = () => {
 						</div>
 						<div className={classNames(s.row, s.row__copyright)}>
 							<aside>&copy; DropMeCode 2023. Все права защищены.</aside>
+							<span>Версия приложения: {APP_VERSION}</span>
 						</div>
 						<div className={classNames(s.row, s.row__buttons)}>
 							<Link href="/confidentiality"><button className={s.button}>Политика конфиденциальности</button></Link>
