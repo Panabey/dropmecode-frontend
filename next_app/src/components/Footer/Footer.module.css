@@ -57,6 +57,9 @@
 .row__buttons{
 	justify-content: flex-end;
 }
+.row__copyright{
+	justify-content: center;
+}
 .row__copyright aside{
 	font-size: 1rem;
 }

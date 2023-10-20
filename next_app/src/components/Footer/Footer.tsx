@@ -6,8 +6,6 @@ import { FaGithub } from 'react-icons/fa'
 import s from './Footer.module.css'
 import { goosePhrases } from './utils/goose'
 
-
-
 export const Footer = () => {
 
 	const [gooseIsVisible, setGooseIsVisible] = useState<boolean>(false)
