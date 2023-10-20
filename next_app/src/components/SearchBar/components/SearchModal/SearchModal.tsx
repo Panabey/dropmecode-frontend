@@ -46,11 +46,11 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		dispatch(onChangeFilter('langs'))
 	}
 
-	useEffect(() => {
-		if (router.isReady) {
-			onCloseModal()
-		}
-	}, [router])
+	// useEffect(() => {
+	// 	if (router.isReady) {
+	// 		onCloseModal()
+	// 	}
+	// }, [router])
 
 	useEffect(() => {
 		ref.current = document.querySelector<HTMLElement>("#search")
@@ -110,7 +110,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		return () => {
 			clearTimeout(timer)
 		}
-	}, [searchValue, selectedFilter, isOpened, fetchHandbooks, fetchArticles, fetchQuizes, searchTags, isIncludeTags])
+	}, [searchValue, selectedFilter, isOpened, fetchHandbooks, fetchArticles, fetchQuizes, searchTags, isIncludeTags, setSearchResults, setIsLoadingSearch])
 
 	useEffect(() => {
 		if (!isLoadingHandbooks && dataHandbooks && selectedFilter === 'langs') {
