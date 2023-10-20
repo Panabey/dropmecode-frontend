@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <>
     <Head>
       <title>DROPMECODE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
     <Provider store={store}>
       <NextNProgress color="#1DC989" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
