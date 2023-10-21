@@ -2,35 +2,37 @@ import { Container } from '@/components/Container/Container'
 import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
+import { Paginator } from '@/components/Paginator/Paginator'
 import { usePaginator } from '@/hooks/usePaginator'
 import { UPLOADS_URL } from '@/lib/constants'
 import { iArticlePageInfo } from '@/pages/articles'
-import classNames from 'classnames'
 import { FC, useEffect } from 'react'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import getSlug from 'speakingurl'
 import s from './ArticlesListPageBuilder.module.css'
 import { useGetArticlesMutation } from './api/articles.api'
 import { ArticlesListPreview } from './components/ArticlesListPreview/ArticlesListPreview'
 import { ArtilcesListPreviewLoader } from './components/ArtilcesListPreviewLoader/ArtilcesListPreviewLoader'
-
 interface iProps {
 	pageInfo: iArticlePageInfo
 }
 
 export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
-	const { items: articles, currentPage, setItems: setArticles, onClickPaginator } = usePaginator(pageInfo.total_page, onLoadArticles, pageInfo.items)
+	const { items: articles, currentPage, setItems: setArticles, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadArticles, pageInfo.items)
 
 	const [fetchArticles, { isLoading, data, error }] = useGetArticlesMutation()
 
-	function onLoadArticles(action: '+' | '-') {
+	function onLoadArticles(action: '+' | '-' | undefined, page: number) {
 		if (action === '+') {
-			fetchArticles({ limit: 20, page: currentPage + 1 })
+			fetchArticles({ limit: 5, page })
 			return
 		}
 		if (action === '-') {
-			fetchArticles({ limit: 20, page: currentPage - 1 })
+			fetchArticles({ limit: 5, page })
+			return
+		}
+		if (action === undefined) {
+			fetchArticles({ limit: 5, page })
 			return
 		}
 	}
@@ -78,13 +80,7 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 							})
 						}
 					</div>
-					<div className={s.paginator}>
-						<IoIosArrowBack fill="#000" className={classNames(s.arrow, { [s.disabled]: currentPage <= 1 })} size={20} onClick={() => onClickPaginator('-')} />
-						<aside className={s.page__current}>
-							{currentPage}
-						</aside>
-						<IoIosArrowForward fill="#000" className={classNames(s.arrow, { [s.disabled]: currentPage >= pageInfo.total_page })} size={20} onClick={() => onClickPaginator('+')} />
-					</div>
+					<Paginator currentPage={currentPage} onClickPaginator={onClickPaginator} totalPage={pageInfo.total_page} setPagePaginator={setPagePaginator} />
 				</Container>
 				<div></div>
 			</PageArea>

@@ -2,11 +2,10 @@ import { Container } from '@/components/Container/Container'
 import { PageArea } from '@/components/PageArea/PageArea'
 import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
+import { Paginator } from '@/components/Paginator/Paginator'
 import { usePaginator } from '@/hooks/usePaginator'
 import { iBlogsPageInfo } from '@/pages/blog'
-import classNames from 'classnames'
 import { FC, useEffect } from 'react'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import getSlug from 'speakingurl'
 import s from './BlogsPageBuilder.module.css'
 import { useGetBlogsPreviewsMutation } from './api/blogs.api'
@@ -19,18 +18,21 @@ interface iProps {
 
 export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
-	const { items: blogs, currentPage, setItems: setBlogs, onClickPaginator } = usePaginator(pageInfo.total_page, onLoadBlogs, pageInfo.items)
+	const { items: blogs, currentPage, setItems: setBlogs, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadBlogs, pageInfo.items)
 
 	const [fetchBlogs, { isLoading, data, error }] = useGetBlogsPreviewsMutation()
 
-	function onLoadBlogs(action: '+' | '-') {
+	function onLoadBlogs(action: '+' | '-' | undefined, page: number) {
 		if (action === '+') {
-			fetchBlogs({ limit: 20, page: currentPage + 1 })
+			fetchBlogs({ limit: 20, page })
 			return
 		}
 		if (action === '-') {
-			fetchBlogs({ limit: 20, page: currentPage - 1 })
+			fetchBlogs({ limit: 20, page })
 			return
+		}
+		if (action === undefined) {
+			fetchBlogs({ limit: 20, page })
 		}
 	}
 
@@ -74,13 +76,7 @@ export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 							})
 						}
 					</div>
-					<div className={s.paginator}>
-						<IoIosArrowBack fill="#000" className={classNames(s.arrow, { [s.disabled]: currentPage <= 1 })} size={20} onClick={() => onClickPaginator('-')} />
-						<aside className={s.page__current}>
-							{currentPage}
-						</aside>
-						<IoIosArrowForward fill="#000" className={classNames(s.arrow, { [s.disabled]: currentPage >= pageInfo.total_page })} size={20} onClick={() => onClickPaginator('+')} />
-					</div>
+					<Paginator currentPage={currentPage} onClickPaginator={onClickPaginator} totalPage={pageInfo.total_page} setPagePaginator={setPagePaginator} />
 				</Container>
 				<div></div>
 			</PageArea>

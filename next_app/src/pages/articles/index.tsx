@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps<{
 }> = async ({ res }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const ARTICLE_PAGINATOR_PAGE = 1
-	const ARTICLES_LIMIT = 20
+	const ARTICLES_LIMIT = 5
 	const response = await fetch(API_URL + '/article/all?' + new URLSearchParams({ page: String(ARTICLE_PAGINATOR_PAGE), limit: String(ARTICLES_LIMIT) }))
 	const errorCode = response.ok ? false : response.status;
 	if (errorCode) {
