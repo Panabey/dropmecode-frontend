@@ -8,13 +8,18 @@
 }
 @media screen and (min-width: 922px) and (max-width: 1200px) {
 	.area{
-		grid-template-columns: 4fr 16fr 6fr !important;
+		grid-template-columns: 4fr 10fr 0fr !important;
 	}
 }
 @media screen and (min-width: 769px) and (max-width: 921px) {
 	.area{
 		padding: 20px;
 		grid-template-columns: 1fr !important;
+	}
+}
+@media screen and (max-width: 768px) {
+	.area{
+		grid-template-columns: 1fr;
 	}
 }
 .container{

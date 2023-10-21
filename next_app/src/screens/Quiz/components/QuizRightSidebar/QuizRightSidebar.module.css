@@ -5,6 +5,11 @@
 	left: 0;
 	width: 100%;
 }
+@media screen and (max-width: 768px) {
+	.sidebar{
+		display: none;
+	}
+}
 .filler{
 	position: relative;
 	z-index: -1;

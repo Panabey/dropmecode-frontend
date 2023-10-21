@@ -7,7 +7,7 @@ const QuizPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSide
 	return (
 		<>
 			<Head>
-				<title>DROPMECODE | {pageInfo.title}</title>
+				<title>{`DROPMECODE | ${pageInfo.title}`}</title>
 				<meta name="description" content={pageInfo.short_description} />
 				<meta name="keywords" content="IT квизы, Программирование, Тесты знаний, Онлайн экзамены, Оценка навыков, Квиз-тесты по программированию, Технические вопросы, Тестирование знаний IT, DROPMECODE квизы, Программирование викторины, Тесты для разработчиков, Задачи по программированию, Вопросы и ответы по IT, Интерактивные тесты, Обучение программированию" />
 			</Head>
