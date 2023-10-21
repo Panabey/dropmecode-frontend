@@ -34,9 +34,9 @@ export interface iArticlePreviewItem {
 
 export const getServerSideProps: GetServerSideProps<{
 	pageInfo: iArticlePageInfo
-}> = async ({ res }) => {
+}> = async ({ res, query }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
-	const ARTICLE_PAGINATOR_PAGE = 1
+	const ARTICLE_PAGINATOR_PAGE = query.page_id !== undefined ? query.page_id : 1
 	const ARTICLES_LIMIT = 5
 	const response = await fetch(API_URL + '/article/all?' + new URLSearchParams({ page: String(ARTICLE_PAGINATOR_PAGE), limit: String(ARTICLES_LIMIT) }))
 	const errorCode = response.ok ? false : response.status;

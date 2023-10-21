@@ -18,7 +18,7 @@ interface iProps {
 
 export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
-	const { items: blogs, currentPage, setItems: setBlogs, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadBlogs, pageInfo.items)
+	const { items: blogs, currentPage, setItems: setBlogs, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadBlogs, pageInfo.items, false, pageInfo.current_page)
 
 	const [fetchBlogs, { isLoading, data, error }] = useGetBlogsPreviewsMutation()
 

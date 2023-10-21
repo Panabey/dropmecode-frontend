@@ -18,7 +18,7 @@ interface iProps {
 
 export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 
-	const { items: articles, currentPage, setItems: setArticles, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadArticles, pageInfo.items)
+	const { items: articles, currentPage, setItems: setArticles, onClickPaginator, setPagePaginator } = usePaginator(pageInfo.total_page, onLoadArticles, pageInfo.items, false, pageInfo.current_page)
 
 	const [fetchArticles, { isLoading, data, error }] = useGetArticlesMutation()
 

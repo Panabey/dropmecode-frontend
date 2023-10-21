@@ -31,9 +31,9 @@ export interface iBlogPreview {
 
 export const getServerSideProps: GetServerSideProps<{
 	pageInfo: iBlogsPageInfo
-}> = async ({ res }) => {
+}> = async ({ res, query }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
-	const BLOGS_PAGINATOR_PAGE = 1
+	const BLOGS_PAGINATOR_PAGE = query.page_id !== undefined ? query.page_id : 1
 	const BLOGS_LIMIT = 20
 	const response = await fetch(API_URL + '/project/news/all?' + new URLSearchParams({ page: String(BLOGS_PAGINATOR_PAGE), limit: String(BLOGS_LIMIT) }))
 	const errorCode = response.ok ? false : response.status;
