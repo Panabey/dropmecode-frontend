@@ -2,6 +2,7 @@
 	flex: 1;
 }
 .history__empty{
+	padding-top: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;

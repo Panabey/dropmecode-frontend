@@ -9,9 +9,10 @@ import s from './SearchResults.module.css'
 
 interface iProps {
 	results: iSearchHistoryItem[]
+	queryIsFetched: boolean
 }
 
-export const SearchResults: FC<iProps> = ({ results }) => {
+export const SearchResults: FC<iProps> = ({ results, queryIsFetched }) => {
 
 	const dispatch = useDispatch()
 	const { onAddHistoryItem } = searchSlice.actions
@@ -24,11 +25,14 @@ export const SearchResults: FC<iProps> = ({ results }) => {
 		<div className={s.results}>
 			{
 				results.length === 0
-					? <div className={s.results__empty}>
-						<TbMessageQuestion color='#000' size={100} />
-						<h4>Поиск не дал результатов</h4>
-						<p>К сожалению, по такому запросу мы не смогли найти никакого материала. Попробуйте переформулировать запрос и провести поиск снова</p>
-					</div>
+					? (queryIsFetched
+						? <div className={s.results__empty}>
+							<TbMessageQuestion color='#000' size={100} />
+							<h4>Поиск не дал результатов</h4>
+							<p>К сожалению, по такому запросу мы не смогли найти никакого материала. Попробуйте переформулировать запрос и провести поиск снова</p>
+						</div>
+						: <></>
+					)
 					: <div className={s.items}>
 						<div className={s.items__block}>
 							<div className={s.items__column}>

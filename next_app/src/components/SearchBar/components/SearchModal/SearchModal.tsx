@@ -33,9 +33,9 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const dispatch = useDispatch()
 
 	const [searchResults, setSearchResults] = useState<iSearchHistoryItem[]>([])
-	const [fetchHandbooks, { isLoading: isLoadingHandbooks, data: dataHandbooks, error: errorHandbooks }] = useGetHandbookThemesMutation()
-	const [fetchArticles, { isLoading: isLoadingArticles, data: dataArticles, error: errorArticles }] = useGetArticlesMutation()
-	const [fetchQuizes, { isLoading: isLoadingQuizes, data: dataQuizes, error: errorQuizes }] = useGetQuizesMutation()
+	const [fetchHandbooks, { isLoading: isLoadingHandbooks, data: dataHandbooks, error: errorHandbooks, reset: resetHandbooks }] = useGetHandbookThemesMutation()
+	const [fetchArticles, { isLoading: isLoadingArticles, data: dataArticles, error: errorArticles, reset: resetArticles }] = useGetArticlesMutation()
+	const [fetchQuizes, { isLoading: isLoadingQuizes, data: dataQuizes, error: errorQuizes, reset: resetQuizes }] = useGetQuizesMutation()
 	const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false)
 
 	const router = useRouter()
@@ -94,18 +94,30 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 				switch (selectedFilter) {
 					case 'langs':
 						fetchHandbooks({ q: String(searchString), limit: 15 })
+						resetArticles()
+						resetQuizes()
 						break;
 					case 'articles':
 						fetchArticles({ q: searchString, limit: 15, tags: tags })
+						resetHandbooks()
+						resetQuizes()
 						break;
 					case 'quizes':
 						fetchQuizes({ q: searchString, limit: 15, tags: tags })
+						resetHandbooks()
+						resetArticles()
 						break;
 				}
 				setIsLoadingSearch(false)
 			}, 600)
 		} else {
 			setSearchResults([])
+			resetArticles()
+			resetQuizes()
+			resetHandbooks()
+		}
+		if (isOpened && searchValue.length === 0) {
+			setIsLoadingSearch(false)
 		}
 		return () => {
 			clearTimeout(timer)
@@ -177,13 +189,13 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 							</div>
 							<SearchSelector selectedFilter={selectedFilter} onChangeFilter={(filter) => dispatch(onChangeFilter(filter))} />
 						</div>
-						{!searchResults.length && !searchValue.length ? <SearchHistory history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} /> : <></>}
+						{!searchResults.length && !searchValue.length ? <SearchHistory queryIsFetched={Boolean(dataHandbooks) || Boolean(dataArticles) || Boolean(dataQuizes)}  history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} /> : <></>}
 						{isLoadingQuizes
 							|| isLoadingArticles
 							|| isLoadingHandbooks
 							|| isLoadingSearch
 							? <SearchLoader />
-							: (<SearchResults results={searchResults} />)}
+							: (<SearchResults results={searchResults} queryIsFetched={Boolean(dataHandbooks) || Boolean(dataArticles) || Boolean(dataQuizes)} />)}
 						<div className={s.statusbar}>
 							<SearchTags />
 						</div>

@@ -57,8 +57,7 @@
 	opacity: 0.5;
 }
 .block__empty{
-	height: 1rem;
+	font-size: 1rem;
 	color: #000;
 	opacity: 0.4;
-	padding-bottom: 40px;
 }
