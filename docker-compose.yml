@@ -23,11 +23,21 @@ services:
       - "traefik.http.routers.nextjs.tls=true"
       - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
       # middlewares
-      - "traefik.http.routers.frontend_security.middlewares=frontend_security"
+      - "traefik.http.routers.frontend.middlewares=frontend_security"
       - "traefik.http.middlewares.frontend_security.headers.stsseconds=31536000"
+      - "traefik.http.middlewares.frontend_security.headers.stsincludesubdomains=true"
+      - "traefik.http.middlewares.frontend_security.headers.contenttypenosniff=true"
+      - "traefik.http.middlewares.frontend_security.headers.framedeny=true"
+      - "traefik.http.middlewares.frontend_security.headers.browserxssfilter=true"
+    volumes:
+      - shared_media:assets/:ro
     networks:
       - proxy_network
 
 networks:
   proxy_network:
+    external: true
+
+volumes:
+  shared_media:
     external: true
