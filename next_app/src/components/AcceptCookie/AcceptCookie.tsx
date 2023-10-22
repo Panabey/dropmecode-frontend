@@ -21,6 +21,10 @@ export const AcceptCookie = () => {
 		if (typeof window !== 'undefined') {
 			setCookieAccept(true)
 			window.localStorage.setItem('accept_cookie', 'true')
+			//@ts-ignore
+			window[`disableYaCounter${String(process.env.NEXT_PUBLIC_YMETRICA_NUMBER)}`] = false
+			window.localStorage.setItem('nometrica', 'false')
+			return
 		}
 	}
 
