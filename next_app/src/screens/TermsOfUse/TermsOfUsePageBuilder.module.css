@@ -1,0 +1,36 @@
+.document{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.time{
+	margin-top: 15px;
+	font-size: 1rem;
+	color: #000;
+	opacity: 0.5;
+	margin-bottom: 15px;
+}
+.row{
+	margin-top: 10px;
+	font-size: 1rem;
+}
+.subtitle{
+	margin-top: 20px;
+	font-size: 1.5rem;
+}
+.term{
+	font-size: 1rem;
+	margin-top: 25px;
+}
+.ul{
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 7px 0;
+}
+.ul li {
+	margin-left: 20px;
+}
+.row a{
+	color: #1DC989;
+}

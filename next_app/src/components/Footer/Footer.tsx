@@ -66,7 +66,7 @@ export const Footer = () => {
 						</div>
 						<div className={classNames(s.row, s.row__buttons)}>
 							<Link href="/confidentiality"><button className={s.button}>Политика конфиденциальности</button></Link>
-							<button className={s.button}>Условия пользования</button>
+							<Link href="/terms-of-use"><button className={s.button}>Условия пользования</button> </Link>
 						</div>
 						<span className={s.version}>Версия приложения: {APP_VERSION}</span>
 					</div>
