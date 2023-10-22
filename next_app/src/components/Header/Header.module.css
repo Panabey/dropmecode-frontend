@@ -23,6 +23,12 @@
 	align-items: center;
 	justify-content: space-between;
 }
+@media screen and (min-width: 2000px) {
+	.content{
+		max-width: 1500px;
+		margin: 0 auto;
+	}
+}
 .content__row{
 	display: flex;
 	align-items: center;

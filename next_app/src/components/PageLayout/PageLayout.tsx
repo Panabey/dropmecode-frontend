@@ -17,7 +17,7 @@ export const PageLayout: FC<iProps> = ({ children, className, disableFooter }) =
 		<>
 			<HeaderMobile />
 			<Header />
-			<Layout className={classNames(s.Layout, { [className || '']: className })}>
+			<Layout className={classNames(s.layout, { [className || '']: className })}>
 				{children}
 				<div className={s.filler}></div>
 				{!disableFooter ? <Footer /> : <></>}
