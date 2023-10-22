@@ -5,6 +5,7 @@ const nextConfig = {
     domains: ['admin-panel.dropmecode.ru'],
   },
   poweredByHeader: false,
+  
 }
 
 module.exports = nextConfig
