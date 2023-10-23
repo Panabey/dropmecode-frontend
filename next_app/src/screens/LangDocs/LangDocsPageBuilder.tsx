@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import getSlug from 'speakingurl'
 import s from './LangDocsPageBuilder.module.css'
+import { LangDocsRightSidebar } from './components/LangDocsRightSidebar/LangDocsRightSidebar'
 
 interface iProps {
 	langInfo: iLangInfo
@@ -19,7 +20,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={langInfo.title}
@@ -49,7 +50,7 @@ export const LangDocsPageBuilder: FC<iProps> = ({ langInfo }) => {
 						)
 					})}
 				</Container>
-				<div></div>
+				<LangDocsRightSidebar books={langInfo.books} />
 			</PageArea>
 		</PageLayout>
 	)

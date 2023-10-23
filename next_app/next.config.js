@@ -2,10 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['admin-panel.dropmecode.ru'],
+    domains: ['media.dropmecode.ru'],
   },
   poweredByHeader: false,
-  
+  output: 'standalone',
 }
 
 module.exports = nextConfig

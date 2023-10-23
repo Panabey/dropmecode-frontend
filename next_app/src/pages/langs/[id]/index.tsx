@@ -21,6 +21,7 @@ export interface iLangInfo {
 	title: string;
 	description: string;
 	content: iLangContent[];
+	books: iBook[]
 }
 
 export interface iLangContent {
@@ -34,6 +35,12 @@ export interface iLangPage {
 	id: number;
 	title: string;
 	subpart: string;
+}
+
+export interface iBook {
+	logo_url: string
+	title: string
+	author: string
 }
 
 export const getServerSideProps: GetServerSideProps<{
