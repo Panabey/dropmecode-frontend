@@ -29,15 +29,9 @@ services:
       - "traefik.http.middlewares.frontend_security.headers.contenttypenosniff=true"
       - "traefik.http.middlewares.frontend_security.headers.framedeny=true"
       - "traefik.http.middlewares.frontend_security.headers.browserxssfilter=true"
-    volumes:
-      - shared_media:assets/:ro
     networks:
       - proxy_network
 
 networks:
   proxy_network:
-    external: true
-
-volumes:
-  shared_media:
     external: true
