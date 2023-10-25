@@ -98,12 +98,14 @@ export const QuizQuestion: FC<iProps> = ({ hint, answers, markdown, onClickNextQ
 								} {answer.text}
 							</span>
 							{
-								(answerStatus === 'answered' && (answers.length && answers[0].hasOwnProperty('is_correct')))
+								((answerStatus === 'answered' && (answers.length && answers[0].hasOwnProperty('is_correct')))
 								&& ((answerStatus === 'answered' && selectedAnswers.find((selectedAnswer) => selectedAnswer.id === answer.id))
-									|| (answerStatus === 'answered' && isCorrectSkippedAnswer(selectedAnswers, answer)))
-								&& <aside className={s.answer__explanation}>
+									|| (answerStatus === 'answered' && isCorrectSkippedAnswer(selectedAnswers, answer))))
+								&& answer.explanation && answer.explanation.length > 0 
+								? <aside className={s.answer__explanation}>
 									{answer.explanation}
 								</aside>
+								: <></>
 							}
 						</div>
 					)

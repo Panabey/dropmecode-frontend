@@ -4,6 +4,7 @@ import { PageCommonInfo } from '@/components/PageCommonInfo/PageCommonInfo'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import { iQuizPagePreview } from '@/pages/quizes/content/[id]'
+import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import getSlug from 'speakingurl'
@@ -13,7 +14,6 @@ import { QuizQuestion } from './components/QuizQuestion/QuizQuestion'
 import { QuizQuestionLoader } from './components/QuizQuestionLoader/QuizQuestionLoader'
 import { QuizRightSidebar } from './components/QuizRightSidebar/QuizRightSidebar'
 import { getQuizResultInfo } from './utils/quizUtils'
-import classNames from 'classnames'
 
 interface iProps {
 	pageInfo: iQuizPagePreview
@@ -81,7 +81,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 				<Container className={s.container}>
 					<PageCommonInfo
 						title={quizStatus === 'preview' ? pageInfo.title : ''}
-						description={quizStatus === 'preview' ? pageInfo.short_description : ''}
+						description={quizStatus === 'preview' ? pageInfo.description : ''}
 						breadcrumbs={[
 							{ title: "Главная", navigationUrl: "/" },
 							{ title: "Квизы", navigationUrl: "/quizes" },
@@ -105,7 +105,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						{
 							quizStatus === 'preview'
 								? <div className={s.preivew}>
-									<img  className={classNames(s.preview__img, { [s.noimg]: !pageInfo.logo_url || !pageInfo.logo_url.length })}  src={pageInfo.logo_url && pageInfo.logo_url.length ? UPLOADS_URL + pageInfo.logo_url : '/assets/Quizes/plug1.png'} alt="Превью картинка квиза" />
+									<img className={classNames(s.preview__img, { [s.noimg]: !pageInfo.logo_url || !pageInfo.logo_url.length })} src={pageInfo.logo_url && pageInfo.logo_url.length ? UPLOADS_URL + pageInfo.logo_url : '/assets/Quizes/plug1.png'} alt="Превью картинка квиза" />
 									<span className={s.preview__counter}>Вопросов: {pageInfo.questions.length}</span>
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>

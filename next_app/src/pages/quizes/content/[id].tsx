@@ -16,7 +16,6 @@ const QuizPage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSide
 	)
 }
 
-
 export interface iQuizPagePreview {
 	id: number;
 	logo_url: string;
@@ -24,6 +23,7 @@ export interface iQuizPagePreview {
 	meta: string;
 	questions: number[];
 	short_description: string;
+	description: string;
 	topic: {
 		id: number;
 		title: string;
