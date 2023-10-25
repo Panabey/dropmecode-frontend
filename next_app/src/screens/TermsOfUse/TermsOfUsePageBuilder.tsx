@@ -56,6 +56,9 @@ export const TermsOfUsePageBuilder = () => {
 						<p className={s.row}>Изменения вступают в силу с момента их публикации на Сайте. Пожалуйста, периодически проверяйте Условия Пользования.</p>
 						<br />
 						<p className={s.row}>Свяжитесь с нами по адресу <Link href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}>{process.env.NEXT_PUBLIC_SUPPORT_EMAIL}</Link> для вопросов или комментариев относительно Условий Пользования Сайта dropmecode.ru.</p>
+						<h3 className={s.subtitle}>7. СБОР ДАННЫХ</h3>
+						<p className={s.row}>Сайт собирает пользовательские данные для аналитики в файлы &#8220;cookie&#8221;. </p>
+						<p className={s.row}>Если вы хотите прочитать о том, какие данные собираются и как отключить их сбор (при необходимости), можете перейти на <Link href={`/cookies`}>СТРАНИЦУ О COOKIE ФАЙЛАХ</Link></p>
 					</div>
 				</Container>
 				<div></div>
