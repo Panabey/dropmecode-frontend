@@ -1,5 +1,4 @@
 import { useTypedSelector } from '@/redux/store'
-import { useRouter } from 'next/router'
 import { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { IoClose, IoSearch } from 'react-icons/io5'
@@ -38,19 +37,18 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const [fetchQuizes, { isLoading: isLoadingQuizes, data: dataQuizes, error: errorQuizes, reset: resetQuizes }] = useGetQuizesMutation()
 	const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false)
 
-	const router = useRouter()
-
 	function onCloseModal() {
 		onClose()
 		setSearchValue('')
 		dispatch(onChangeFilter('langs'))
 	}
 
-	// useEffect(() => {
-	// 	if (router.isReady) {
-	// 		onCloseModal()
-	// 	}
-	// }, [router])
+	useEffect(() => {
+		if (isOpened) {
+			const inputField = document.querySelector<HTMLInputElement>(`.${s.searchbar__input}`)
+			inputField?.focus()
+		}
+	}, [isOpened])
 
 	useEffect(() => {
 		ref.current = document.querySelector<HTMLElement>("#search")
@@ -189,7 +187,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 							</div>
 							<SearchSelector selectedFilter={selectedFilter} onChangeFilter={(filter) => dispatch(onChangeFilter(filter))} />
 						</div>
-						{!searchResults.length && !searchValue.length ? <SearchHistory queryIsFetched={Boolean(dataHandbooks) || Boolean(dataArticles) || Boolean(dataQuizes)}  history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} /> : <></>}
+						{!searchResults.length && !searchValue.length ? <SearchHistory queryIsFetched={Boolean(dataHandbooks) || Boolean(dataArticles) || Boolean(dataQuizes)} history={history} removeHistoryItem={(item) => dispatch(onRemoveHistoryItem(item))} /> : <></>}
 						{isLoadingQuizes
 							|| isLoadingArticles
 							|| isLoadingHandbooks
