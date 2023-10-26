@@ -12,7 +12,7 @@ module.exports = {
 		policies: [
 			{
 				userAgent: '*',
-				allow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/'],
+				disallow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/', '/maintenance'],
 			},
 			{
 				userAgent: '*',
