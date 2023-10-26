@@ -1,4 +1,5 @@
 import { AcceptCookie } from '@/components/AcceptCookie/AcceptCookie'
+import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary'
 import { YMetrica } from '@/components/YMetrica/YMetrica'
 import { setupStore } from '@/redux/store'
 import '@/styles/codehighlight.css'
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <NextNProgress color="#1DC989" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
       <AcceptCookie />
       <YMetrica />
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </Provider>
 
   </>
