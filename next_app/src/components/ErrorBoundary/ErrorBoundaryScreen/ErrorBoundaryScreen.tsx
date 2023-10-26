@@ -27,9 +27,9 @@ const ErrorBoundaryScreen: FC<iProps> = ({ error, requestType }) => {
 				<button
 					className={s.button}
 					type="button"
-					onClick={() => window.location.reload()}
+					onClick={() => window.location.href = String(process.env.NEXT_PUBLIC_SITE_URL)}
 				>
-					Перезагрузить
+					На главную
 				</button>
 			</div>
 			<footer className={s.footer}>Тип ошибки: {requestType}</footer>
