@@ -17,6 +17,7 @@ out/
 build/
 next_app/public/sitemap.xml
 next_app/public/sitemap-*.xml
+next_app/public/robots.txt
 
 # misc
 .DS_Store
@@ -36,3 +37,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+next_app/public/robots.txt

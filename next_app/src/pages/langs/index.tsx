@@ -56,7 +56,8 @@ export const getServerSideProps: GetServerSideProps<{
 			},
 		}
 	}
-	const handbooks = await response.json()
+	const handbooks = await response.json();
+
 	return { props: { handbooks } }
 }
 

@@ -1,11 +1,11 @@
 # *
-
 User-agent: *
-Disallow: /terms-of-use/
-Disallow: /confidentiality/
-Disallow: /error/
-Disallow: /cookies/
+Allow: /terms-of-use/
+Allow: /confidentiality/
+Allow: /error/
+Allow: /cookies/
 
+# *
 User-agent: *
 Allow: /
 
@@ -14,3 +14,4 @@ Host: https://dropmecode.ru
 
 # Sitemaps
 Sitemap: https://dropmecode.ru/sitemap.xml
+Sitemap: https://dropmecode.ru/server-sitemap-index.xml

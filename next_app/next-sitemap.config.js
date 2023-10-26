@@ -6,5 +6,22 @@ module.exports = {
 	priority: 0.7,
 	autoLastmod: true,
 	generateIndexSitemap: true,
+	exclude: ['/server-sitemap-index.xml'],
+	generateRobotsTxt: true,
+	robotsTxtOptions: {
+		policies: [
+			{
+				userAgent: '*',
+				allow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/'],
+			},
+			{
+				userAgent: '*',
+				allow: '/',
+			}
+		],
+		additionalSitemaps: [
+			'https://dropmecode.ru/server-sitemap-index.xml',
+		],
 
+	},
 }
