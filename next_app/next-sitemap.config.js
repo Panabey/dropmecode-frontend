@@ -1,12 +1,12 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-	siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://dropmecode.ru',
+	siteUrl: process.env.NEXT_PUBLIC_PROD_SITE_URL || 'https://dropmecode.ru',
 	sitemapSize: 5000,
 	changefreq: 'daily',
 	priority: 0.7,
 	autoLastmod: true,
 	generateIndexSitemap: true,
-	exclude: ['/server-sitemap-index.xml'],
+	exclude: ['/server-sitemap.xml'],
 	generateRobotsTxt: true,
 	robotsTxtOptions: {
 		policies: [
@@ -20,7 +20,7 @@ module.exports = {
 			}
 		],
 		additionalSitemaps: [
-			'https://dropmecode.ru/server-sitemap-index.xml',
+			'https://dropmecode.ru/server-sitemap.xml',
 		],
 
 	},

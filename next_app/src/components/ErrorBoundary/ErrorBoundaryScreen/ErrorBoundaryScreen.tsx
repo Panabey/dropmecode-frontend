@@ -1,3 +1,4 @@
+import { SITE_URL } from '@/lib/constants'
 import Image from 'next/image'
 import { FC } from 'react'
 import s from './ErrorBoundaryScreen.module.css'
@@ -27,7 +28,7 @@ const ErrorBoundaryScreen: FC<iProps> = ({ error, requestType }) => {
 				<button
 					className={s.button}
 					type="button"
-					onClick={() => window.location.href = String(process.env.NEXT_PUBLIC_SITE_URL)}
+					onClick={() => window.location.href = String(SITE_URL)}
 				>
 					На главную
 				</button>
