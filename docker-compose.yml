@@ -10,8 +10,13 @@ services:
       dockerfile: next_app/Dockerfile.prod
       args:
         - API_URL=<url> # change
-        - UPLOADS_URL=<url/media/> # change
-        - UPLOADS_MARKDOWN_URL=<admin_url> # change
+        - UPLOADS_URL=<mdeia_url> # change
+        - UPLOADS_MARKDOWN_URL=<mdeia_url> # change
+        - APP_VERSION=<version> # change
+        - YMETRICA_NUMBER=<id> # change
+        - SUPPORT_EMAIL=<email> # change
+        - IS_MAINTENANCE=false
+        - SITE_URL=<url> # change
     expose:
       - 3000
     environment:
