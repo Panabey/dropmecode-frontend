@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+# За основу взят https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose
+WORKDIR /app
+
+COPY next_app/  /app 
+
+# Переменные окружения для запуска
+ARG API_URL
+ENV NEXT_PUBLIC_DEV_API_URL=${API_URL}
+ARG UPLOADS_URL
+ENV NEXT_PUBLIC_DEV_UPLOADS_URL=${UPLOADS_URL}
+ARG UPLOADS_MARKDOWN_URL
+ENV NEXT_PUBLIC_DEV_UPLOADS_MARKDOWN_URL=${UPLOADS_MARKDOWN_URL}
+
+RUN npm ci
+
+# Запуск сервера в режиме разработки
+CMD npm run dev
