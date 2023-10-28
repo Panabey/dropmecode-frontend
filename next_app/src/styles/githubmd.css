@@ -405,7 +405,7 @@
   margin: 0;
   padding: 0 1em;
   color: var(--color-fg-muted);
-  border-left: .25em solid var(--color-border-default);
+  border-left: .25em solid #1DC989;
 }
 
 .markdown-body ul,
