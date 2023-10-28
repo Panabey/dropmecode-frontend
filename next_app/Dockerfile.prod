@@ -1,0 +1,56 @@
+FROM node:20-alpine AS base
+# За основу взят https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose
+
+# Шаг 1. пересобрать исходный код только при необходимости
+FROM base AS builder
+
+WORKDIR /app
+
+COPY next_app/  /app 
+
+# Переменные окружения для сборки
+ARG API_URL
+ARG UPLOADS_URL
+ARG UPLOADS_MARKDOWN_URL
+ARG APP_VERSION
+ARG YMETRICA_NUMBER
+ARG SUPPORT_EMAIL
+ARG IS_MAINTENANCE
+ARG SITE_URL
+
+ENV NEXT_PUBLIC_PROD_API_URL=${API_URL}
+ENV NEXT_PUBLIC_PROD_UPLOADS_URL=${UPLOADS_URL}
+ENV NEXT_PUBLIC_PROD_UPLOADS_MARKDOWN_URL=${UPLOADS_MARKDOWN_URL}
+ENV NEXT_PUBLIC_APP_VERSION=${APP_VERSION}
+ENV NEXT_PUBLIC_YMETRICA_NUMBER=${YMETRICA_NUMBER}
+ENV NEXT_PUBLIC_SUPPORT_EMAIL=${SUPPORT_EMAIL}
+ENV NEXT_PUBLIC_IS_MAINTENANCE=${IS_MAINTENANCE}
+ENV NEXT_PUBLIC_PROD_SITE_URL=${SITE_URL}
+
+RUN npm ci
+
+# Next.js собирает полностью анонимные данные телеметрии об общем использовании. 
+# Узнайте больше здесь: https://nextjs.org/telemetry.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run build
+
+# Шаг 2. Запуск рабочего образа
+FROM base AS runner
+
+WORKDIR /app
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+USER nextjs
+
+COPY --from=builder /app/public ./public
+
+# Автоматически использовать выходные трассировки для уменьшения размера изображения.
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD ["node", "server.js"]

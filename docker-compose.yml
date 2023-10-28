@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: frontend
+    container_name: frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: next_app/Dockerfile.prod
+      args:
+        - API_URL=<url> # change
+        - UPLOADS_URL=<mdeia_url> # change
+        - UPLOADS_MARKDOWN_URL=<mdeia_url> # change
+        - APP_VERSION=<version> # change
+        - YMETRICA_NUMBER=<id> # change
+        - SUPPORT_EMAIL=<email> # change
+        - IS_MAINTENANCE=false
+        - SITE_URL=<url> # change
+    expose:
+      - 3000
+    environment:
+      - HOSTNAME=0.0.0.0
+      - KEEP_ALIVE_TIMEOUT=30
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextjs.rule=Host(`<domain>`)" # change domain
+      - "traefik.http.routers.nextjs.tls=true"
+      - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
+      # middlewares
+      - "traefik.http.routers.frontend.middlewares=frontend_security"
+      - "traefik.http.middlewares.frontend_security.headers.stsseconds=31536000"
+      - "traefik.http.middlewares.frontend_security.headers.stsincludesubdomains=true"
+      - "traefik.http.middlewares.frontend_security.headers.contenttypenosniff=true"
+      - "traefik.http.middlewares.frontend_security.headers.framedeny=true"
+      - "traefik.http.middlewares.frontend_security.headers.browserxssfilter=true"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
