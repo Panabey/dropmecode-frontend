@@ -1,5 +1,6 @@
+import { useHeaderHeight } from '@/hooks/useHeaderHeight'
 import classNames from 'classnames'
-import { FC, ReactNode, useEffect, useState } from 'react'
+import { FC, ReactNode } from 'react'
 import s from './Layout.module.css'
 
 interface iProps {
@@ -9,11 +10,7 @@ interface iProps {
 
 export const Layout: FC<iProps> = ({ children, className }) => {
 
-	const [headerHeight, setHeaderHeight] = useState<number>(0);
-
-	useEffect(() => {
-		setHeaderHeight(document.querySelector('.header')?.clientHeight || 0);
-	}, [])
+	const headerHeight = useHeaderHeight()
 
 	return (
 		<div className={classNames(s.layout, { [className || '']: className })} style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}>{children}</div>

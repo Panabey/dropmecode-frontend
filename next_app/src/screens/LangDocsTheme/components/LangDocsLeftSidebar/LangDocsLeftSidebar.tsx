@@ -1,3 +1,4 @@
+import { useHeaderHeight } from '@/hooks/useHeaderHeight'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -20,9 +21,11 @@ export const LangDocsLeftSidebar: FC<iProps> = ({ handbook, activeThemeId }) => 
 		throw new Error('Ошибка при загрузке дерева справочника на странице темы')
 	}
 
+	const headerHeight = useHeaderHeight()
+
 	return (
-		<div className={classNames(s.sidebar, s.sidebar__left)}>
-			<div className={s.block}>
+		<div className={classNames(s.sidebar, s.sidebar__left)} style={{ maxHeight: `calc(100vh - ${headerHeight}px)` }}>
+			<div className={s.block} >
 				<h4 className={s.block__title}>Дерево разделов</h4>
 				{
 					!isLoading && data && data.content.length
