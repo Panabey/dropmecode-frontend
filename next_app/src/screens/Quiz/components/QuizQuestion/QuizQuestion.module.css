@@ -83,6 +83,12 @@
 	max-width: 30%;
 	position: relative;
 }
+@media screen and (max-width: 480px) {
+	.hint__area{
+		max-width: 100%;
+		word-break: break-word;
+	}
+}
 .button_hint{
 	display: flex;
 	align-items: center;
@@ -117,6 +123,11 @@
 }
 .button_hint_active{
 	opacity: 0.6;
+}
+@media screen and (max-width: 480px) {
+	.hint{
+		max-width: 90vw;
+	}
 }
 .answers__button{
 	cursor: pointer;
