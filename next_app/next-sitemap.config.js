@@ -12,11 +12,8 @@ module.exports = {
 		policies: [
 			{
 				userAgent: '*',
-				disallow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/', '/maintenance'],
-			},
-			{
-				userAgent: '*',
 				allow: '/',
+				disallow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/', '/maintenance'],
 			}
 		],
 		additionalSitemaps: [
