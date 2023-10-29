@@ -132,9 +132,20 @@
 	height: auto;
 	margin-top: 40px;
 }
+@media screen and (max-width: 480px) {
+	.result__icon{
+		max-width: 50vw;
+	}
+}
 .result__title{
 	margin-top: 25px;
 	font-size: 2.5rem;
+}
+@media screen and (max-width: 480px) {
+	.result__title{
+		font-size: 1.4rem;
+   		text-align: center;
+	}
 }
 .result__description{
 	margin-top: 15px;
@@ -142,6 +153,12 @@
 	margin: 0 auto;
 	margin-top: 15px;
 	text-align: center;
+}
+@media screen and (max-width: 480px) {
+	.result__description{
+		max-width: 90%;
+		font-size: 0.9rem;
+	}
 }
 .result__button{
 	cursor: pointer;
@@ -166,4 +183,9 @@
 	background-color: #FFF;
     color: #1F477D;
     border: 1px solid;
+}
+@media screen and (max-width: 480px) {
+	.result__button{
+		font-size: 0.9rem;
+	}
 }

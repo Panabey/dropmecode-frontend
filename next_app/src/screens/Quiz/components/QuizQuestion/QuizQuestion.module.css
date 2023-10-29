@@ -30,6 +30,9 @@
 	align-items: center;
 	opacity: 0.8;
 }
+.answer__title svg{
+	min-width: 25px;
+}
 .answer_noevents{
 	pointer-events: none;
 }
