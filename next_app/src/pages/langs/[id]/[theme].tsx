@@ -6,13 +6,14 @@ import { FC } from "react";
 
 interface iProps {
   langDocs: iLangDocs
+  title: string
 }
 
-const LangDocsPageInfo: FC<iProps> = ({ langDocs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const LangDocsPageInfo: FC<iProps> = ({ langDocs, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <Head>
-        <title>{langDocs.content.handbook.title} {'|'} {langDocs.title}</title>
+        <title>{title}</title>
         <meta name="description" content={langDocs.short_description} />
         <meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
       </Head>
@@ -40,14 +41,15 @@ export interface iLangDocs {
 }
 
 export const getServerSideProps: GetServerSideProps<{
-  langDocs: iLangDocs
+  langDocs: iLangDocs, title: string
 }> = async ({ res, resolvedUrl }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
   const url = resolvedUrl.split('/')
   if (url.length < 4) {
     return {
       props: {
-        langDocs: null
+        langDocs: null,
+        title: ''
       },
       redirect: {
         destination: '/error',
@@ -65,7 +67,8 @@ export const getServerSideProps: GetServerSideProps<{
     res.statusCode = errorCode;
     return {
       props: {
-        langDocs: null
+        langDocs: null,
+        title: ''
       },
       redirect: {
         destination: '/error',
@@ -74,7 +77,12 @@ export const getServerSideProps: GetServerSideProps<{
     }
   }
   const langDocs = await response.json()
-  return { props: { langDocs } }
+  return {
+    props: {
+      langDocs: langDocs,
+      title: `${langDocs.content.handbook.title} ${'|'} ${langDocs.title}`
+    }
+  }
 }
 
 export default LangDocsPageInfo

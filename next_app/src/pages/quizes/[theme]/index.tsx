@@ -4,11 +4,11 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { iQuizesinfo } from '../index';
 
-const QuizesThemePage = ({ pageInfo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const QuizesThemePage = ({ pageInfo, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
 		<>
 			<Head>
-				<title>DROPMECODE | {pageInfo.title}</title>
+				<title>{title}</title>
 				<meta name="description" content="На DROPMECODE вы найдете интересные и образовательные онлайн тесты по программированию и информационным технологиям. Проверьте свои знания, решайте технические задачи и оцените свой уровень в IT сфере." />
 				<meta name="keywords" content="IT квизы, Программирование, Тесты знаний, Онлайн экзамены, Оценка навыков, Квиз-тесты по программированию, Технические вопросы, Тестирование знаний IT, DROPMECODE квизы, Программирование викторины, Тесты для разработчиков, Задачи по программированию, Вопросы и ответы по IT, Интерактивные тесты, Обучение программированию" />
 			</Head>
@@ -24,7 +24,7 @@ export interface iQuizesThemePage {
 }
 
 export const getServerSideProps: GetServerSideProps<{
-	pageInfo: iQuizesThemePage
+	pageInfo: iQuizesThemePage, title: string
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const TOPIC_QUIZES_LIMIT = 18
@@ -33,7 +33,8 @@ export const getServerSideProps: GetServerSideProps<{
 	if (url.length < 3) {
 		return {
 			props: {
-				langDocs: null
+				pageInfo: null,
+				title: ''
 			},
 			redirect: {
 				destination: '/error',
@@ -48,7 +49,8 @@ export const getServerSideProps: GetServerSideProps<{
 		res.statusCode = errorCode;
 		return {
 			props: {
-				pageInfo: {}
+				pageInfo: {},
+				title: ''
 			},
 			redirect: {
 				destination: '/error',
@@ -57,7 +59,12 @@ export const getServerSideProps: GetServerSideProps<{
 		}
 	}
 	const pageInfo = await response.json()
-	return { props: { pageInfo } }
+	return {
+		props: {
+			pageInfo: pageInfo,
+			title: `DROPMECODE | ${pageInfo.title}`
+		}
+	}
 }
 
 

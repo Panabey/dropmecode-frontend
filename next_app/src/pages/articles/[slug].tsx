@@ -3,11 +3,11 @@ import { ArticlePageBuilder } from '@/screens/Article/ArticlePageBuilder'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 
-const NewsArticlePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const NewsArticlePage = ({ article, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
 		<>
 			<Head>
-				<title>DROPMECODE | {article.title}</title>
+				<title>{title}</title>
 				<meta name="keywords" content="IT, программирование, технологии, новости, разработка, информационные технологии, последние новости, статьи, новые статьи, статьи из мира IT, программирование новости, DROPMECODE" ></meta>
 				<meta name="description" content={article.anons} />
 			</Head>
@@ -29,14 +29,15 @@ export interface iArticle {
 
 
 export const getServerSideProps: GetServerSideProps<{
-	article: iArticle
+	article: iArticle, title: string
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const url = resolvedUrl.split('/')
 	if (url.length < 3) {
 		return {
 			props: {
-				langDocs: null
+				article: null,
+				title: ''
 			},
 			redirect: {
 				destination: '/error',
@@ -51,7 +52,8 @@ export const getServerSideProps: GetServerSideProps<{
 		res.statusCode = errorCode;
 		return {
 			props: {
-				article: {}
+				article: {},
+				title: ''
 			},
 			redirect: {
 				destination: '/error',
@@ -60,7 +62,12 @@ export const getServerSideProps: GetServerSideProps<{
 		}
 	}
 	const article = await response.json()
-	return { props: { article } }
+	return {
+		props: {
+			article: article,
+			title: `DROPMECODE | ${article.title}`
+		}
+	}
 }
 
 export default NewsArticlePage

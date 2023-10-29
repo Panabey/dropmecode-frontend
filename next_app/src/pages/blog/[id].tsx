@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<{
   if (url.length < 3) {
     return {
       props: {
-        langDocs: null
+        blog: null
       },
       redirect: {
         destination: '/error',
@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<{
     res.statusCode = errorCode;
     return {
       props: {
-        article: {}
+        blog: {}
       },
       redirect: {
         destination: '/error',
