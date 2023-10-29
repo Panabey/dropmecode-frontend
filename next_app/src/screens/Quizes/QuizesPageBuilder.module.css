@@ -30,7 +30,7 @@
 		grid-template-columns: 1fr 1fr;
 	}
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
 	.quizes{
 		grid-template-columns: 1fr;
 	}
@@ -102,4 +102,9 @@
 .button__quizes_all:hover{
 	opacity: 1;
 	filter: saturate(1.3);
+}
+@media screen and (max-width: 480px) {
+	.button__quizes_all{
+		font-size: 1.3rem;
+	}
 }

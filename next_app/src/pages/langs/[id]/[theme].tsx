@@ -9,11 +9,10 @@ interface iProps {
 }
 
 const LangDocsPageInfo: FC<iProps> = ({ langDocs }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-
   return (
     <>
       <Head>
-        <title>{`${langDocs.content.handbook.title} | ${langDocs.title}`}</title>
+        <title>{langDocs.content.handbook.title} {'|'} {langDocs.title}</title>
         <meta name="description" content={langDocs.short_description} />
         <meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
       </Head>

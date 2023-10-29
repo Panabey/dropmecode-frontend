@@ -3,11 +3,6 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 }
-@media screen and (max-width: 768px) {
-	.area{
-		grid-template-columns: 0fr 1fr 0fr;
-	}
-}
 .container{
 	display: flex;
 	flex-direction: column;
