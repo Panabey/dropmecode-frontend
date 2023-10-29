@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<{
 			},
 		}
 	}
-	const response = await fetch(API_URL + '/quiz/?' + new URLSearchParams({ quiz_id: String(url[3].split('-')[0]) }))
+	const response = await fetch(API_URL + '/quiz?' + new URLSearchParams({ quiz_id: String(url[3].split('-')[0]) }))
 	const errorCode = response.ok ? false : response.status;
 	if (errorCode) {
 		res.statusCode = errorCode;
