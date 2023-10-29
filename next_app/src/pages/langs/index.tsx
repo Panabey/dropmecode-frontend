@@ -7,7 +7,7 @@ const LangsPage = ({ handbooks }: InferGetServerSidePropsType<typeof getServerSi
 	return (
 		<>
 			<Head>
-				<title>DROPMECODE | Языки программирования</title>
+				<title>DROPMECODE | Справочные материалы</title>
 				<meta name="description" content="На DROPMECODE вы найдете обширный список полезных ресурсов и материалов, посвященных информационным технологиям и программированию. Исследуйте наши справочники, углубитесь в мир IT, и найдите необходимую информацию для развития в сфере программирования и технических навыков." />
 				<meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
 			</Head>
