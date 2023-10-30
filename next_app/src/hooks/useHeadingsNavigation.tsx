@@ -51,7 +51,7 @@ export const useHeadingsNavigation = (markdownClassName: string, reloadAction?: 
 	}, [pageNavigationLinks])
 
 	useEffect(() => {
-		let timer: number | undefined | NodeJS.Timer;
+		let timer: any;
 		if (pageNavigationLinks.length === 0) {
 			timer = setInterval(() => {
 				const renderedMD = document.querySelector("." + markdownClassName)

@@ -13,14 +13,11 @@ interface iProps {
 	className?: string
 }
 
-interface iPropsPre {
-	children: any
-}
-const Pre: FC<iPropsPre> = ({ children }) => {
+const Pre: FC<any> = ({ children }) => {
 	return (
 		<pre style={{ position: 'relative' }}>
-			<CopyCodeButton>{children}</CopyCodeButton>
-			{children}
+			<CopyCodeButton>{children ? children : <div></div>}</CopyCodeButton>
+			{children ? children : ''}
 		</pre>
 	)
 }
@@ -35,20 +32,25 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
 			}
 			components={{
-				pre: Pre,
-				//@ts-ignore
-				code({ node, inline, className, children, ...props }) {
+				pre(props) {
+					return (
+						<Pre>{props.children}</Pre>
+					)
+				},
+				code(props) {
+					const { children, className, node, ...rest } = props
 					const match = /language-(\w+)/.exec(className || '')
-					return !inline && match ? (
+					return match ? (
 						<SyntaxHighlighter
 							showLineNumbers={true}
-							{...props}
 							language={match[1]}
 							PreTag="div"
 							style={highlightStyle}
-						>{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
+						>
+							{String(children).replace(/\n$/, '')}
+						</SyntaxHighlighter>
 					) : (
-						<code {...props} className={className}>
+						<code {...rest} className={className}>
 							{children}
 						</code>
 					)

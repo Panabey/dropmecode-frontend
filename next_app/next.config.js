@@ -2,7 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['media.dropmecode.ru'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.dropmecode.ru',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   poweredByHeader: false,
   output: 'standalone',
