@@ -1,7 +1,7 @@
 import { MARKDOWN_UPLOADS_URL } from "@/lib/constants"
 import classNames from "classnames"
 import { FC } from 'react'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import Markdown from 'react-markdown'
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import highlightStyle from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import rehypeRaw from 'rehype-raw'
@@ -27,15 +27,16 @@ const Pre: FC<iPropsPre> = ({ children }) => {
 
 export const MarkdownRender: FC<iProps> = ({ children, className: customClass }) => {
 	return (
-		<ReactMarkdown
+		<Markdown
 			className={classNames({ [customClass || '']: customClass }, 'markdown-body')}
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
-			transformImageUri={uri =>
+			urlTransform={(uri: any) =>
 				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
 			}
 			components={{
 				pre: Pre,
+				//@ts-ignore
 				code({ node, inline, className, children, ...props }) {
 					const match = /language-(\w+)/.exec(className || '')
 					return !inline && match ? (
@@ -55,6 +56,6 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 			}}
 		>
 			{children}
-		</ReactMarkdown>
+		</Markdown>
 	)
 }

@@ -12,7 +12,7 @@ export const CopyCodeButton: FC<iProps> = ({ children }) => {
 	const [isCopied, setIsCopied] = useState(false);
 
 	const handleClick = () => {
-		navigator.clipboard.writeText((children as any)[0].props.children[0]);
+		navigator.clipboard.writeText((children as any).props.children);
 		setIsCopied(true);
 		setTimeout(() => {
 			setIsCopied(false);
