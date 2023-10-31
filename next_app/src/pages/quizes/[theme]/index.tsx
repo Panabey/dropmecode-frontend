@@ -2,6 +2,7 @@ import { API_URL } from '@/lib/constants';
 import { QuizesThemePageBuilder } from '@/screens/QuizesTheme/QuizesThemePageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
+import getSlug from 'speakingurl';
 import { iQuizesinfo } from '../index';
 
 const QuizesThemePage = ({ pageInfo, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -59,6 +60,19 @@ export const getServerSideProps: GetServerSideProps<{
 		}
 	}
 	const pageInfo = await response.json()
+	const slug = `/quizes/${pageInfo.id}-${getSlug(pageInfo.title, { lang: 'ru' })}`
+	if (resolvedUrl !== slug) {
+		return {
+			props: {
+				pageInfo: null,
+				title: ''
+			},
+			redirect: {
+				destination: slug,
+				permanent: true,
+			},
+		}
+	}
 	return {
 		props: {
 			pageInfo: pageInfo,

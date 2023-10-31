@@ -2,6 +2,7 @@ import { API_URL } from '@/lib/constants'
 import { ArticlePageBuilder } from '@/screens/Article/ArticlePageBuilder'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
+import getSlug from 'speakingurl'
 
 const NewsArticlePage = ({ article, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
@@ -62,6 +63,19 @@ export const getServerSideProps: GetServerSideProps<{
 		}
 	}
 	const article = await response.json()
+	const slug = `/articles/${article.id}-${getSlug(article.title, { lang: 'ru' })}`
+	if (resolvedUrl !== slug) {
+		return {
+			props: {
+				article: null,
+				title: ''
+			},
+			redirect: {
+				destination: slug,
+				permanent: true,
+			},
+		}
+	}
 	return {
 		props: {
 			article: article,

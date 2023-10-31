@@ -2,6 +2,7 @@ import { API_URL } from '@/lib/constants';
 import { BlogPageBuilder } from '@/screens/Blog/BlogPageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
+import getSlug from 'speakingurl';
 
 const BlogPage = ({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
@@ -57,6 +58,19 @@ export const getServerSideProps: GetServerSideProps<{
     }
   }
   const blog = await response.json()
+  const slug = `/blog/${blog.id}-${getSlug(blog.title, { lang: 'ru' })}`
+  if (resolvedUrl !== slug) {
+    return {
+      props: {
+        blog: null,
+        title: ''
+      },
+      redirect: {
+        destination: slug,
+        permanent: true,
+      },
+    }
+  }
   return { props: { blog } }
 }
 

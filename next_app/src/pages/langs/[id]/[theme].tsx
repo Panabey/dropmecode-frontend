@@ -3,6 +3,7 @@ import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemeP
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { FC } from "react";
+import getSlug from "speakingurl";
 
 interface iProps {
   langDocs: iLangDocs
@@ -76,7 +77,20 @@ export const getServerSideProps: GetServerSideProps<{
       },
     }
   }
-  const langDocs = await response.json()
+  const langDocs: iLangDocs = await response.json()
+  const slug = '/langs/' + langDocs.content.handbook.title.toLowerCase() + `/${langDocs.id}-${getSlug(langDocs.title.toLowerCase(), { lang: 'ru' })}`
+  if (resolvedUrl !== slug) {
+    return {
+      props: {
+        langDocs: null,
+        title: ''
+      },
+      redirect: {
+        destination: slug,
+        permanent: true,
+      },
+    }
+  }
   return {
     props: {
       langDocs: langDocs,
