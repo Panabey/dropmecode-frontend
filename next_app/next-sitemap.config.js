@@ -13,7 +13,7 @@ module.exports = {
 			{
 				userAgent: '*',
 				allow: '/',
-				disallow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/', '/maintenance'],
+				disallow: ['/terms-of-use/', '/confidentiality/', '/error/', '/cookies/', '/maintenance', '/404'],
 			}
 		],
 		additionalSitemaps: [

@@ -6,6 +6,7 @@ const Page404 = () => {
 		<>
 			<Head>
 				<title>DROPMECODE | 404 </title>
+				<meta name="robots" content="noindex" />
 			</Head>
 			<NotFound404PageBuilder />
 		</>
