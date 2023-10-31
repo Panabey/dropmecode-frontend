@@ -47,13 +47,13 @@ export const QuizRightSidebar: FC<iProps> = ({ quizStatus, topicId, quizId }) =>
 											<QuizRightSidebarLoader key={idx} />
 										)
 									})
-									: dataTopics && dataTopics.length
+									: dataTopics && dataTopics.filter((item) => item.id !== topicId).length
 										? dataTopics.filter((item) => item.id !== topicId).map((link) => {
 											return (
 												<Link href={`/quizes/${link.id}-${getSlug(link.title, { lang: 'ru' })}`} className={s.block__link} key={link.id}>{link.title}</Link>
 											)
 										})
-										: <></>
+										: <div className={s.quizes__empty}>Мы не смогли ничего найти :{'('}</div>
 								}
 							</div>
 						</div>
@@ -70,13 +70,13 @@ export const QuizRightSidebar: FC<iProps> = ({ quizStatus, topicId, quizId }) =>
 											<QuizRightSidebarLoader key={idx} />
 										)
 									})
-									: dataQuizesTopic && dataQuizesTopic.quizzes.length
+									: dataQuizesTopic && dataQuizesTopic.quizzes.filter((quiz) => quiz.id !== quizId).length
 										? dataQuizesTopic.quizzes.filter((quiz) => quiz.id !== quizId).map((quiz) => {
 											return (
 												<Link href={`/quizes/content/${quiz.id}-${getSlug(quiz.title, { lang: 'ru' })}`} className={s.block__link} key={quiz.id}>{quiz.title}</Link>
 											)
 										})
-										: <></>
+										: <div className={s.quizes__empty}>Мы не смогли ничего найти :{'('}</div>
 								}
 							</div>
 						</div>

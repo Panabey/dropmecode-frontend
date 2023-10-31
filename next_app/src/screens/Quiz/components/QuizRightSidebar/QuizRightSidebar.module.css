@@ -78,3 +78,8 @@
 .block__underline_correct_skip{
 	background-color: #fac34e;
 }
+.quizes__empty{
+	color: #000;
+    opacity: 0.3;
+    font-size: 0.9rem;
+}
