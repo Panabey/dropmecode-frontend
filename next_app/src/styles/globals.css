@@ -56,3 +56,6 @@ body{
 .goose__cursor{
   cursor:url('/assets/Goose/cursor.png'), auto;
 }
+.nodisplay .markdown-body pre{
+  display: none !important;
+}

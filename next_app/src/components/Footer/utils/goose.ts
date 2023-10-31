@@ -16,10 +16,11 @@ export const goosePhrases = [
 		text: 'Я - гусь. Сотру код и испарюсь',
 		callback: () => {
 			setTimeout(() => {
-				const codeBlocks = document.querySelectorAll(".markdown-body pre");
-				for (let i = 0; i < codeBlocks.length; i++) {
-					codeBlocks[i].remove();
+				const codeBlocks = document.querySelectorAll(".markdown-body pre")
+				if (!codeBlocks) {
+					return
 				}
+				document.body.classList.add('nodisplay')
 			}, 3000)
 		}
 	},
