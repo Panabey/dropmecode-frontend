@@ -114,13 +114,11 @@
 	background-color: transparent;
 	border: none;
 	font-size: 0.9rem;
-	border-bottom: 1px solid transparent;
 	margin-right: 7px;
 }
 .button:hover{
 	opacity: 1;
 	transition: 0.2s ease-in-out border, 0.2s ease-in-out opacity;
-	border-bottom: 1px solid #000;
 }
 .message{
 	display: none;
