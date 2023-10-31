@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			return {
 				loc: `${SITE_URL}/articles/${article.id}-${getSlug(article.title, { lang: 'ru' })}`,
 				lastmod: new Date(article.update_date).toISOString(),
-				priority: 0.7,
+				priority: 0.5,
 				changefreq: 'daily'
 			}
 		}),
@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			return {
 				loc: SITE_URL + '/langs/' + String(handbook.handbook_title).toLowerCase() + `/${handbook.id}-${getSlug(handbook.title.toLowerCase(), { lang: 'ru' })}`,
 				lastmod: new Date(handbook.update_date).toISOString(),
-				priority: 0.7,
+				priority: 0.5,
 				changefreq: 'daily'
 			}
 		})
