@@ -1,3 +1,4 @@
+import { imageViewerSlice } from '@/components/ImageViewer/slices/ImageViewer.slice'
 import { searchAPI } from '@/components/SearchBar/api/search.api'
 import { searchSlice } from '@/components/SearchBar/slices/search.slice'
 import { articlesAPI } from '@/screens/ArticlesList/api/articles.api'
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
 	[blogsAPI.reducerPath]: blogsAPI.reducer,
 	[articlesAPI.reducerPath]: articlesAPI.reducer,
 	[quizesAPI.reducerPath]: quizesAPI.reducer,
-	[searchSlice.name]: searchSlice.reducer
+	[searchSlice.name]: searchSlice.reducer,
+	[imageViewerSlice.name]: imageViewerSlice.reducer
 })
 
 export const setupStore = () => {

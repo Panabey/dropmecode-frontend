@@ -1,0 +1,34 @@
+.viewer{
+	max-width: 50vw;
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.viewer img{
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	max-height: 70vh;
+	border: 1px solid rgba(0,0,0,0.1);
+}
+.viewer span{
+	margin-top: 15px;
+	font-size: 1rem;
+	padding-bottom: 15px;
+}
+@media screen and (max-width: 768px) {
+	.viewer{
+		max-width: 80vw;
+	}
+	.viewer img{
+		max-height: 90vh;
+	}
+	.viewer span{
+		font-size: 0.8rem;
+		margin-top: 10px;
+		padding-bottom: 10px;
+	}
+}

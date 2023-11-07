@@ -2,11 +2,14 @@ import { MARKDOWN_UPLOADS_URL } from "@/lib/constants"
 import classNames from "classnames"
 import { FC } from 'react'
 import Markdown from 'react-markdown'
+import { useDispatch } from "react-redux"
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import highlightStyle from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { CopyCodeButton } from "../CopyCodeButton/CopyCodeButton"
+import { imageViewerSlice } from "../ImageViewer/slices/ImageViewer.slice"
+import s from './MarkdownRender.module.css'
 
 interface iProps {
 	children: string
@@ -15,10 +18,28 @@ interface iProps {
 
 const Pre: FC<any> = ({ children }) => {
 	return (
-		<pre style={{ position: 'relative' }}>
+		<pre className={s.pre}>
 			<CopyCodeButton>{children ? children : <div></div>}</CopyCodeButton>
 			{children ? children : ''}
 		</pre>
+	)
+}
+
+const Image: FC<any> = (props) => {
+
+	const dispatch = useDispatch()
+	const { onChangeOpen, setValues } = imageViewerSlice.actions
+
+	function onClickImage() {
+		dispatch(setValues({ alt: props.alt, imageSrc: props.src }))
+		dispatch(onChangeOpen(true))
+	}
+
+	return (
+		<span className={s.image}>
+			<img src={props.src} alt={props.alt} onClick={onClickImage} />
+			<span>{props.alt}</span>
+		</span>
 	)
 }
 
@@ -32,6 +53,11 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
 			}
 			components={{
+				img(props) {
+					return (
+						<Image {...props} />
+					)
+				},
 				pre(props) {
 					return (
 						<Pre>{props.children}</Pre>
