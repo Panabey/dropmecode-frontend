@@ -11,6 +11,7 @@ const BlogPage = ({ blog }: InferGetServerSidePropsType<typeof getServerSideProp
         <title>DROPMECODE | Статья блога</title>
         <meta name="keywords" content="IT, программирование, разработка, обновления, блог, сайт, лог обновлений, веб-разработка, технологии, обновления сайта, DROPMECODE" />
         <meta name="description" content="В блоге DROPMECODE вы найдете последние обновления и статьи о разработке проекта. Узнаете о всех нововведениях в справочниках и квизах." />
+        <meta name="robots" content="noindex" />
       </Head>
       <BlogPageBuilder blog={blog} />
     </>
