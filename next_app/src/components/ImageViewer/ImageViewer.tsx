@@ -2,7 +2,7 @@ import { useTypedSelector } from '@/redux/store'
 import { useDispatch } from 'react-redux'
 import { Modal } from '../Modal/Modal'
 import s from './ImageViewer.module.css'
-import { imageViewerSlice } from './slices/ImageViewer.slice'
+import { imageViewerSlice } from './slices/imageViewer.slice'
 
 const ImageViewer = () => {
 

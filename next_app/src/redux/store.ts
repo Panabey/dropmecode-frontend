@@ -1,4 +1,4 @@
-import { imageViewerSlice } from '@/components/ImageViewer/slices/ImageViewer.slice'
+import { imageViewerSlice } from '@/components/ImageViewer/slices/imageViewer.slice'
 import { searchAPI } from '@/components/SearchBar/api/search.api'
 import { searchSlice } from '@/components/SearchBar/slices/search.slice'
 import { articlesAPI } from '@/screens/ArticlesList/api/articles.api'
