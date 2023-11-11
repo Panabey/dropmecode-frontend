@@ -1,3 +1,4 @@
+import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton'
 import { API_URL } from '@/lib/constants'
 import { ArticlePageBuilder } from '@/screens/Article/ArticlePageBuilder'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -13,6 +14,7 @@ const NewsArticlePage = ({ article, title }: InferGetServerSidePropsType<typeof 
 				<meta name="description" content={article.anons} />
 			</Head>
 			<ArticlePageBuilder article={article} />
+			<ScrollToTopButton />
 		</>
 	)
 }

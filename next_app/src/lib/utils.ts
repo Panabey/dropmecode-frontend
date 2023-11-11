@@ -18,3 +18,10 @@ export function getScreenWidthPercent(percent: number): number {
 	}
 	return Math.floor(window.screen.width / 100 * percent)
 }
+export function getScrollWindowPercentage() {
+	const h = document.documentElement,
+		b = document.body,
+		st = 'scrollTop',
+		sh = 'scrollHeight';
+	return (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+}

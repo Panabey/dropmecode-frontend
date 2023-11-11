@@ -1,3 +1,4 @@
+import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton';
 import { API_URL } from '@/lib/constants';
 import { BlogPageBuilder } from '@/screens/Blog/BlogPageBuilder';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -14,6 +15,7 @@ const BlogPage = ({ blog }: InferGetServerSidePropsType<typeof getServerSideProp
         <meta name="robots" content="noindex" />
       </Head>
       <BlogPageBuilder blog={blog} />
+      <ScrollToTopButton />
     </>
   )
 }

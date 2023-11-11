@@ -1,3 +1,4 @@
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 import { API_URL } from "@/lib/constants";
 import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -19,6 +20,7 @@ const LangDocsPageInfo: FC<iProps> = ({ langDocs, title }: InferGetServerSidePro
         <meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
       </Head>
       <LangDocsThemePageBuilder langDocs={langDocs} />
+      <ScrollToTopButton />
     </>
   )
 }
