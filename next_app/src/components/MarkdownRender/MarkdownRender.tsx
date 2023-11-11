@@ -8,7 +8,7 @@ import highlightStyle from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { CopyCodeButton } from "../CopyCodeButton/CopyCodeButton"
-import { imageViewerSlice } from "../ImageViewer/slices/imageViewer.slice"
+import { imageViewerSlice } from "../ImageViewer/slices/ImgViewer.slice"
 import s from './MarkdownRender.module.css'
 
 interface iProps {
