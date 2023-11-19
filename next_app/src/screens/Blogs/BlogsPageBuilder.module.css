@@ -13,6 +13,11 @@
 	flex-direction: column;
 	gap: 25px 0;
 }
+@media screen and (max-width: 768px) {
+	.filler{
+		display: none;
+	}
+}
 .paginator{
 	margin-top: 20px;
 	display: flex;

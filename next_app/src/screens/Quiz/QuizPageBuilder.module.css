@@ -75,6 +75,9 @@
 		font-size: 1rem;
 		padding: 7px 15px;
 	}
+	.filler{
+		display: none;
+	}
 }
 .quiz{
 	margin-top: 20px;

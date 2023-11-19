@@ -50,7 +50,7 @@ export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Блог проекта'
