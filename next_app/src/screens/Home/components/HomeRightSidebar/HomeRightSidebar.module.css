@@ -21,7 +21,8 @@
 }
 @media screen and (min-width: 2000px) {
 	.sidebar{
-		max-width: 15vw;
+		max-width: 18vw;
+		min-width: 15vw;
 	}
 }
 .block{

@@ -59,6 +59,9 @@
 .sidebar__left:hover .block:hover::-webkit-scrollbar{
 	display: block;
 }
+.sidebar__left:hover .block{
+	margin-right: -4px;
+}
 .block{
 	position: relative;
 	z-index: 2;
