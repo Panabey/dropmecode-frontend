@@ -1,4 +1,8 @@
+.modal{
+	cursor: zoom-out;
+}
 .viewer{
+	cursor: default;
 	max-width: 50vw;
 	width: 100%;
 	background-color: #fff;
@@ -6,6 +10,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	border-radius: 3px;
 }
 .viewer img{
 	width: 100%;
@@ -13,6 +18,8 @@
 	height: auto;
 	max-height: 70vh;
 	border: 1px solid rgba(0,0,0,0.1);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 .viewer span{
 	margin-top: 15px;

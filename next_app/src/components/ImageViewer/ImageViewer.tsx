@@ -14,7 +14,7 @@ const ImageViewer = () => {
 	const { onChangeOpen } = imageViewerSlice.actions
 
 	return (
-		<Modal isOpened={isOpened} onClose={() => dispatch(onChangeOpen(false))}>
+		<Modal isOpened={isOpened} onClose={() => dispatch(onChangeOpen(false))} className={s.modal}>
 			<div className={s.viewer}>
 				<img src={imageSrc} alt={alt} />
 				{alt.length ? <span>{alt}</span> : <></>}
