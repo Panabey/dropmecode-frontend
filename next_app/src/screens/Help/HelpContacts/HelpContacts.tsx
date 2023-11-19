@@ -12,7 +12,7 @@ export const HelpContacts = () => {
 				<div className={s.contacts__method}>
 					<GoMail size={32} color="#1F477D" className={s.contacts__icon} />
 					<aside className={s.contacts__text}>Напишите нам на почту: </aside>
-					<Link href='mailto:dropmecode@mail.ru'>dropmecode@mail.ru</Link>
+					<Link href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}>{process.env.NEXT_PUBLIC_SUPPORT_EMAIL}</Link>
 				</div>
 				<div className={s.contacts__method}>
 					<Image width={32} height={32} alt='SVG VK' src='/assets/Help/vk_1.png' className={s.contacts__icon} />
