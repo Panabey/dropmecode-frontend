@@ -11,6 +11,14 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/Global/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/Global/favicon-16x16.png" />
         <link rel="manifest" href="/assets/Global/site.webmanifest"></link>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.yaContextCb=window.yaContextCb||[]
+            `
+          }}
+        ></script>
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
       </Head>
       <body>
         <Main />
