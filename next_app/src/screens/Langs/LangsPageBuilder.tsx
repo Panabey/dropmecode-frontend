@@ -7,7 +7,6 @@ import { FC } from 'react'
 import { PageArea } from '@/components/PageArea/PageArea'
 import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
-import getSlug from 'speakingurl'
 import s from './LangsPageBuilder.module.css'
 
 interface iProps {
@@ -38,7 +37,7 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 												labelBgColor={handbook.status && handbook.status.color_background.length ? handbook.status.color_background : ''}
 												labelColor={handbook.status && handbook.status.color_text.length ? handbook.status.color_text : ''}
 												imageUrl={UPLOADS_URL + handbook.logo_url}
-												navigationUrl={`/langs/${getSlug(handbook.title, { lang: 'ru' })}`}
+												navigationUrl={`/langs/${handbook.slug}`}
 												title={handbook.title} />
 										)
 									})}

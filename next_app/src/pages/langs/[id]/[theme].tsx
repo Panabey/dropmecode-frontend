@@ -39,6 +39,7 @@ export interface iLangDocs {
     handbook: {
       id: number
       title: string
+      slug: string
     }
   }
 }
@@ -80,7 +81,7 @@ export const getServerSideProps: GetServerSideProps<{
     }
   }
   const langDocs: iLangDocs = await response.json()
-  const slug = '/langs/' + langDocs.content.handbook.title.toLowerCase() + `/${langDocs.id}-${getSlug(langDocs.title.toLowerCase(), { lang: 'ru' })}`
+  const slug = '/langs/' + langDocs.content.handbook.slug + `/${langDocs.id}-${getSlug(langDocs.title.toLowerCase(), { lang: 'ru' })}`
   if (resolvedUrl !== slug) {
     return {
       props: {

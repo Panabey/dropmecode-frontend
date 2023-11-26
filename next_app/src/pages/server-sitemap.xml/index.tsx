@@ -10,7 +10,7 @@ interface iSitemapObject {
 }
 
 interface iHandbookObject extends iSitemapObject {
-	handbook_title: string;
+	handbook_slug: string;
 }
 
 export interface iSitemapResponse {
@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		}),
 		...sitemap.handbooks.map((handbook) => {
 			return {
-				loc: SITE_URL + '/langs/' + String(handbook.handbook_title).toLowerCase() + `/${handbook.id}-${getSlug(handbook.title.toLowerCase(), { lang: 'ru' })}`,
+				loc: SITE_URL + '/langs/' + String(handbook.handbook_slug).toLowerCase() + `/${handbook.id}-${getSlug(handbook.title.toLowerCase(), { lang: 'ru' })}`,
 				lastmod: new Date(handbook.update_date).toISOString(),
 				priority: 0.5,
 				changefreq: 'daily'

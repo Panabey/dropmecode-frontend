@@ -21,6 +21,7 @@ const LangDocsPage = ({ langInfo, title }: InferGetServerSidePropsType<typeof ge
 export interface iLangInfo {
 	id: number;
 	title: string;
+	slug: string;
 	description: string;
 	content: iLangContent[];
 	books: iBook[]

@@ -23,6 +23,7 @@ export interface iHandbookPageInfo {
 export interface iHandbook {
 	id: number;
 	title: string;
+	slug: string;
 	description: string;
 	logo_url: string;
 	status: iStatus;

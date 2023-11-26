@@ -10,6 +10,7 @@ interface iSearchHandbookParams {
 export interface iSearchHandbookThemes {
 	id: number;
 	title: string;
+	slug: string;
 	page_id: number;
 	page_title: string;
 }

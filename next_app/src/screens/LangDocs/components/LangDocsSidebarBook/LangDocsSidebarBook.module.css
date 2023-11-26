@@ -6,15 +6,21 @@
 	width: 100%;
 	border-radius: 7px;
 	cursor: default;
-	pointer-events: none;
+	background: transparent;
+	border: none;
+	text-align: left;
 }
 .icon{
+	cursor: zoom-in;
 	height: auto;
 	width: auto;
 	max-width: 3rem;
 	opacity: 1;
 	transition: 0.2s ease-in-out opacity;
 	border-radius: 5px;
+}
+.iconViewer{
+	width: auto !important;
 }
 .content{
 	display: flex;

@@ -128,7 +128,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 				{
 					return {
 						title: theme.page_title,
-						link: `/langs/${getSlug(theme.title.toLowerCase(), { lang: 'ru' })}/${theme.page_id}-${getSlug(theme.page_title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`,
+						link: `/langs/${theme.slug}/${theme.page_id}-${getSlug(theme.page_title.split(' ').filter((_, idx) => idx !== 0).join(' ').toLowerCase(), { lang: 'ru' })}`,
 						label: 'langs',
 						theme: theme.title
 					}
