@@ -34,7 +34,7 @@ export const LangDocsThemePageBuilder: FC<iProps> = ({ langDocs }) => {
 							breadcrumbs={[
 								{ title: "Главная", navigationUrl: "/" },
 								{ title: "Справочники", navigationUrl: "/langs" },
-								{ title: capitalizeString(String(router.query.id)), navigationUrl: "/langs/" + String(router.query.id) },
+								{ title: capitalizeString(String(langDocs.content.handbook.title)), navigationUrl: "/langs/" + String(router.query.id) },
 								{
 									title: langDocs.title,
 									navigationUrl: "/langs/" + String(router.query.id) + `/${langDocs.id}-${getSlug(langDocs.title.toLowerCase(), { lang: 'ru' })}`
