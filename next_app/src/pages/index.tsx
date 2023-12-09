@@ -1,5 +1,5 @@
-import { HomePageBuilder } from '@/screens/Home/HomePageBuilder'
-import Head from 'next/head'
+import { HomePageBuilder } from '@/screens/Home/HomePageBuilder';
+import Head from 'next/head';
 
 export default function Home() {
   return (
@@ -13,4 +13,17 @@ export default function Home() {
       <HomePageBuilder />
     </>
   )
+}
+
+export const getServerSideProps = ({ query }: any) => {
+  if (Object.keys(query).length > 0) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    }
+  }
+  return { props: {} }
 }

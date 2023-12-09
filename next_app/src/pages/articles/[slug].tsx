@@ -81,7 +81,7 @@ export const getServerSideProps: GetServerSideProps<{
 	return {
 		props: {
 			article: article,
-			title: `DROPMECODE | ${article.title}`
+			title: `${article.title}`
 		}
 	}
 }
