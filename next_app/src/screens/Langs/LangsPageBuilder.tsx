@@ -33,6 +33,7 @@ export const LangsPageBuilder: FC<iProps> = ({ handbooks }) => {
 										return (
 											<SquareButtonBlock
 												key={handbook.id}
+												className={s.lang}
 												labelTitle={handbook.status && handbook.status.title.length ? handbook.status.title : ''}
 												labelBgColor={handbook.status && handbook.status.color_background.length ? handbook.status.color_background : ''}
 												labelColor={handbook.status && handbook.status.color_text.length ? handbook.status.color_text : ''}
