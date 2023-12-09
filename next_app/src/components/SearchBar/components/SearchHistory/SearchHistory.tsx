@@ -33,9 +33,9 @@ export const SearchHistory: FC<iProps> = ({ history, removeHistoryItem, queryIsF
 		if (history.length > 0 && !queryIsFetched) {
 			return (
 				<div className={s.items}>
-					<HistoryLinks history={history} filter='langs' title='Справочники' onRemoveItem={onClickRemoveItem} />
-					<HistoryLinks history={history} filter='articles' title='Статьи' onRemoveItem={onClickRemoveItem} />
-					<HistoryLinks history={history} filter='quizes' title='Квизы' onRemoveItem={onClickRemoveItem} />
+					<HistoryLinks history={history} filter='langs' title='Справочники (история)' onRemoveItem={onClickRemoveItem} />
+					<HistoryLinks history={history} filter='articles' title='Статьи (история)' onRemoveItem={onClickRemoveItem} />
+					<HistoryLinks history={history} filter='quizes' title='Квизы (история)' onRemoveItem={onClickRemoveItem} />
 				</div>
 			)
 		} else {

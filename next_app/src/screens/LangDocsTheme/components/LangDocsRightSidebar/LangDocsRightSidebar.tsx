@@ -1,3 +1,4 @@
+import { RsyaBlock } from '@/components/RsyaBlock/RsyaBlock'
 import { iPageLink } from '@/hooks/useHeadingsNavigation'
 import classNames from 'classnames'
 import { FC } from 'react'
@@ -20,6 +21,19 @@ export const LangDocsRightSidebar: FC<iProps> = ({ navigationLinks }) => {
 						)
 					})}
 				</div>
+			</div>
+			<div className={classNames(s.block, s.block_rsya)}>
+				<RsyaBlock
+					blockId='yandex_rtb_R-A-3621775-3'
+					codeBlock='
+					window.yaContextCb.push(()=>{
+						Ya.Context.AdvManager.render({
+							"blockId": "R-A-3621775-3",
+							"renderTo": "yandex_rtb_R-A-3621775-3"
+						})
+					})
+					'
+				/>
 			</div>
 		</div>
 	)

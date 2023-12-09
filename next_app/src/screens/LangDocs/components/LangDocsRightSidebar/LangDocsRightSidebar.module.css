@@ -1,4 +1,4 @@
-.area{
+.area {
 	position: relative;
 	height: fit-content;
 	width: 100%;
@@ -8,22 +8,22 @@
 	max-width: 20vw;
 }
 @media screen and (max-width: 920px) {
-	.area{
+	.area {
 		display: none;
 	}
 }
 @media screen and (min-width: 920px) and (max-width: 1200px) {
-	.area{
+	.area {
 		max-width: 30vw;
 	}
 }
 @media screen and (min-width: 2000px) {
-	.area{
+	.area {
 		max-width: 15vw;
 	}
 }
-.sidebar{
-	border: 1px solid rgba(0,0,0,0.05);
+.sidebar {
+	border: 1px solid rgba(0, 0, 0, 0.05);
 	border-radius: 7px;
 	height: fit-content;
 	width: 100%;
@@ -31,48 +31,49 @@
 	flex-direction: column;
 	padding: 15px 20px;
 }
-.sidebar_rsya{
+.sidebar_rsya {
 	border: none;
 	border-radius: none;
+	padding: 15px 0;
 }
-.block{
+.block {
 	position: relative;
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
-.block__title{
+.block__title {
 	font-size: 1rem;
 }
-.block__column{
+.block__column {
 	display: flex;
 	flex-direction: column;
 	gap: 20px 0;
 	margin-top: 5px;
 	width: 100%;
 }
-.block__row{
+.block__row {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0 10px;
 	width: 100%;
 }
-.block__row_title{
+.block__row_title {
 	margin-bottom: 20px;
 }
-.button__view_all{
+.button__view_all {
 	font-size: 0.8rem;
 	font-weight: 500;
 	opacity: 0.3;
 	text-decoration: none;
 	transition: 0.2s ease-in-out opacity;
 }
-.button__view_all:hover{
+.button__view_all:hover {
 	opacity: 0.5;
 }
-.block__empty{
+.block__empty {
 	font-size: 1rem;
 	color: #000;
 	opacity: 0.4;

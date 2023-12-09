@@ -1,20 +1,33 @@
-.layout{
+.layout {
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
 }
 @media screen and (min-width: 768px) and (max-width: 1200px) {
-	.area{
+	.area {
 		grid-template-columns: 0.9fr 10fr 1fr !important;
 	}
 }
-.container{
+.container {
 	display: flex;
 	flex-direction: column;
 }
-.news{
+.news {
 	margin-top: 40px;
 	display: flex;
 	flex-direction: column;
 	gap: 25px 0;
+}
+@media screen and (max-width: 768px) {
+	.filler {
+		display: none;
+	}
+}
+.layout__sidebar_right {
+	display: block;
+}
+@media screen and (max-width: 1200px) {
+	.layout__sidebar_right {
+		display: none;
+	}
 }

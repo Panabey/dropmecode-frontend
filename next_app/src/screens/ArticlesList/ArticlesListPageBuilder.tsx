@@ -11,6 +11,7 @@ import getSlug from 'speakingurl'
 import s from './ArticlesListPageBuilder.module.css'
 import { useGetArticlesMutation } from './api/articles.api'
 import { ArticlesListPreview } from './components/ArticlesListPreview/ArticlesListPreview'
+import { ArticlesListRightSidebar } from './components/ArticlesListRightSidebar/ArticlesListRightSidebar'
 import { ArtilcesListPreviewLoader } from './components/ArtilcesListPreviewLoader/ArtilcesListPreviewLoader'
 interface iProps {
 	pageInfo: iArticlePageInfo
@@ -51,7 +52,7 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 	return (
 		<PageLayout className={s.layout}>
 			<PageArea className={s.area}>
-				<div></div>
+				<div className={s.filler}></div>
 				<Container className={s.container}>
 					<PageCommonInfo
 						title='Статьи'
@@ -82,7 +83,9 @@ export const ArticlesListPageBuilder: FC<iProps> = ({ pageInfo }) => {
 					</div>
 					<Paginator currentPage={currentPage} onClickPaginator={onClickPaginator} totalPage={pageInfo.total_page} setPagePaginator={setPagePaginator} />
 				</Container>
-				<div></div>
+				<div className={s.layout__sidebar_right}>
+					<ArticlesListRightSidebar />
+				</div>
 			</PageArea>
 		</PageLayout>
 	)

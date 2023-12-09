@@ -49,6 +49,6 @@ export const LangDocsRightSidebar: FC<iProps> = ({ books }) => {
 				})'
 				/>
 			</div>
-		</div >
+		</div>
 	)
 }
