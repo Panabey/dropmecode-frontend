@@ -1,3 +1,4 @@
+import { RsyaBlock } from '@/components/RsyaBlock/RsyaBlock'
 import { iBook } from '@/pages/langs/[id]'
 import classNames from 'classnames'
 import { FC } from 'react'
@@ -38,21 +39,15 @@ export const LangDocsRightSidebar: FC<iProps> = ({ books }) => {
 				</div>
 			</div>
 			<div className={classNames(s.sidebar, s.sidebar_rsya)}>
-				{/* <!-- Yandex.RTB R-A-3621775-2 --> */}
-				<div id="yandex_rtb_R-A-3621775-2"></div>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-						window.yaContextCb.push(()=>{
-							Ya.Context.AdvManager.render({
-								"blockId": "R-A-3621775-2",
-								"renderTo": "yandex_rtb_R-A-3621775-2"
-							})
-						})
-						`
-					}}
-				>
-				</script>
+				<RsyaBlock
+					blockId='yandex_rtb_R-A-3621775-2'
+					codeBlock='window.yaContextCb.push(()=>{
+					Ya.Context.AdvManager.render({
+						"blockId": "R-A-3621775-2",
+						"renderTo": "yandex_rtb_R-A-3621775-2"
+					})
+				})'
+				/>
 			</div>
 		</div >
 	)
