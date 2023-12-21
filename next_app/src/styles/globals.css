@@ -1,63 +1,78 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  color: #1F477D;
-  font-family: 'Rubik', sans-serif;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	color: #1f477d;
+	font-family: 'Rubik', sans-serif;
 }
 
-html{
-  scroll-behavior: smooth;
+html {
+	scroll-behavior: smooth;
 }
 
-body{
-  background-color: #fff;
+body {
+	background-color: #fff;
 }
-body.noevents{
-  pointer-events: none !important;
+body.noevents {
+	pointer-events: none !important;
 }
-.loader{
-  background: #eee;
-  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-  border-radius: 5px;
-  background-size: 200% 100%;
-  animation: 1.5s shine linear infinite;
+.loader {
+	background: #eee;
+	background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+	border-radius: 5px;
+	background-size: 200% 100%;
+	animation: 1.5s shine linear infinite;
 }
 
 @keyframes shine {
-  to {
-    background-position-x: -200%;
-  }
+	to {
+		background-position-x: -200%;
+	}
 }
 
-#search{
-  position: relative;
-  z-index: 5;
+#search {
+	position: relative;
+	z-index: 5;
 }
-.filler{
-  height: 0px;
+.filler {
+	height: 0px;
 	position: relative;
 	z-index: -1;
-  pointer-events: none;
+	pointer-events: none;
 }
-.goose2{
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  position: absolute;
-  right: 20px;
-  top: 0;
-  bottom: 0;
-  transform: scaleX(-1);
-  max-height: 3rem;
-  margin: auto;
+.goose2 {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	right: 20px;
+	top: 0;
+	bottom: 0;
+	transform: scaleX(-1);
+	max-height: 3rem;
+	margin: auto;
 }
-.hidden{
-  display: none;
+.hidden {
+	display: none;
 }
-.goose__cursor{
-  cursor:url('/assets/Goose/cursor.png'), auto;
+.goose__cursor {
+	cursor: url('/assets/Goose/cursor.png'), auto;
 }
-.nodisplay .markdown-body pre{
-  display: none !important;
+.nodisplay .markdown-body pre {
+	display: none !important;
+}
+
+#nprogress .bar {
+	background-color: #ffffff;
+	opacity: 1;
+	background: repeating-linear-gradient(
+		-45deg,
+		#e62b1e,
+		#e62b1e 5px,
+		#ffffff 5px,
+		#ffffff 10px
+	) !important;
+}
+#nprogress .peg {
+	box-shadow: none !important;
 }

@@ -28,6 +28,7 @@ export const Header = () => {
 
 	return (
 		<header className={classNames(s.header, 'header', 'headerDesktop')} ref={headerRef}>
+			<div className={s.christmas}></div>
 			<div></div>
 			<div className={s.content}>
 				<div className={s.content__row}>
