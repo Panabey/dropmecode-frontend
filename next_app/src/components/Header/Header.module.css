@@ -10,22 +10,19 @@
 	padding: 7px 15px;
 	display: grid;
 	grid-template-columns: 4fr 25fr 4fr;
-	z-index: 2;
 }
-.christmas {
+.header::after {
 	position: absolute;
-	top: -25px;
+	top: 0;
 	left: 0;
 	right: 0;
-	width: 100%;
-	min-height: 50px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	height: 50px;
+	content: '';
 	background-repeat: repeat-x;
-	background-position: center;
+	background-position: top -25px left 0;
 	background-size: contain;
-	background-image: url('/assets/Christmas/g2.gif');
-	z-index: 1;
+	background-image: url(/assets/Christmas/g2.gif);
+	pointer-events: none;
 }
 @media screen and (max-width: 768px) {
 	.header {

@@ -10,27 +10,28 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	padding: 15px 20px;
 	grid-template-columns: 1fr;
-	z-index: 2;
+	background-repeat: repeat-x;
+	background-position: top -22px left 0;
+	background-size: contain;
+	background-image: url(/assets/Christmas/g2.gif);
 }
 @media screen and (max-width: 768px) {
 	.header__mobile {
 		display: grid !important;
 	}
 }
-.christmas {
+.header__mobile::after {
 	position: absolute;
-	top: -25px;
+	top: 0;
 	left: 0;
 	right: 0;
-	width: 100%;
-	min-height: 50px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	height: 50px;
+	content: '';
 	background-repeat: repeat-x;
-	background-position: center;
+	background-position: top -22px left 0;
 	background-size: contain;
-	background-image: url('/assets/Christmas/g2.gif');
-	z-index: 1;
+	background-image: url(/assets/Christmas/g2.gif);
+	pointer-events: none;
 }
 .content {
 	display: flex;
@@ -67,7 +68,6 @@
 	font-size: 0.6rem;
 	padding: 3px 6px;
 	border-radius: 7px;
-	background-color: #1dc989;
 }
 .logo svg {
 	margin-right: 10px;

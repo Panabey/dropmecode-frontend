@@ -47,7 +47,6 @@ export const HeaderMobile = () => {
 	return (
 		<>
 			<header className={s.header__mobile} ref={headerRef}>
-				<div className={s.christmas}></div>
 				<div className={s.content}>
 					<div className={s.content__row}>
 						<Link href='/' className={s.link_logo}>
