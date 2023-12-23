@@ -44,6 +44,7 @@ export const QuizesThemePageBuilder: FC<iProps> = ({ pageInfo }) => {
 			entryRef.current = document.querySelector(`[data-quiz-id="${quizes[quizes.length - 1].id}"]`);
 			reObserve(entryRef.current)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [quizes])
 
 	if (error) {

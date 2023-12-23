@@ -1,5 +1,6 @@
 import { useTypedSelector } from '@/redux/store'
 import classNames from 'classnames'
+import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { Modal } from '../Modal/Modal'
 import s from './ImageViewer.module.css'
@@ -18,7 +19,7 @@ const ImageViewer = () => {
 	return (
 		<Modal isOpened={isOpened} onClose={() => dispatch(onChangeOpen(false))} className={s.modal}>
 			<div className={classNames(s.viewer, { [String(customClass) ?? '']: customClass })}>
-				<img src={imageSrc} alt={alt} />
+				<Image src={imageSrc} alt={alt} width={2000} height={2000} />
 				{alt.length ? <span>{alt}</span> : <></>}
 			</div>
 		</Modal>

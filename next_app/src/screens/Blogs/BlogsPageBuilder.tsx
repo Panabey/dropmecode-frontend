@@ -40,6 +40,7 @@ export const BlogsPageBuilder: FC<iProps> = ({ pageInfo }) => {
 		if (!isLoading && data) {
 			setBlogs(data.items)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data, isLoading])
 
 	if (error) {

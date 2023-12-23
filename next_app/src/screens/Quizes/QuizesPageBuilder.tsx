@@ -47,6 +47,7 @@ export const QuizesPageBuilder: FC<iProps> = ({ pageInfo }) => {
 			entryRef.current = document.querySelector(`[data-topic-id="${topics[topics.length - 1].id}"]`);
 			reObserve(entryRef.current)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [topics]);
 
 	return (

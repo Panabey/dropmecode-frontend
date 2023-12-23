@@ -1,33 +1,33 @@
-.layout{
+.layout {
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
 }
 @media screen and (max-width: 1100px) {
-	.area{
+	.area {
 		grid-template-columns: 0fr 1fr 0fr;
 	}
 }
-.container{
+.container {
 	position: relative;
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
 }
-.partition__info{
+.partition__info {
 	margin-top: 50px;
 }
-.section{
+.section {
 	margin-top: 40px;
 	display: flex;
 	flex-direction: column;
 }
-.preivew{
+.preivew {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
-.preview__img{
+.preview__img {
 	margin-top: 20px;
 	max-width: 100%;
 	height: auto;
@@ -36,17 +36,17 @@
 	border-radius: 7px;
 	width: auto;
 }
-.noimg{
+.noimg {
 	object-fit: scale-down;
 }
-.preview__counter{
+.preview__counter {
 	margin-top: 15px;
 	font-size: 1rem;
 	color: #000;
 	opacity: 0.6;
 	text-align: center;
 }
-.preview__button{
+.preview__button {
 	cursor: pointer;
 	width: fit-content;
 	display: block;
@@ -55,55 +55,57 @@
 	font-size: 1.2rem;
 	padding: 8px 20px;
 	border-radius: 7px;
-	background-color: #1F477D;
+	background-color: #1f477d;
 	border: 1px solid transparent;
 	color: #fff;
 	text-align: center;
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color,
+		0.3s ease-in-out border;
 }
-.preview__button:hover{
-	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
-	background-color: #FFF;
-    color: #1F477D;
-    border: 1px solid;
+.preview__button:hover {
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color,
+		0.3s ease-in-out border;
+	background-color: #fff;
+	color: #1f477d;
+	border: 1px solid;
 }
 @media screen and (max-width: 768px) {
-	.preview__button{
+	.preview__button {
 		font-size: 1rem;
 		padding: 7px 15px;
 	}
-	.filler{
+	.filler {
 		display: none;
 	}
 }
-.quiz{
+.quiz {
 	margin-top: 20px;
 }
-.quiz__info{
+.quiz__info {
 	margin-top: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 30px;
 }
-.questions__counter{
+.questions__counter {
 	opacity: 0.7;
 	font-size: 0.9rem;
 }
-.quiz__progress{
+.quiz__progress {
 	display: flex;
 	align-items: center;
 	gap: 0 10px;
 	white-space: nowrap;
 }
-.progressbar{
+.progressbar {
 	position: relative;
 	width: 10vw;
 }
-.progressbar__bg{
+.progressbar__bg {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -111,46 +113,47 @@
 	right: 0;
 	margin: auto 0;
 	width: 100%;
-	background-color: #F6F8FA;
+	background-color: #f6f8fa;
 	height: 0.6rem;
 	border-radius: 7px;
 	z-index: 2;
 }
-.progressbar__active{
+.progressbar__active {
 	position: relative;
 	z-index: 3;
 	height: 0.6rem;
 	border-radius: 7px;
 	background-color: #dfe1e2;
 }
-.result{
+.result {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
 }
-.result__icon{
+.result__icon {
+	width: auto;
 	max-width: 12vw;
 	height: auto;
 	margin-top: 40px;
 }
 @media screen and (max-width: 480px) {
-	.result__icon{
+	.result__icon {
 		max-width: 50vw;
 	}
 }
-.result__title{
+.result__title {
 	margin-top: 25px;
 	font-size: 2.5rem;
 }
 @media screen and (max-width: 480px) {
-	.result__title{
+	.result__title {
 		font-size: 1.4rem;
-   		text-align: center;
+		text-align: center;
 	}
 }
-.result__description{
+.result__description {
 	margin-top: 15px;
 	max-width: 60%;
 	margin: 0 auto;
@@ -158,12 +161,12 @@
 	text-align: center;
 }
 @media screen and (max-width: 480px) {
-	.result__description{
+	.result__description {
 		max-width: 90%;
 		font-size: 0.9rem;
 	}
 }
-.result__button{
+.result__button {
 	cursor: pointer;
 	width: fit-content;
 	display: block;
@@ -172,23 +175,25 @@
 	font-size: 1rem;
 	padding: 8px 15px;
 	border-radius: 7px;
-	background-color: #1F477D;
+	background-color: #1f477d;
 	border: 1px solid transparent;
 	color: #fff;
 	text-align: center;
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color,
+		0.3s ease-in-out border;
 }
-.result__button:hover{
-	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color, 0.3s ease-in-out border;
-	background-color: #FFF;
-    color: #1F477D;
-    border: 1px solid;
+.result__button:hover {
+	transition: 0.3s ease-in-out background-color, 0.3s ease-in-out color,
+		0.3s ease-in-out border;
+	background-color: #fff;
+	color: #1f477d;
+	border: 1px solid;
 }
 @media screen and (max-width: 480px) {
-	.result__button{
+	.result__button {
 		font-size: 0.9rem;
 	}
 }

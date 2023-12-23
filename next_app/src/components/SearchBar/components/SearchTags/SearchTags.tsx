@@ -29,12 +29,14 @@ export const SearchTags = () => {
 			dispatch(setTags([]))
 			fetchTags({ limit: TAGS_API_LIMIT, status: 'article' })
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [enableTags, selectedFilter])
 
 	useEffect(() => {
 		if (!isLoading && data) {
 			dispatch(setTags(data))
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data, isLoading])
 
 	if (!enableTags || (selectedFilter === 'langs')) {

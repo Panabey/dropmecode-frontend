@@ -1,5 +1,6 @@
 import { MARKDOWN_UPLOADS_URL } from "@/lib/constants"
 import classNames from "classnames"
+import Image from "next/image"
 import { FC } from 'react'
 import Markdown from 'react-markdown'
 import { useDispatch } from "react-redux"
@@ -25,7 +26,7 @@ const Pre: FC<any> = ({ children }) => {
 	)
 }
 
-const Image: FC<any> = (props) => {
+const MDImage: FC<any> = (props) => {
 
 	const dispatch = useDispatch()
 	const { onChangeOpen, setValues } = imageViewerSlice.actions
@@ -37,7 +38,7 @@ const Image: FC<any> = (props) => {
 
 	return (
 		<span className={s.image}>
-			<img src={props.src} alt={props.alt} onClick={onClickImage} />
+			<Image src={props.src} alt={props.alt} onClick={onClickImage} width={2000} height={2000} />
 			<span>{props.alt}</span>
 		</span>
 	)
@@ -49,13 +50,13 @@ export const MarkdownRender: FC<iProps> = ({ children, className: customClass })
 			className={classNames({ [customClass || '']: customClass }, 'markdown-body')}
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
-			urlTransform={(uri: any) =>
+			transformImageUri={(uri: any) =>
 				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
 			}
 			components={{
 				img(props) {
 					return (
-						<Image {...props} />
+						<MDImage {...props} />
 					)
 				},
 				pre(props) {

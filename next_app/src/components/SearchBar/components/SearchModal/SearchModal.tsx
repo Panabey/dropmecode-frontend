@@ -1,10 +1,17 @@
 import { useTypedSelector } from '@/redux/store'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { IoClose, IoSearch } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import getSlug from 'speakingurl'
-import { iSearchArticles, iSearchHandbookThemes, iSearchQuizes, useGetArticlesMutation, useGetHandbookThemesMutation, useGetQuizesMutation } from '../../api/search.api'
+import {
+	iSearchArticles,
+	iSearchHandbookThemes,
+	iSearchQuizes,
+	useGetArticlesMutation,
+	useGetHandbookThemesMutation,
+	useGetQuizesMutation
+} from '../../api/search.api'
 import { iSearchHistoryItem, searchSlice } from '../../slices/search.slice'
 import { SearchHistory } from '../SearchHistory/SearchHistory'
 import { SearchLoader } from '../SearchLoader/SearchLoader'
@@ -37,11 +44,11 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 	const [fetchQuizes, { isLoading: isLoadingQuizes, data: dataQuizes, error: errorQuizes, reset: resetQuizes }] = useGetQuizesMutation()
 	const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false)
 
-	function onCloseModal() {
+	const onCloseModal = useCallback(() => {
 		onClose()
 		setSearchValue('')
 		dispatch(onChangeFilter('langs'))
-	}
+	}, [dispatch, onChangeFilter, onClose])
 
 	useEffect(() => {
 		if (isOpened) {
@@ -70,6 +77,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 
 	useEffect(() => {
 		dispatch(initStore())
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
@@ -80,6 +88,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 				}
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isOpened, searchValue])
 
 	useEffect(() => {
@@ -120,7 +129,21 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		return () => {
 			clearTimeout(timer)
 		}
-	}, [searchValue, selectedFilter, isOpened, fetchHandbooks, fetchArticles, fetchQuizes, searchTags, isIncludeTags, setSearchResults, setIsLoadingSearch])
+	}, [
+		searchValue,
+		selectedFilter,
+		isOpened,
+		fetchHandbooks,
+		fetchArticles,
+		fetchQuizes,
+		searchTags,
+		isIncludeTags,
+		setSearchResults,
+		setIsLoadingSearch,
+		resetArticles,
+		resetQuizes,
+		resetHandbooks
+	])
 
 	useEffect(() => {
 		if (!isLoadingHandbooks && dataHandbooks && selectedFilter === 'langs') {

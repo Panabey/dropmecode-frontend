@@ -1,27 +1,28 @@
-.area{
+.area {
 	display: grid;
 	grid-template-columns: 1.5fr 3fr;
 	width: 100%;
 	border-radius: 7px;
-	border: 1px solid rgba(0,0,0,0.05);
+	border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.area_noimg{
+.area_noimg {
 	grid-template-columns: 1fr;
 }
 @media screen and (max-width: 768px) {
-	.area{
+	.area {
 		display: flex;
 		flex-direction: column;
 	}
 }
-.area:hover{
+.area:hover {
 	transition: 0.2s ease-in-out border;
-	border: 1px solid rgba(0,0,0,0.1);
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
-.area a{
+.area a {
 	text-decoration: none;
 }
-.image{
+.image {
+	width: auto;
 	max-width: 100%;
 	height: 100%;
 	border-top-left-radius: 7px;
@@ -30,66 +31,66 @@
 	aspect-ratio: 2/1;
 }
 @media screen and (max-width: 768px) {
-	.image{
+	.image {
 		width: 100%;
 		border-bottom-left-radius: 0px;
 		border-top-left-radius: 7px;
 		border-top-right-radius: 7px;
 	}
 }
-.image[src$=".svg"]{
+.image[src$='.svg'] {
 	object-fit: scale-down;
 }
-.info{
+.info {
 	padding: 15px;
 	display: flex;
 	flex-direction: column;
 }
-.info__title{
+.info__title {
 	font-size: 1.3rem;
 }
-.info__title:hover{
+.info__title:hover {
 	transition: 0.2s ease-in-out color;
 	color: #305e9b;
 }
-.info__meta{
+.info__meta {
 	margin-top: 10px;
 	display: flex;
 	align-items: center;
 	gap: 0px 15px;
 }
 @media screen and (max-width: 768px) {
-	.info__meta{
+	.info__meta {
 		gap: 10px 15px;
 		flex-wrap: wrap;
 	}
 }
-.info__date{
+.info__date {
 	color: #000;
 	opacity: 0.4;
 	font-size: 0.9rem;
 }
-.info__tags{
+.info__tags {
 	display: flex;
 	align-items: center;
 	gap: 0 10px;
 }
 @media screen and (max-width: 768px) {
-	.info__tags{
+	.info__tags {
 		gap: 10px;
 		flex-wrap: wrap;
 	}
 }
-.info__tag{
+.info__tag {
 	cursor: pointer;
-	color: rgba(0,0,0,0.6);
+	color: rgba(0, 0, 0, 0.6);
 	padding: 3px 5px;
 	font-size: 0.9rem;
-	background-color: #FAFBFF;
+	background-color: #fafbff;
 	border-radius: 7px;
-	border: 1px solid rgba(0,0,0,0.05);
+	border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.info__description{
+.info__description {
 	margin-top: 10px;
 	color: #000;
 	opacity: 0.7;

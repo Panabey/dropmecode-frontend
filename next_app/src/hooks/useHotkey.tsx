@@ -25,5 +25,6 @@ export const useHotkey = (clampedKey: 'ctrl' | 'shift' | 'alt', keyCode: string,
 		return () => {
 			document.removeEventListener('keydown', onPressKey, false)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [deps])
 }

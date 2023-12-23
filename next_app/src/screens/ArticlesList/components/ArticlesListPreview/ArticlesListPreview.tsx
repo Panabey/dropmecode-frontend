@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 import s from './ArticlesListPreview.module.css'
@@ -15,7 +16,10 @@ interface iProps {
 export const ArticlesListPreview: FC<iProps> = ({ slug, title, description, dateTime, imageUrl, tags }) => {
 	return (
 		<div className={classNames(s.area, { [s.area_noimg]: !imageUrl })}>
-			{imageUrl && imageUrl.length && <Link href={slug}><img src={imageUrl} alt="Картинка новости" className={s.image} /></Link>}
+			{imageUrl && imageUrl.length
+				&& <Link href={slug}>
+					<Image width={2000} height={2000} src={imageUrl} alt="Картинка новости" className={s.image} />
+				</Link>}
 			<div className={s.info}>
 				<Link href={slug}><h3 className={s.info__title}>{title}</h3></Link>
 				<div className={s.info__meta}>

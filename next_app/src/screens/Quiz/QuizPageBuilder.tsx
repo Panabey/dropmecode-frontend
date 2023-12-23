@@ -5,6 +5,7 @@ import { PageLayout } from '@/components/PageLayout/PageLayout'
 import { UPLOADS_URL } from '@/lib/constants'
 import { iQuizPagePreview } from '@/pages/quizes/content/[id]'
 import classNames from 'classnames'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useState } from 'react'
 import getSlug from 'speakingurl'
@@ -35,6 +36,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 		if (router.isReady && selectedQuestionIdx === 0 && quizStatus === 'running' && !data && !isLoading && !error) {
 			fetchQuestion({ question_id: pageInfo.questions[selectedQuestionIdx], quiz_id: pageInfo.id })
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router, selectedQuestionIdx, quizStatus, data, error, isLoading])
 
 	useEffect(() => {
@@ -105,7 +107,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 						{
 							quizStatus === 'preview'
 								? <div className={s.preivew}>
-									<img className={classNames(s.preview__img, { [s.noimg]: !pageInfo.logo_url || !pageInfo.logo_url.length })} src={pageInfo.logo_url && pageInfo.logo_url.length ? UPLOADS_URL + pageInfo.logo_url : '/assets/Quizes/plug1.png'} alt="Превью картинка квиза" />
+									<Image width={2000} height={2000} className={classNames(s.preview__img, { [s.noimg]: !pageInfo.logo_url || !pageInfo.logo_url.length })} src={pageInfo.logo_url && pageInfo.logo_url.length ? UPLOADS_URL + pageInfo.logo_url : '/assets/Quizes/plug1.png'} alt="Превью картинка квиза" />
 									<span className={s.preview__counter}>Вопросов: {pageInfo.questions.length}</span>
 									<button className={s.preview__button} onClick={() => setQuizStatus('running')}>Начать квиз</button>
 								</div>
@@ -123,7 +125,7 @@ export const QuizPageBuilder: FC<iProps> = ({ pageInfo }) => {
 											/>
 									)
 									: <div className={s.result}>
-										<img className={s.result__icon} src={getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).imageUrl} />
+										<Image width={2000} height={2000} alt='Квиз' className={s.result__icon} src={getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).imageUrl} />
 										<h3 className={s.result__title}>{getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).title}</h3>
 										<p className={s.result__description}>{getQuizResultInfo(correctQuestionCounter, pageInfo.questions.length).description}</p>
 										<button className={s.result__button} onClick={() => router.push('/quizes')}>Другие квизы</button>

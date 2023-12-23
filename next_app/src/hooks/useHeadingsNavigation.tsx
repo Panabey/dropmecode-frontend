@@ -48,6 +48,7 @@ export const useHeadingsNavigation = (markdownClassName: string, reloadAction?: 
 		return () => {
 			window.removeEventListener('scroll', highlightActiveLink)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageNavigationLinks])
 
 	useEffect(() => {
@@ -81,6 +82,7 @@ export const useHeadingsNavigation = (markdownClassName: string, reloadAction?: 
 		return () => {
 			clearInterval(timer)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pageNavigationLinks])
 
 	useEffect(() => {

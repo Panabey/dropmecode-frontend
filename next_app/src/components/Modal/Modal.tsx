@@ -33,6 +33,7 @@ export const Modal: FC<iProps> = ({
 				}, 300)
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isOpened])
 
 	useEffect(() => {

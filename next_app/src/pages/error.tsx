@@ -14,3 +14,9 @@ const ErrorPage = () => {
 }
 
 export default ErrorPage
+
+export async function getStaticProps() {
+  return {
+    notFound: true,
+  };
+}

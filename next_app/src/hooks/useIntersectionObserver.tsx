@@ -1,45 +1,51 @@
 /* eslint react-hooks/rules-of-hooks: 0 */
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 export const useIntersectionObserver = (refObj: any, callback: (intersectedObj: any) => void, customOptions?: any,) => {
+
+	const observer = useRef<IntersectionObserver | null>(null);
 
 	if (typeof document === 'undefined') {
 		return { reObserve }
 	}
 
-	let OPTIONS = {
+	const OPTIONS = {
 		rootMargin: "20px",
 		threshold: 0.2,
 	};
 
-	let observer = new IntersectionObserver(onIntersected, { ...OPTIONS, ...customOptions });
-
-	function onIntersected(entries: any[]) {
+	const onIntersected = useCallback((entries: any[]) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
 				callback(entry.target);
-				observer.unobserve(entry.target)
+				observer?.current?.unobserve(entry.target)
 			}
 		});
-	}
+	}, [callback])
+
+	useEffect(() => {
+		observer.current = new IntersectionObserver(onIntersected, { ...OPTIONS, ...customOptions })
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [customOptions, onIntersected]);
 
 	function reObserve(element: any) {
 		if (element !== null) {
-			observer.observe(element)
+			observer?.current?.observe(element)
 		}
 	}
 
 	useEffect(() => {
 		if (refObj.current !== null) {
-			observer.observe(refObj.current)
+			observer?.current?.observe(refObj.current)
 		}
 
 		return () => {
 			if (refObj.current !== null) {
-				observer.unobserve(refObj.current)
+				// eslint-disable-next-line react-hooks/exhaustive-deps
+				observer?.current?.unobserve(refObj.current)
 			}
 		}
-	}, [refObj])
+	}, [observer, refObj])
 
 	return { reObserve }
 }
