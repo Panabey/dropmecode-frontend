@@ -17,7 +17,7 @@ interface iProps {
 	className?: string
 }
 
-const Pre: FC<any> = ({ children }) => {
+const Pre: FC<any> = ({ children }: any) => {
 	return (
 		<pre className={s.pre}>
 			<CopyCodeButton>{children ? children : <div></div>}</CopyCodeButton>
@@ -26,7 +26,7 @@ const Pre: FC<any> = ({ children }) => {
 	)
 }
 
-const MDImage: FC<any> = (props) => {
+const MDImage: FC<any> = (props: any) => {
 
 	const dispatch = useDispatch()
 	const { onChangeOpen, setValues } = imageViewerSlice.actions
@@ -44,13 +44,13 @@ const MDImage: FC<any> = (props) => {
 	)
 }
 
-export const MarkdownRender: FC<iProps> = ({ children, className: customClass }) => {
+export const MarkdownRender: FC<iProps> = ({ children, className: customClass }: any) => {
 	return (
 		<Markdown
 			className={classNames({ [customClass || '']: customClass }, 'markdown-body')}
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
-			transformImageUri={(uri: any) =>
+			urlTransform={(uri: any) =>
 				uri.startsWith("http") ? uri : `${MARKDOWN_UPLOADS_URL}${uri}`
 			}
 			components={{
