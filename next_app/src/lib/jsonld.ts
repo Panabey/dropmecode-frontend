@@ -15,12 +15,11 @@ export const createArticleJSONLD = (info: iArticleJSONLD) => {
 		"@type": "Article",
 		"@id": info.url,
 		headline: info.title,
-		author: info.author,
 		url: info.url,
 		genre: info.genre,
 		keywords: info.keywords,
-		datePublished: info.datePublished.toISOString().slice(0, 10),
-		dateModified: info.dateModified.toISOString().slice(0, 10),
+		datePublished: info.datePublished.toISOString(),
+		dateModified: info.dateModified.toISOString(),
 		description: info.description,
 	});
 }
@@ -42,12 +41,11 @@ export const createLangDocsThemeJSONLD = (info: iLangDocsThemeJSONLD) => {
 		"@type": "Article",
 		"@id": info.url,
 		headline: info.title,
-		author: info.author,
 		url: info.url,
 		genre: info.genre,
 		keywords: info.keywords,
-		datePublished: info.datePublished.toISOString().slice(0, 10),
-		dateModified: info.dateModified.toISOString().slice(0, 10),
+		datePublished: info.datePublished.toISOString(),
+		dateModified: info.dateModified.toISOString(),
 		description: info.description,
 	});
 }

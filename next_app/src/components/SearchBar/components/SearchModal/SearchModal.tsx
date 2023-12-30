@@ -48,7 +48,8 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		onClose()
 		setSearchValue('')
 		dispatch(onChangeFilter('langs'))
-	}, [dispatch, onChangeFilter, onClose])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	useEffect(() => {
 		if (isOpened) {
@@ -129,6 +130,7 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		return () => {
 			clearTimeout(timer)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [
 		searchValue,
 		selectedFilter,
@@ -140,9 +142,6 @@ export const SearchModal: FC<iProps> = ({ isOpened, onClose }) => {
 		isIncludeTags,
 		setSearchResults,
 		setIsLoadingSearch,
-		resetArticles,
-		resetQuizes,
-		resetHandbooks
 	])
 
 	useEffect(() => {
