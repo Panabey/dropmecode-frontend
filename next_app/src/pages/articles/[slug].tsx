@@ -1,17 +1,34 @@
 import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton'
-import { API_URL } from '@/lib/constants'
+import { API_URL, SITE_URL } from '@/lib/constants'
+import { createArticleJSONLD } from '@/lib/jsonld'
 import { ArticlePageBuilder } from '@/screens/Article/ArticlePageBuilder'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import getSlug from 'speakingurl'
 
-const NewsArticlePage = ({ article, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const NewsArticlePage = ({ article, title, slug }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+
+	const jsonLD = createArticleJSONLD({
+		title,
+		url: SITE_URL + slug,
+		author: 'Dropmecode',
+		genre: 'Статья',
+		keywords: 'IT, программирование, технологии, новости, разработка, информационные технологии, последние новости, статьи, новые статьи, статьи из мира IT, программирование новости, DROPMECODE',
+		description: article.anons,
+		dateModified: new Date(article.update_date),
+		datePublished: new Date(article.create_date),
+	})
+
 	return (
 		<>
 			<Head>
 				<title>{title}</title>
 				<meta name="keywords" content="IT, программирование, технологии, новости, разработка, информационные технологии, последние новости, статьи, новые статьи, статьи из мира IT, программирование новости, DROPMECODE" ></meta>
 				<meta name="description" content={article.anons} />
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: jsonLD }}
+				/>
 			</Head>
 			<ArticlePageBuilder article={article} />
 			<ScrollToTopButton />
@@ -32,7 +49,7 @@ export interface iArticle {
 
 
 export const getServerSideProps: GetServerSideProps<{
-	article: iArticle, title: string
+	article: iArticle, title: string, slug: string
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const url = resolvedUrl.split('/')
@@ -56,7 +73,8 @@ export const getServerSideProps: GetServerSideProps<{
 		return {
 			props: {
 				article: {},
-				title: ''
+				title: '',
+				slug: '',
 			},
 			redirect: {
 				destination: '/error',
@@ -70,7 +88,8 @@ export const getServerSideProps: GetServerSideProps<{
 		return {
 			props: {
 				article: null,
-				title: ''
+				title: '',
+				slug: '',
 			},
 			redirect: {
 				destination: slug,
@@ -81,7 +100,8 @@ export const getServerSideProps: GetServerSideProps<{
 	return {
 		props: {
 			article: article,
-			title: `${article.title}`
+			title: `${article.title}`,
+			slug: slug,
 		}
 	}
 }

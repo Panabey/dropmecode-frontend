@@ -1,5 +1,6 @@
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
-import { API_URL } from "@/lib/constants";
+import { API_URL, SITE_URL } from "@/lib/constants";
+import { createLangDocsThemeJSONLD } from "@/lib/jsonld";
 import { LangDocsThemePageBuilder } from "@/screens/LangDocsTheme/LangDocsThemePageBuilder";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
@@ -9,15 +10,32 @@ import getSlug from "speakingurl";
 interface iProps {
   langDocs: iLangDocs
   title: string
+  slug: string
 }
 
-const LangDocsPageInfo: FC<iProps> = ({ langDocs, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const LangDocsPageInfo: FC<iProps> = ({ langDocs, title, slug }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+
+  const jsonLD = createLangDocsThemeJSONLD({
+    title,
+    url: SITE_URL + slug,
+    author: 'Dropmecode',
+    genre: 'Справочная информация',
+    keywords: 'IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE',
+    description: langDocs.short_description,
+    dateModified: new Date(langDocs.update_date),
+    datePublished: new Date(langDocs.create_date),
+  })
+
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={langDocs.short_description} />
         <meta name="keywords" content="IT, программирование, справочники, технологии, ресурсы, информационные технологии, программисты, обучение, DROPMECODE" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLD }}
+        />
       </Head>
       <LangDocsThemePageBuilder langDocs={langDocs} />
       <ScrollToTopButton />
@@ -45,7 +63,7 @@ export interface iLangDocs {
 }
 
 export const getServerSideProps: GetServerSideProps<{
-  langDocs: iLangDocs, title: string
+  langDocs: iLangDocs, title: string, slug: string,
 }> = async ({ res, resolvedUrl }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
   const url = resolvedUrl.split('/')
@@ -53,7 +71,8 @@ export const getServerSideProps: GetServerSideProps<{
     return {
       props: {
         langDocs: null,
-        title: ''
+        title: '',
+        slug: '',
       },
       redirect: {
         destination: '/error',
@@ -72,7 +91,8 @@ export const getServerSideProps: GetServerSideProps<{
     return {
       props: {
         langDocs: null,
-        title: ''
+        title: '',
+        slug: '',
       },
       redirect: {
         destination: '/error',
@@ -86,7 +106,8 @@ export const getServerSideProps: GetServerSideProps<{
     return {
       props: {
         langDocs: null,
-        title: ''
+        title: '',
+        slug: '',
       },
       redirect: {
         destination: slug,
@@ -97,7 +118,8 @@ export const getServerSideProps: GetServerSideProps<{
   return {
     props: {
       langDocs: langDocs,
-      title: `${langDocs.content.handbook.title} ${'|'} ${langDocs.title}`
+      title: `${langDocs.content.handbook.title} ${'|'} ${langDocs.title}`,
+      slug: slug,
     }
   }
 }

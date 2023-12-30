@@ -1,16 +1,30 @@
-import { API_URL } from "@/lib/constants"
+import { API_URL, SITE_URL } from "@/lib/constants"
+import { createQuizJSONLD } from "@/lib/jsonld"
 import { QuizPageBuilder } from "@/screens/Quiz/QuizPageBuilder"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import Head from "next/head"
 import getSlug from "speakingurl"
 
-const QuizPage = ({ pageInfo, title }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const QuizPage = ({ pageInfo, title, slug }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+
+	const jsonLD = createQuizJSONLD({
+		name: title,
+		url: SITE_URL + slug,
+		genre: 'Квиз-тест',
+		keywords: 'IT квизы, Программирование, Тесты знаний, Онлайн экзамены, Оценка навыков, Квиз-тесты по программированию, Технические вопросы, Тестирование знаний IT, DROPMECODE квизы, Программирование викторины, Тесты для разработчиков, Задачи по программированию, Вопросы и ответы по IT, Интерактивные тесты, Обучение программированию',
+		description: pageInfo.short_description,
+	})
+
 	return (
 		<>
 			<Head>
 				<title>{title}</title>
 				<meta name="description" content={pageInfo.short_description} />
 				<meta name="keywords" content="IT квизы, Программирование, Тесты знаний, Онлайн экзамены, Оценка навыков, Квиз-тесты по программированию, Технические вопросы, Тестирование знаний IT, DROPMECODE квизы, Программирование викторины, Тесты для разработчиков, Задачи по программированию, Вопросы и ответы по IT, Интерактивные тесты, Обучение программированию" />
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: jsonLD }}
+				/>
 			</Head>
 			<QuizPageBuilder pageInfo={pageInfo} />
 		</>
@@ -32,7 +46,7 @@ export interface iQuizPagePreview {
 }
 
 export const getServerSideProps: GetServerSideProps<{
-	pageInfo: iQuizPagePreview, title: string
+	pageInfo: iQuizPagePreview, title: string, slug: string
 }> = async ({ res, resolvedUrl }) => {
 	res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=59')
 	const url = resolvedUrl.split('/')
@@ -40,7 +54,8 @@ export const getServerSideProps: GetServerSideProps<{
 		return {
 			props: {
 				pageInfo: null,
-				title: ''
+				title: '',
+				slug: '',
 			},
 			redirect: {
 				destination: '/error',
@@ -55,7 +70,8 @@ export const getServerSideProps: GetServerSideProps<{
 		return {
 			props: {
 				pageInfo: [],
-				title: ''
+				title: '',
+				slug: '',
 			},
 			redirect: {
 				destination: '/error',
@@ -69,7 +85,8 @@ export const getServerSideProps: GetServerSideProps<{
 		return {
 			props: {
 				pageInfo: null,
-				title: ''
+				title: '',
+				slug: '',
 			},
 			redirect: {
 				destination: slug,
@@ -80,7 +97,8 @@ export const getServerSideProps: GetServerSideProps<{
 	return {
 		props: {
 			pageInfo: pageInfo,
-			title: `DROPMECODE | ${pageInfo.title}`
+			title: `DROPMECODE | ${pageInfo.title}`,
+			slug: slug,
 		}
 	}
 }
