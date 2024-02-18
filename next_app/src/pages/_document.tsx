@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Head, Html, Main, NextScript } from 'next/document'
+import Image from 'next/image'
 
 export default function Document() {
   return (
@@ -28,6 +29,7 @@ export default function Document() {
         <div id="search"></div>
         <div id="cookie"></div>
         <div id="modal"></div>
+        <Image className="goose__paws hidden" width={500} height={500} src="/assets/Goose/paws.png" alt='Гусьи прикольчики :D' />
         {Boolean(JSON.parse(process.env.NEXT_PUBLIC_DISABLE_METRICA || 'null')) === false
           ? <script
             dangerouslySetInnerHTML={{

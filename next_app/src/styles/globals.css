@@ -52,6 +52,18 @@ body.noevents {
 	max-height: 3rem;
 	margin: auto;
 }
+.goose__paws {
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-width: 4rem;
+	height: auto;
+	width: 100%;
+	z-index: 100;
+}
+.goose__paws.hidden {
+	display: none;
+}
 .hidden {
 	display: none;
 }

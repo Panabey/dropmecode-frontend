@@ -54,4 +54,29 @@ export const goosePhrases = [
 			}, 1000)
 		}
 	},
+	{
+		text: 'Я - гусь. Лапкой об экран потрусь',
+		callback: () => {
+			let counter = 0;
+			const paws = document.querySelector('.goose__paws');
+			setTimeout(() => {
+				const timer = setInterval(() => {
+					const newGoose = paws?.cloneNode() as HTMLElement;
+					document.body.appendChild(newGoose);
+					newGoose.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+					newGoose.style.top = `${Math.floor(Math.random() * document.body.scrollHeight)}px`;
+					newGoose.style.left = `${Math.floor(Math.random() * document.body.clientWidth)}px`;
+					newGoose.classList.remove('hidden');
+					counter++;
+					if (counter === 50) {
+						clearInterval(timer);
+						const goosesPaws = document.querySelectorAll('.goose__paws');
+						goosesPaws.forEach((paw) => {
+							paw?.remove();
+						})
+					}
+				}, 200)
+			}, 2000)
+		}
+	},
 ]
