@@ -43,7 +43,7 @@ export const Footer = () => {
 					<div className={s.message}>
 						{gooseMessage}
 					</div>
-					<Image width={512} height={512} alt='Важный гусь' src={'/assets/Goose/gooseChristmas.png'} />
+					<Image width={512} height={512} alt='Важный гусь' src={'/assets/Goose/goose.png'} />
 					<Image className={classNames('hidden', 'goose2')} width={512} height={512} alt='Важный гусь' src={'/assets/Goose/goose2.png'} style={{ pointerEvents: 'none' }} />
 				</div>
 				<div className={s.container}>

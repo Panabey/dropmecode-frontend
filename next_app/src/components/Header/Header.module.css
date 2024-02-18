@@ -11,7 +11,7 @@
 	display: grid;
 	grid-template-columns: 4fr 25fr 4fr;
 }
-.header::after {
+/* .header::after {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -23,7 +23,7 @@
 	background-size: contain;
 	background-image: url(/assets/Christmas/g2.gif);
 	pointer-events: none;
-}
+} */
 @media screen and (max-width: 768px) {
 	.header {
 		display: none;

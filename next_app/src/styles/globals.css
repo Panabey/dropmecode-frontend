@@ -61,8 +61,7 @@ body.noevents {
 .nodisplay .markdown-body pre {
 	display: none !important;
 }
-
-#nprogress .bar {
+/* #nprogress .bar {
 	background-color: #ffffff;
 	opacity: 1;
 	background: repeating-linear-gradient(
@@ -75,4 +74,4 @@ body.noevents {
 }
 #nprogress .peg {
 	box-shadow: none !important;
-}
+} */
